@@ -16,6 +16,16 @@
         android:label="@string/home_fragment_label"
         tools:layout="@layout/fragment_home" />
     <fragment
+        android:id="@+id/hook_picker_nav"
+        android:name="de.yisrime.lyricsuite.ui.fragment.HookPickerFragment"
+        android:label="@string/select_hook"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/test_nav"
+        android:name="de.yisrime.lyricsuite.ui.fragment.TestFragment"
+        android:label="@string/hook_page"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
         android:id="@+id/icon_nav"
         android:name="de.yisrime.lyricsuite.ui.fragment.IconFragment"
         android:label="@string/icon_page"

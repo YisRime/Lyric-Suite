@@ -122,6 +122,14 @@ class SettingsFragment : Fragment() {
             addView(
                 createClickableView(
                     context = context,
+                    titleResId = R.string.hook_page,
+                    onClick = {
+                        findNavController().navigate(R.id.test_nav)
+                    }
+                ))
+            addView(
+                createClickableView(
+                    context = context,
                     titleResId = R.string.icon_page,
                     onClick = {
                         findNavController().navigate(R.id.icon_nav)

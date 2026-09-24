@@ -55,8 +55,8 @@ class ConfigScreen(private val context: Context) {
         )
     }
 
-    fun action(@StringRes title: Int, onClick: () -> Unit) {
-        container.addView(rows.action(title, onClick = onClick))
+    fun action(@StringRes title: Int, @StringRes hint: Int = 0, onClick: () -> Unit) {
+        container.addView(rows.action(title, hint = hint, onClick = onClick))
     }
 
     fun integer(
@@ -116,10 +116,14 @@ class ConfigScreen(private val context: Context) {
 
     fun confirm(
         @StringRes title: Int,
-        @StringRes message: Int,
+        @StringRes message: Int = 0,
         @StringRes affirmative: Int,
         onConfirm: () -> Unit
     ) = rows.confirm(title, message, affirmative, onConfirm)
+
+    fun entry(title: String, summary: String, onClick: () -> Unit) {
+        container.addView(rows.entry(title, summary, onClick))
+    }
 
     fun labels(vararg ids: Int): List<String> = ids.map(context::getString)
 }

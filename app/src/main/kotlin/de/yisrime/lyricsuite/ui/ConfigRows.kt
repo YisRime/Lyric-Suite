@@ -49,9 +49,10 @@ class ConfigRows(private val context: Context) {
     fun action(
         @StringRes title: Int,
         @StringRes summary: Int = 0,
+        @StringRes hint: Int = 0,
         onClick: () -> Unit
     ): View {
-        val preferences = row(title, summary)
+        val preferences = row(title, summary, hint = hint)
         preferences.preferencesButton.visibility = View.GONE
         preferences.getView().setOnClickListener { onClick() }
         return preferences.getView()
@@ -107,13 +108,13 @@ class ConfigRows(private val context: Context) {
 
     fun confirm(
         @StringRes title: Int,
-        @StringRes message: Int,
+        @StringRes message: Int = 0,
         @StringRes affirmative: Int,
         onConfirm: () -> Unit
     ) {
         MaterialAlertDialogBuilder(context)
             .setTitle(title)
-            .setMessage(message)
+            .apply { if (message != 0) setMessage(message) }
             .setPositiveButton(affirmative) { dialog, _ ->
                 dialog.dismiss()
                 onConfirm()
@@ -136,6 +137,15 @@ class ConfigRows(private val context: Context) {
                 preferences.setSummary(value.trim().ifEmpty { context.getString(R.string.none_set) })
             }
         }
+        return preferences.getView()
+    }
+
+    fun entry(title: String, summary: String, onClick: () -> Unit): View {
+        val preferences = Preferences(context)
+        preferences.preferencesTitle.text = title
+        preferences.setSummary(summary)
+        preferences.preferencesButton.visibility = View.GONE
+        preferences.getView().setOnClickListener { onClick() }
         return preferences.getView()
     }
 
