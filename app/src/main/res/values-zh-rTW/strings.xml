@@ -1,16 +1,13 @@
 <resources>
 <string name="app_name">墨·狀態欄歌詞</string>
     <string name="module_inactivated">模組未啟用</string>
-    <string name="module_first">前置條件</string>
     <string name="module_second">基礎設置</string>
     <string name="module_third">進階設定</string>
     <string name="module_fourth">邊距設置</string>
     <string name="module_fifth">懸浮標題</string>
     <string name="module_sixth">動效設置</string>
-    <string name="menu_page">菜單</string>
     <string name="show_launcher_icon">顯示圖示</string>
     <string name="module_extend">修改本頁面後請重啟系統界面及播放器</string>
-    <string name="xposed_tips">如無法顯示歌詞請重新啟動系統界面及播放器</string>
     <string name="cancel">取消</string>
     <string name="ok">確定</string>
     <string name="reset_system_ui">重啟系統界面</string>
@@ -70,10 +67,8 @@
     <string name="no_text_view">沒有符合要求的 TextView</string>
     <string name="send_text_view_class">發送：%s</string>
     <string name="load_class_empty">請先打開錨點設置模式配置</string>
-    <string name="not_found_hook">未找到錨點</string>
     <string name="select_hook">是否選擇此錨點</string>
     <string name="force_the_icon_to_be_displayed">強制顯示圖示</string>
-    <string name="broadcast_receive_timeout">廣播接收超時</string>
     <string name="hide_time">隱藏時間</string>
     <string name="lyrics_animation">歌詞動畫</string>
     <string name="lyrics_animation_none">無效果</string>
@@ -106,9 +101,6 @@
     <string name="lyrics_gradient_background_color_and_transparency_tips">請輸入 16 進制顏色，多個顏色為漸變色橫向排布，使用英文逗號分隔</string>
     <string name="lyric_background_radius">歌詞背景半徑</string>
     <string name="lyric_background_radius_tips">範圍：0~100</string>
-    <string name="color_scheme1">方案 1</string>
-    <string name="color_scheme2">方案 2</string>
-    <string name="lyric_color_scheme">歌詞反色方案</string>
     <string name="tips1">需重啟</string>
     <string name="dynamic_lyric_speed">動態歌詞速度 (Beta)</string>
     <string name="click_status_bar_to_hide_lyric">點擊狀態欄隱藏歌詞</string>
@@ -144,25 +136,17 @@
     <string name="lyrics_are_gradient_and_transparent">歌詞漸變色和透明度</string>
     <string name="color_error">輸入的顏色錯誤，請檢查</string>
     <string name="value_error">輸入的值無效，應在 %1$d – %2$d 之間</string>
-    <string name="restart_app">重啟軟體</string>
-    <string name="backup_config">備份配置</string>
-    <string name="recovery_config">恢復配置</string>
-    <string name="clear_config">重設配置</string>
-    <string name="clear_config_tips">確定要重設配置嗎？</string>
     <string name="view_location">歌詞添加位置</string>
     <string name="automate_focused_notice">自動處理焦點通知</string>
     <string name="lyrics_animation_horizontalflip">水平翻轉</string>
     <string name="lyrics_animation_verticalflip">垂直翻轉</string>
     <string name="version_code">版本號</string>
-    <string name="buildtime">編譯時間</string>
-    <string name="currentdevice">當前設備</string>
-    <string name="info">資訊</string>
     <string name="log_page">日誌</string>
-    <string name="log_page_tips">檢視模組執行日誌</string>
     <string name="log_refresh">重新讀取</string>
     <string name="log_clear">清空日誌</string>
     <string name="log_loading">正在讀取日誌…</string>
     <string name="log_no_root">讀取日誌需要 Root 授權</string>
     <string name="log_empty">暫無日誌</string>
     <string name="none_set">未設置</string>
+    <string name="xposed_tips">如無法顯示歌詞請重新啟動系統界面及播放器</string>
 </resources>

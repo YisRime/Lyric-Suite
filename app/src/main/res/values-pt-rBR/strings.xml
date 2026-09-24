@@ -1,5 +1,4 @@
 <resources>
-<string name="xposed_desc">Lyrics Getter</string>
     <string name="home_fragment_label">Início</string>
     <string name="version_name_label">Versão do módulo</string>
     <string name="version_code_label">Número da versão do módulo</string>

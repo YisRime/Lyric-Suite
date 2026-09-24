@@ -1,16 +1,13 @@
 <resources>
 <string name="app_name">StatusBar Lyric</string>
     <string name="module_inactivated">モジュールが無効化されています</string>
-    <string name="module_first">前提条件</string>
     <string name="module_second">基本設定</string>
     <string name="module_third">高度な設定</string>
     <string name="module_fourth">余白の設定</string>
     <string name="module_fifth">フローティングタイトル</string>
     <string name="module_sixth">アニメーションの設定</string>
-    <string name="menu_page">メニュー</string>
     <string name="show_launcher_icon">アイコンを表示</string>
     <string name="module_extend">このページを変更後にシステムインターフェースとプレーヤーを再起動してください</string>
-    <string name="xposed_tips">歌詞を表示できないときは、音楽アプリを停止してシステム UI を再起動してください</string>
     <string name="cancel">キャンセル</string>
     <string name="ok">OK</string>
     <string name="reset_system_ui">システム UI を再起動</string>
@@ -70,10 +67,8 @@
     <string name="no_text_view">要件を満たす TextView はありません</string>
     <string name="send_text_view_class">送信: %s</string>
     <string name="load_class_empty">最初にテストモードの設定を ON にしてください</string>
-    <string name="not_found_hook">フックがありません</string>
     <string name="select_hook">このフックポイントを選択しますか</string>
     <string name="force_the_icon_to_be_displayed">アイコンを強制的に表示</string>
-    <string name="broadcast_receive_timeout">ブロードキャスト受信のタイムアウト</string>
     <string name="hide_time">時間を隠す</string>
     <string name="lyrics_animation">歌詞のアニメーション</string>
     <string name="lyrics_animation_none">なし</string>
@@ -106,9 +101,6 @@
     <string name="lyrics_gradient_background_color_and_transparency_tips">16 進数の色を入力してください。複数の色はグラデーションカラーとして水平に配置され、英語のカンマで区切られます。</string>
     <string name="lyric_background_radius">歌詞の背景の半径</string>
     <string name="lyric_background_radius_tips">範囲: 0~100</string>
-    <string name="color_scheme1">カラースキーム 1</string>
-    <string name="color_scheme2">カラースキーム 2</string>
-    <string name="lyric_color_scheme">歌詞のカラースキーム</string>
     <string name="tips1">再起動が必要です</string>
     <string name="dynamic_lyric_speed">動的な歌詞の速度 (Beta)</string>
     <string name="click_status_bar_to_hide_lyric">ステータスバーをタップで歌詞を隠す</string>
@@ -144,27 +136,17 @@
     <string name="lyrics_are_gradient_and_transparent">歌詞のグラデーションと透過</string>
     <string name="color_error">入力した色が正しくありません。確認してください。</string>
     <string name="value_error">入力した値が不正です。%1$d ～ %2$d の範囲で指定してください</string>
-    <string name="restart_app">アプリを再起動</string>
-    <string name="backup_config">設定をバックアップ</string>
-    <string name="recovery_config">設定を復元</string>
-    <string name="clear_config">設定を消去</string>
-    <string name="clear_config_tips">設定を消去してもよろしいですか？</string>
     <string name="view_location">歌詞の場所を追加</string>
     <string name="automate_focused_notice">フォーカス通知の自動処理</string>
     <string name="lyrics_animation_horizontalflip">水平フリップ</string>
     <string name="lyrics_animation_verticalflip">垂直フリップ</string>
     <string name="version_code">バージョン番号</string>
-    <string name="buildtime">コンパイル時</string>
-    <string name="currentdevice">現在のデバイス</string>
-    <string name="info">情報</string>
     <string name="log_page">ログ</string>
-    <string name="log_page_tips">モジュールのログを表示</string>
     <string name="log_refresh">再読み込み</string>
     <string name="log_clear">ログを消去</string>
     <string name="log_loading">ログを読み込み中…</string>
     <string name="log_no_root">ログの読み取りに Root 権限が必要です</string>
     <string name="log_empty">ログはありません</string>
-<string name="xposed_desc">Lyrics Getter</string>
   <string name="home_fragment_label">ホーム</string>
   <string name="version_name_label">モジュールのバージョン</string>
   <string name="version_code_label">モジュールのバージョン番号</string>
@@ -235,4 +217,5 @@
   <string name="show_title">タイトル表示を強制</string>
   <string name="version_differences">リリース版はログを出力しませんが、デバッグ版はログを出力します。開発者以外はデバッグ版をインストールしないことを推奨します。</string>
     <string name="none_set">未設定</string>
+    <string name="xposed_tips">歌詞を表示できないときは、音楽アプリを停止してシステム UI を再起動してください</string>
 </resources>

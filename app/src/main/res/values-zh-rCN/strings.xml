@@ -1,16 +1,13 @@
 <resources>
 <string name="app_name">墨·状态栏歌词</string>
     <string name="module_inactivated">模块未激活</string>
-    <string name="module_first">前置条件</string>
     <string name="module_second">基础设置</string>
     <string name="module_third">高级设置</string>
     <string name="module_fourth">边距设置</string>
     <string name="module_fifth">悬浮标题</string>
     <string name="module_sixth">动效设置</string>
-    <string name="menu_page">菜单</string>
     <string name="show_launcher_icon">显示图标</string>
     <string name="module_extend">修改本页面后请重启系统界面及播放器</string>
-    <string name="xposed_tips">如无法显示歌词请重启系统界面及播放器</string>
     <string name="cancel">取消</string>
     <string name="ok">确定</string>
     <string name="reset_system_ui">重启系统界面</string>
@@ -70,10 +67,8 @@
     <string name="no_text_view">没有符合要求的 TextView</string>
     <string name="send_text_view_class">发送：%s</string>
     <string name="load_class_empty">请先打开锚点设置模式配置</string>
-    <string name="not_found_hook">未找到锚点</string>
     <string name="select_hook">是否选择此锚点</string>
     <string name="force_the_icon_to_be_displayed">强制显示图标</string>
-    <string name="broadcast_receive_timeout">广播接收超时</string>
     <string name="hide_time">隐藏时间</string>
     <string name="lyrics_animation">歌词动画</string>
     <string name="lyrics_animation_none">无效果</string>
@@ -106,9 +101,6 @@
     <string name="lyrics_gradient_background_color_and_transparency_tips">请输入 16 进制颜色，多个颜色为渐变色横向排布，使用英文逗号分隔</string>
     <string name="lyric_background_radius">歌词背景半径</string>
     <string name="lyric_background_radius_tips">范围：0~100</string>
-    <string name="color_scheme1">方案 1</string>
-    <string name="color_scheme2">方案 2</string>
-    <string name="lyric_color_scheme">歌词反色方案</string>
     <string name="tips1">需重启</string>
     <string name="dynamic_lyric_speed">动态歌词速度 (Beta)</string>
     <string name="click_status_bar_to_hide_lyric">点击状态栏隐藏歌词</string>
@@ -144,25 +136,17 @@
     <string name="lyrics_are_gradient_and_transparent">歌词渐变色和透明度</string>
     <string name="color_error">输入的颜色错误，请检查</string>
     <string name="value_error">输入的值无效，应在 %1$d – %2$d 之间</string>
-    <string name="restart_app">重启软件</string>
-    <string name="backup_config">备份配置</string>
-    <string name="recovery_config">恢复配置</string>
-    <string name="clear_config">重置配置</string>
-    <string name="clear_config_tips">确定要重置配置吗？</string>
     <string name="view_location">歌词添加位置</string>
     <string name="automate_focused_notice">自动处理焦点通知</string>
     <string name="lyrics_animation_horizontalflip">水平翻转</string>
     <string name="lyrics_animation_verticalflip">垂直翻转</string>
     <string name="version_code">版本号</string>
-    <string name="buildtime">编译时间</string>
-    <string name="currentdevice">当前设备</string>
-    <string name="info">信息</string>
     <string name="log_page">日志</string>
-    <string name="log_page_tips">查看模块运行日志</string>
     <string name="log_refresh">重新读取</string>
     <string name="log_clear">清空日志</string>
     <string name="log_loading">正在读取日志…</string>
     <string name="log_no_root">读取日志需要 Root 授权</string>
     <string name="log_empty">暂无日志</string>
     <string name="none_set">未设置</string>
+    <string name="xposed_tips">如无法显示歌词请重启系统界面及播放器</string>
 </resources>

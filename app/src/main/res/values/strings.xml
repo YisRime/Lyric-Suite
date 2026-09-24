@@ -1,16 +1,13 @@
 <resources>
 <string name="app_name">StatusBar Lyric</string>
     <string name="module_inactivated">Module inactivated</string>
-    <string name="module_first">Precondition</string>
     <string name="module_second">Basic settings</string>
     <string name="module_third">Advanced settings</string>
     <string name="module_fourth">Margin settings</string>
     <string name="module_fifth">Floating title</string>
     <string name="module_sixth">Animation settings</string>
-    <string name="menu_page">Menu</string>
     <string name="show_launcher_icon">Show Icon</string>
     <string name="module_extend">Please restart the system interface and player after modifying this page</string>
-    <string name="xposed_tips">If the lyrics cannot be displayed, please try to stop the music software and restart the SystemUI</string>
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
     <string name="reset_system_ui">Restart SystemUI</string>
@@ -70,10 +67,8 @@
     <string name="no_text_view">There is no Textview that meets the requirements</string>
     <string name="send_text_view_class">Send: %s</string>
     <string name="load_class_empty">Please turn on the test mode configuration first</string>
-    <string name="not_found_hook">Hook not found</string>
     <string name="select_hook">Whether to select this Hook point</string>
     <string name="force_the_icon_to_be_displayed">Force The Icon To Be Displayed</string>
-    <string name="broadcast_receive_timeout">Broadcast Receive Timeout</string>
     <string name="hide_time">Hide Time</string>
     <string name="lyrics_animation">Lyric Animation</string>
     <string name="lyrics_animation_none">None</string>
@@ -106,9 +101,6 @@
     <string name="lyrics_gradient_background_color_and_transparency_tips">Please enter hexadecimal color, multiple colors are gradient colors arranged horizontally, separated by English commas</string>
     <string name="lyric_background_radius">Lyric Background Radius</string>
     <string name="lyric_background_radius_tips">Range: 0~100</string>
-    <string name="color_scheme1">Color Scheme 1</string>
-    <string name="color_scheme2">Color Scheme 2</string>
-    <string name="lyric_color_scheme">Lyric Color Scheme</string>
     <string name="tips1">Restart needed</string>
     <string name="dynamic_lyric_speed">Dynamic Lyric Speed(Beta)</string>
     <string name="click_status_bar_to_hide_lyric">Click Status Bar To Hide Lyric</string>
@@ -146,27 +138,17 @@
     <string name="hyperos" translatable="false">HyperOS</string>
     <string name="color_error">The color entered is incorrect, please check</string>
     <string name="value_error">The value entered is invalid, expected %1$d – %2$d</string>
-    <string name="restart_app">Restart APP</string>
-    <string name="backup_config">Backup Config</string>
-    <string name="recovery_config">Recovery Config</string>
-    <string name="clear_config">Clear Config</string>
-    <string name="clear_config_tips">Are you sure you want to clear the configuration?</string>
     <string name="view_location">Lyrics add location</string>
     <string name="automate_focused_notice">Automate focus notifications</string>
     <string name="lyrics_animation_horizontalflip">Horizontal Flip</string>
     <string name="lyrics_animation_verticalflip">Vertical Flip</string>
     <string name="version_code">Version Code</string>
-    <string name="buildtime">Build Time</string>
-    <string name="currentdevice">Current Device</string>
-    <string name="info">Info</string>
     <string name="log_page">Logs</string>
-    <string name="log_page_tips">View the module log output</string>
     <string name="log_refresh">Reload</string>
     <string name="log_clear">Clear</string>
     <string name="log_loading">Loading logs...</string>
     <string name="log_no_root">Root permission is required to read logs</string>
     <string name="log_empty">No log entries</string>
-<string name="xposed_desc">Lyrics Getter</string>
     <string name="home_fragment_label">Home</string>
     <string name="version_name_label">Module version</string>
     <string name="version_code_label">Module version number</string>
@@ -259,4 +241,5 @@
     <string name="mifocus">Send HyperOS focus notifications</string>
     <string name="test_lyric_tips">Warning: If the test here doesn\'t show any issues, it may be a problem with other software. If there are issues when sending the test lyrics, please provide your feedback. If there are no issues, the cause is something else. The focus notification is used to test if you\'ve disabled the whitelist.</string>
     <string name="none_set">Not set</string>
+    <string name="xposed_tips">If the lyrics cannot be displayed, please try to stop the music software and restart the SystemUI</string>
 </resources>
