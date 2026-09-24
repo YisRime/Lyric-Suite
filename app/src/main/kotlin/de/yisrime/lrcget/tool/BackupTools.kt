@@ -31,7 +31,7 @@ object BackupTools {
                             when (val value = get(keys)) {
                                 is String -> {
                                     if (value.startsWith("Float:")) {
-                                        edit.putFloat(keys, value.substring(value.indexOf("Float:")).toFloat() / 1000)
+                                        edit.putFloat(keys, value.substring("Float:".length).toFloat() / 1000)
                                     } else {
                                         edit.putString(keys, value)
                                     }
@@ -39,6 +39,7 @@ object BackupTools {
 
                                 is Boolean -> edit.putBoolean(keys, value)
                                 is Int -> edit.putInt(keys, value)
+                                is Long -> edit.putLong(keys, value)
                             }
                         }
                     }

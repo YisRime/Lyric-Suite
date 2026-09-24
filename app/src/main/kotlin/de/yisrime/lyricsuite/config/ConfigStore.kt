@@ -52,12 +52,6 @@ object ConfigStore {
         editor.apply()
     }
 
-    fun putAll(entries: Map<String, *>) {
-        val editor = editor() ?: return
-        entries.forEach { (key, value) -> editor.putTyped(key, value) }
-        editor.apply()
-    }
-
     fun clearAll() {
         editor()?.clear()?.apply()
     }

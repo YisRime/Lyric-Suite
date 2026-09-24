@@ -17,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import de.yisrime.lyricsuite.R
 import de.yisrime.lyricsuite.databinding.FragmentSettingsBinding
 import de.yisrime.lrcget.tool.ConfigTools.config
+import de.yisrime.lrcbar.tools.ActivityTools
 import de.yisrime.lrcget.tool.Tools.xpActivation
 import de.yisrime.lrcbar.config.XposedOwnSP.config as barConfig
 import de.yisrime.lrcget.tool.Tools.dp2px
@@ -157,6 +158,26 @@ class SettingsFragment : Fragment() {
                     titleResId = R.string.system_special_page,
                     onClick = {
                         findNavController().navigate(R.id.system_special_nav)
+                    }
+                ))
+            addView(
+                createClickableView(
+                    context = context,
+                    titleResId = R.string.clear_config,
+                    onClick = {
+                        MaterialAlertDialogBuilder(context)
+                            .setTitle(R.string.clear_config)
+                            .setMessage(R.string.clear_config_tips)
+                            .setPositiveButton(R.string.ok) { dialog, _ ->
+                                dialog.dismiss()
+                                barConfig.clear()
+                                Thread {
+                                    Thread.sleep(500)
+                                    ActivityTools.restartApp()
+                                }.start()
+                            }
+                            .setNegativeButton(R.string.cancel, null)
+                            .show()
                     }
                 ))
             addView(

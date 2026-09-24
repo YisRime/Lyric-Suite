@@ -218,4 +218,8 @@
   <string name="version_differences">リリース版はログを出力しませんが、デバッグ版はログを出力します。開発者以外はデバッグ版をインストールしないことを推奨します。</string>
     <string name="none_set">未設定</string>
     <string name="xposed_tips">歌詞を表示できないときは、音楽アプリを停止してシステム UI を再起動してください</string>
+    <string name="broadcast_receive_timeout">ブロードキャスト受信のタイムアウト</string>
+    <string name="not_found_hook">フックがありません</string>
+    <string name="clear_config">設定を消去</string>
+    <string name="clear_config_tips">設定を消去してもよろしいですか？</string>
 </resources>

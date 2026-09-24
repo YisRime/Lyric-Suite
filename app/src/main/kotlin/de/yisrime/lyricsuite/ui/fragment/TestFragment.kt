@@ -1,6 +1,5 @@
 package de.yisrime.lyricsuite.ui.fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +11,6 @@ import de.yisrime.lyricsuite.ui.ConfigScreen
 import de.yisrime.lrcbar.config.XposedOwnSP.config
 import de.yisrime.lrcbar.data.Data
 import de.yisrime.lrcbar.tools.ActivityTestTools.getClass
-import de.yisrime.lrcbar.tools.ActivityTestTools.receiveClass
 import de.yisrime.lrcbar.tools.Tools.shell
 
 class TestFragment : Fragment() {

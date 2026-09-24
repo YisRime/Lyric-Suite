@@ -1,18 +1,14 @@
 package de.yisrime.lyricsuite.ui.fragment
 
-import android.annotation.SuppressLint
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import de.yisrime.lyricsuite.R
 import de.yisrime.lyricsuite.ui.ConfigScreen
+import de.yisrime.lyricsuite.ui.HookProbe
 import de.yisrime.lrcbar.config.XposedOwnSP.config
 import de.yisrime.lrcbar.data.Data
 import de.yisrime.lrcbar.tools.ActivityTestTools.showView
@@ -20,7 +16,6 @@ import de.yisrime.lrcbar.tools.ActivityTestTools.showView
 class HookPickerFragment : Fragment() {
 
     private lateinit var screen: ConfigScreen
-    private var receiver: BroadcastReceiver? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,34 +28,17 @@ class HookPickerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        screen.build { it.header(R.string.choose_page_tips) }
-        register()
-    }
-
-    @SuppressLint("UnspecifiedRegisterReceiverFlag")
-    private fun register() {
-        val listener = object : BroadcastReceiver() {
-            @Suppress("DEPRECATION", "UNCHECKED_CAST")
-            override fun onReceive(context: Context, intent: Intent) {
-                if (intent.getStringExtra("Type") != "ReceiveClass") return
-                val list = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    intent.getSerializableExtra("DataList", ArrayList::class.java)
-                } else {
-                    intent.getSerializableExtra("DataList")
-                } as? ArrayList<Data> ?: return
-                requireActivity().runOnUiThread { render(list) }
+        HookProbe.observe { render() }
+        render()
+        view.postDelayed({
+            if (HookProbe.points.isEmpty()) {
+                Toast.makeText(requireContext(), R.string.broadcast_receive_timeout, Toast.LENGTH_SHORT).show()
             }
-        }
-        receiver = listener
-        val filter = IntentFilter("AppTestReceiver")
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            requireContext().registerReceiver(listener, filter, Context.RECEIVER_EXPORTED)
-        } else {
-            requireContext().registerReceiver(listener, filter)
-        }
+        }, TIMEOUT)
     }
 
-    private fun render(list: ArrayList<Data>) {
+    private fun render() {
+        val list = HookProbe.points
         screen.build { screen ->
             screen.header(R.string.choose_page_tips)
             list.forEach { data ->
@@ -88,8 +66,11 @@ class HookPickerFragment : Fragment() {
     }
 
     override fun onDestroyView() {
-        receiver?.let { runCatching { requireContext().unregisterReceiver(it) } }
-        receiver = null
+        HookProbe.observe(null)
         super.onDestroyView()
+    }
+
+    companion object {
+        private const val TIMEOUT = 2000L
     }
 }

@@ -32,6 +32,7 @@ import com.google.android.material.color.DynamicColors
 import cn.xiaowine.xkt.AcTool
 import cn.xiaowine.xkt.LogTool
 import de.yisrime.lyricsuite.config.ConfigStore
+import de.yisrime.lyricsuite.ui.HookProbe
 import de.yisrime.lrcget.tool.ActivityTools
 import de.yisrime.lrcget.tool.ConfigTools.config
 import io.github.libxposed.service.XposedService
@@ -46,6 +47,7 @@ class LyricApplication : Application() {
         AcTool.init(this)
         ActivityTools.application = this
         LogTool.init(GETTER_LOG_TAG, { true }, false)
+        HookProbe.start(this)
         XposedServiceHelper.registerListener(object : XposedServiceHelper.OnServiceListener {
             override fun onServiceBind(service: XposedService) {
                 runCatching {

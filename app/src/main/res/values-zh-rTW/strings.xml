@@ -149,4 +149,8 @@
     <string name="log_empty">暫無日誌</string>
     <string name="none_set">未設置</string>
     <string name="xposed_tips">如無法顯示歌詞請重新啟動系統界面及播放器</string>
+    <string name="broadcast_receive_timeout">廣播接收超時</string>
+    <string name="not_found_hook">未找到錨點</string>
+    <string name="clear_config">重設配置</string>
+    <string name="clear_config_tips">確定要重設配置嗎？</string>
 </resources>
