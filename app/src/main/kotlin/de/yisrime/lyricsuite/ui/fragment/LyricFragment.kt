@@ -23,7 +23,10 @@ class LyricFragment : ConfigFragment() {
                 prop = config::fixedLyricWidth
             )
         }
-        integer(R.string.lyric_size, R.string.lyric_size_tips, 0..100, config::lyricSize)
+        integer(
+            R.string.lyric_size, R.string.lyric_size_tips, 0..100, config::lyricSize,
+            unit = R.string.unit_pixel
+        )
         color(
             R.string.lyric_color_and_transparency,
             R.string.lyric_color_and_transparency_tips,

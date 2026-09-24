@@ -41,7 +41,7 @@ class Config {
         }
     var hideTime: Boolean
         get() {
-            return config.opt("hideTime", true)
+            return config.opt("hideTime", false)
         }
         set(value) {
             config.put("hideTime", value)

@@ -1,5 +1,5 @@
 <resources>
-<string name="app_name">墨·状态栏歌词</string>
+<string name="app_name">Lyric Suite</string>
     <string name="module_inactivated">模块未激活</string>
     <string name="module_second">基础设置</string>
     <string name="module_third">高级设置</string>
@@ -151,4 +151,5 @@
     <string name="not_found_hook">未找到锚点</string>
     <string name="clear_config">重置配置</string>
     <string name="clear_config_tips">确定要重置配置吗？</string>
+    <string name="unit_pixel">像素</string>
 </resources>

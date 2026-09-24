@@ -1,5 +1,5 @@
 <resources>
-<string name="app_name">墨·狀態欄歌詞</string>
+<string name="app_name">Lyric Suite</string>
     <string name="module_inactivated">模組未啟用</string>
     <string name="module_second">基礎設置</string>
     <string name="module_third">進階設定</string>
@@ -151,4 +151,5 @@
     <string name="not_found_hook">未找到錨點</string>
     <string name="clear_config">重設配置</string>
     <string name="clear_config_tips">確定要重設配置嗎？</string>
+    <string name="unit_pixel">像素</string>
 </resources>

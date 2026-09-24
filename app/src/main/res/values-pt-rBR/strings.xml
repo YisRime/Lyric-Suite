@@ -82,4 +82,5 @@
     <string name="mifocus">Enviar notificações de foco do HyperOS</string>
     <string name="test_lyric_tips">Aviso: Se o teste aqui não apresentar problemas, pode ser um problema com outro software. Se houver problemas ao enviar as letras de teste, por favor, envie seu feedback. Se não houver problemas, a causa é outra. A notificação de foco é usada para testar se você desativou a lista de permissões.</string>
     <string name="none_set">Não definido</string>
+    <string name="unit_pixel">pixels</string>
 </resources>

@@ -1,5 +1,5 @@
 <resources>
-<string name="app_name">StatusBar Lyric</string>
+<string name="app_name">Lyric Suite</string>
     <string name="module_inactivated">Module inactivated</string>
     <string name="module_second">Basic settings</string>
     <string name="module_third">Advanced settings</string>
@@ -235,4 +235,5 @@
     <string name="not_found_hook">Hook not found</string>
     <string name="clear_config">Clear Config</string>
     <string name="clear_config_tips">Are you sure you want to clear the configuration?</string>
+    <string name="unit_pixel">Pixel</string>
 </resources>

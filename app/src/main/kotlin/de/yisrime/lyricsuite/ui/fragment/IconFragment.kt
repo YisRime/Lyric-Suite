@@ -14,7 +14,10 @@ class IconFragment : ConfigFragment() {
         resetSystemUiRow()
         if (!config.iconSwitch) return
         header(R.string.module_second)
-        integer(R.string.icon_size, R.string.icon_size_tips, 0..100, config::iconSize)
+        integer(
+            R.string.icon_size, R.string.icon_size_tips, 0..100, config::iconSize,
+            unit = R.string.unit_pixel
+        )
         color(
             R.string.icon_color_and_transparency,
             R.string.icon_color_and_transparency_tips,

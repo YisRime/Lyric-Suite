@@ -66,9 +66,10 @@ class ConfigScreen(private val context: Context) {
         @StringRes tips: Int,
         range: IntRange,
         prop: KMutableProperty0<Int>,
+        @StringRes unit: Int = 0,
         onWrite: () -> Unit = {}
     ) {
-        editable(title, tips, numeric = true, get = { prop.get().toString() }) { text ->
+        editable(title, tips, numeric = true, unit = unit, get = { prop.get().toString() }) { text ->
             val value = text.toIntOrNull()
             if (value == null || value !in range) {
                 toast(context.getString(R.string.value_error, range.first, range.last))
@@ -191,6 +192,7 @@ class ConfigScreen(private val context: Context) {
         @StringRes title: Int,
         @StringRes tips: Int,
         @StringRes hint: Int = 0,
+        @StringRes unit: Int = 0,
         numeric: Boolean = false,
         blankAsUnset: Boolean = false,
         get: () -> String,
@@ -202,11 +204,14 @@ class ConfigScreen(private val context: Context) {
             setOnClickListener {
                 val editor = EditTextDialog(context)
                     .setTitle(context.getString(title))
-                    .apply { if (tips != 0) setMessage(tips) }
+                    .apply {
+                        if (tips != 0) setMessage(tips)
+                        if (numeric) setNumericInput()
+                        if (unit != 0) setUnit(unit)
+                    }
                     .setText(get())
-                if (numeric) editor.setNumericInput()
                 editor.show { text ->
-                    if (commit(text.trim())) row.setSummary(shown(get()).let { summaryOf(it, hint) })
+                    if (commit(text.trim())) row.setSummary(describe(shown(get()), tips, hint))
                 }
             }
         })
@@ -221,17 +226,16 @@ class ConfigScreen(private val context: Context) {
         val row = Preferences(context)
         row.preferencesTitle.setText(title)
         row.preferencesButton.visibility = View.GONE
-        val tail = listOfNotNull(
-            value ?: if (summary == 0) null else context.getString(summary),
-            if (hint == 0) null else context.getString(hint)
-        )
-        if (tail.isEmpty()) row.preferencesSummary.visibility = View.GONE
-        else row.setSummary(tail.joinToString(" · "))
+        row.setSummary(describe(value.orEmpty(), summary, hint))
         return row
     }
 
-    private fun summaryOf(value: String, @StringRes hint: Int) =
-        if (hint == 0) value else "$value · ${context.getString(hint)}"
+    private fun describe(value: String, @StringRes tips: Int, @StringRes hint: Int): String =
+        listOfNotNull(
+            value.ifEmpty { null },
+            if (tips == 0) null else context.getString(tips),
+            if (hint == 0) null else context.getString(hint)
+        ).joinToString(" · ")
 
     private fun isColor(value: String): Boolean = try {
         value.toColorInt()

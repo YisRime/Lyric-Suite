@@ -57,8 +57,11 @@ class EditTextDialog(private val context: Context) {
     fun setNumericInput(): EditTextDialog {
         editText.inputType =
             InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_SIGNED
-        editText.setText(editText.text)
-        editText.setSelection(editText.text?.length ?: 0)
+        return this
+    }
+
+    fun setUnit(@StringRes resId: Int): EditTextDialog {
+        textInputLayout.suffixText = context.getString(resId)
         return this
     }
 

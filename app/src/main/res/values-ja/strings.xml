@@ -1,5 +1,5 @@
 <resources>
-<string name="app_name">StatusBar Lyric</string>
+<string name="app_name">Lyric Suite</string>
     <string name="module_inactivated">モジュールが無効化されています</string>
     <string name="module_second">基本設定</string>
     <string name="module_third">高度な設定</string>
@@ -211,4 +211,5 @@
     <string name="not_found_hook">フックがありません</string>
     <string name="clear_config">設定を消去</string>
     <string name="clear_config_tips">設定を消去してもよろしいですか？</string>
+    <string name="unit_pixel">ピクセル</string>
 </resources>
