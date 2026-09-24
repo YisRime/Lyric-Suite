@@ -1,8 +1,6 @@
 package de.yisrime.lrcget.ui.fragment
 
 import android.annotation.SuppressLint
-import android.content.ComponentName
-import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -18,7 +16,6 @@ import de.yisrime.lyricsuite.R
 import de.yisrime.lyricsuite.databinding.FragmentHomeBinding
 import de.yisrime.lrcget.tool.ActivityTools.getAppRules
 import de.yisrime.lrcget.tool.BackupTools
-import de.yisrime.lrcget.tool.ConfigTools.config
 import de.yisrime.lrcget.tool.Tools.getPhoneName
 import de.yisrime.lrcget.tool.Tools.restartTheScopedSoftware
 import de.yisrime.lrcget.ui.viewmodel.HomeViewModel
@@ -89,7 +86,30 @@ class HomeFragment : Fragment() {
                     }
                 }
                 floatingActionButton.visibility = View.GONE
-            } else {
+            }
+            toolbar.apply {
+                inflateMenu(R.menu.home_menu)
+                setOnMenuItemClickListener {
+                    when (it.itemId) {
+                        R.id.backup -> {
+                            backupPickerLauncher.launch(
+                                "LyricSuite_Backup_${
+                                    SimpleDateFormat(
+                                        "yyyy-MM-dd-HH:mm",
+                                        Locale.getDefault()
+                                    ).format(System.currentTimeMillis())
+                                }.json"
+                            )
+                        }
+
+                        R.id.recovery -> {
+                            recoveryPickerLauncher.launch("application/json")
+                        }
+                    }
+                    true
+                }
+            }
+            if (shareViewModel.activated) {
                 floatingActionButton.setOnClickListener { view ->
                     Snackbar.make(view, getString(R.string.restart_the_scoped_software), Snackbar.LENGTH_LONG).apply {
                         anchorView = view
@@ -97,43 +117,6 @@ class HomeFragment : Fragment() {
                             restartTheScopedSoftware(context)
                         }
                     }.show()
-                }
-                toolbar.apply {
-                    inflateMenu(R.menu.home_menu)
-                    menu.findItem(R.id.show_hide_desktop_icons).apply {
-                        isChecked = config.hideDesktopIcons
-                    }
-                    setOnMenuItemClickListener {
-                        when (it.itemId) {
-                            R.id.backup -> {
-                                backupPickerLauncher.launch(
-                                    "LyricGetter_Backup_${
-                                        SimpleDateFormat(
-                                            "yyyy-MM-dd-HH:mm",
-                                            Locale.getDefault()
-                                        ).format(System.currentTimeMillis())
-                                    }.json"
-                                )
-                            }
-
-                            R.id.recovery -> {
-                                recoveryPickerLauncher.launch("application/json")
-                            }
-
-                            R.id.show_hide_desktop_icons -> {
-                                it.isChecked = !it.isChecked
-                                config.hideDesktopIcons = it.isChecked
-                                requireContext().packageManager.setComponentEnabledSetting(
-                                    ComponentName(requireContext(), "${BuildConfig.APPLICATION_ID}.launcher"), if (it.isChecked) {
-                                        PackageManager.COMPONENT_ENABLED_STATE_DISABLED
-                                    } else {
-                                        PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-                                    }, PackageManager.DONT_KILL_APP
-                                )
-                            }
-                        }
-                        true
-                    }
                 }
             }
             deviceValue.text = "$getPhoneName (${Build.DEVICE}) Android ${Build.VERSION.RELEASE}"
@@ -144,7 +127,6 @@ class HomeFragment : Fragment() {
             apiVersionValue.text = BuildConfig.API_VERSION.toString()
             configVersionValue.text = BuildConfig.CONFIG_VERSION.toString()
             appRulesVersionValue.text = homeViewModel.appRulesVersionValue ?: getAppRules().appRulesVersion.toString()
-            appRulesApiVersionValue.text = BuildConfig.APP_RULES_API_VERSION.toString()
         }
     }
 

@@ -16,7 +16,8 @@
 - 歌词数据以 `Lyric_Data` 广播传 `cn.lyric.getter.api.data.LyricData`，跨进程 Parcelable 按类名反查，因此 `LyricData` 与 `ExtraData` 的全限定名与 `writeInt(type) + writeString(lyric) + writeBundle(extra)` 的写入顺序不得改动。
 - `OperateType` 只以序号上线，类名可被混淆，但声明顺序 `STOP`、`UPDATE`、`MEDIA_DATA` 是契约的一部分，插入或重排会让接收侧静默丢弃事件。
 - `app/libs/Lyric-Getter-Api-7.0.0.aar` 原样随仓并附校验文件，不再从远端取；本模块只保留对宿主内嵌 SDK 的中继，不再向第三方发布该 API。
-- `hook/app/Api.kt` 读取的是宿主 APK 内已发布的字节码字段 `API_VERSION`，`BuildConfig.API_VERSION` 与 `AndroidManifest` 无关于对端版本，改动等于对已装宿主断供；`app_rules.json` 中 `useApi` 条目必须与该实现同步。
+- 应用规则的唯一真相是 `app/src/main/assets/app_rules.json`，随仓分发。不存在远端规则版本比对、规则下载与「新规则需重启」提示，也不做版本更新检测；清单不声明 `INTERNET` 权限，产物内不得出现 HTTP 客户端与 markdown 渲染库类，此点以 `dexdump` 与 `unzip -l assets` 取证。
+- `hook/app/Api.kt` 读取的是宿主 APK 内已发布的字节码字段 `API_VERSION`，该字段只用于与宿主内已发布副本比对，改动等于对已装宿主断供；`app_rules.json` 中 `useApi` 条目必须与该实现同步。
 - 配置落在框架守护进程的 `configs(module_pkg_name, user_id, group, key)`，本模块只用一个 group `config`。换 `applicationId` 等于清空全部已存配置与作用域并需重新登记。
 
 ## 判据

@@ -4,7 +4,6 @@ import de.yisrime.lyricsuite.config.serialLazy
 
 class Config {
     var alreadyShowWarning: Boolean by serialLazy(false)
-    var hideDesktopIcons: Boolean by serialLazy(false)
     var showAllRules: Boolean by serialLazy(false)
     var outputRepeatedLyrics: Boolean by serialLazy(false)
     var allowSomeSoftwareToOutputAfterTheScreen: Boolean by serialLazy(false)
