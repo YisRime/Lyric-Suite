@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Build
 import androidx.core.content.edit
-import de.yisrime.lrcget.hook.BaseHook
+import de.yisrime.lyricsuite.hook.BaseHook
 import de.yisrime.lrcget.tool.ConfigTools.xConfig
 import de.yisrime.lrcget.tool.HookTools
 import de.yisrime.lrcget.tool.HookTools.dexKitBridge

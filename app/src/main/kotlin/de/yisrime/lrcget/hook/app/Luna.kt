@@ -2,7 +2,7 @@ package de.yisrime.lrcget.hook.app
 
 import android.view.View
 import android.widget.TextView
-import de.yisrime.lrcget.hook.BaseHook
+import de.yisrime.lyricsuite.hook.BaseHook
 import de.yisrime.lrcget.tool.HookTools
 import io.github.kyuubiran.ezxhelper.core.util.ClassUtil.loadClass
 import io.github.kyuubiran.ezxhelper.xposed.dsl.HookFactory.`-Static`.createHook

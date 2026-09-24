@@ -2,7 +2,7 @@ package de.yisrime.lrcget.hook.app
 
 import android.app.Activity
 import android.view.View
-import de.yisrime.lrcget.hook.BaseHook
+import de.yisrime.lyricsuite.hook.BaseHook
 import de.yisrime.lrcget.tool.HookTools
 import de.yisrime.lrcget.tool.HookTools.eventTools
 import de.yisrime.lrcget.tool.HookTools.getApplication

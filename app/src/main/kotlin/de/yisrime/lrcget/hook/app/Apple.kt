@@ -11,7 +11,7 @@ import android.os.Message
 import android.os.SystemClock
 import android.util.Log
 import cn.lyric.getter.api.data.ExtraData
-import de.yisrime.lrcget.hook.BaseHook
+import de.yisrime.lyricsuite.hook.BaseHook
 import de.yisrime.lrcget.tool.HookTools
 import de.yisrime.lrcget.tool.HookTools.context
 import de.yisrime.lrcget.tool.HookTools.eventTools

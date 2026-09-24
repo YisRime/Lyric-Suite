@@ -2,7 +2,7 @@ package de.yisrime.lrcget.hook.app
 
 import android.app.Notification
 import cn.lyric.getter.api.data.ExtraData
-import de.yisrime.lrcget.hook.BaseHook
+import de.yisrime.lyricsuite.hook.BaseHook
 import de.yisrime.lrcget.tool.HookTools.eventTools
 import io.github.kyuubiran.ezxhelper.core.util.ClassUtil.loadClass
 import io.github.kyuubiran.ezxhelper.core.ClassLoaderProvider.classLoader

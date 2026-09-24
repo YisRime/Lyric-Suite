@@ -68,7 +68,7 @@ import cn.lyric.getter.api.tools.Tools.base64ToBitmap
 import cn.lyric.getter.api.tools.Tools.registerLyricListener
 import de.yisrime.lyricsuite.R
 import de.yisrime.lrcbar.config.XposedOwnSP.config
-import de.yisrime.lrcbar.hook.BaseHook
+import de.yisrime.lyricsuite.hook.BaseHook
 import de.yisrime.lrcbar.hook.module.xiaomi.FocusNotifyController
 import de.yisrime.lrcbar.hook.module.xiaomi.XiaomiHooks
 import de.yisrime.lrcbar.tools.BlurTools.cornerRadius
@@ -93,6 +93,7 @@ import de.yisrime.lrcbar.tools.Tools.observableChange
 import de.yisrime.lrcbar.tools.Tools.shell
 import de.yisrime.lrcbar.tools.XiaomiUtils.isHyperOS
 import de.yisrime.lrcbar.view.LyricSwitchView
+import de.yisrime.lrcget.hook.app.SystemUi
 import de.yisrime.lrcbar.view.TitleDialog
 import java.io.File
 import kotlin.math.abs
@@ -612,6 +613,7 @@ class SystemUILyric : BaseHook() {
             context,
             LyricReceiver(object : LyricListener() {
                 override fun onStop(lyricData: LyricData) {
+                    SystemUi.onLyricStop()
                     if (!isReady) return
                     val packageName = lyricData.extraData.packageName
                     if (playingApp.isNotEmpty() && packageName.isNotEmpty() && playingApp != packageName) return
@@ -638,6 +640,7 @@ class SystemUILyric : BaseHook() {
                 }
 
                 override fun onUpdate(lyricData: LyricData) {
+                    SystemUi.onLyricUpdate(lyricData)
                     if (!isReady) return
                     if (lyricData.lyric.isEmpty()) return
 

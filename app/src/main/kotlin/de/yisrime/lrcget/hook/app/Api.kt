@@ -3,7 +3,7 @@ package de.yisrime.lrcget.hook.app
 import android.media.MediaMetadata
 import de.yisrime.lyricsuite.BuildConfig
 import cn.lyric.getter.api.data.ExtraData
-import de.yisrime.lrcget.hook.BaseHook
+import de.yisrime.lyricsuite.hook.BaseHook
 import de.yisrime.lrcget.tool.HookTools.eventTools
 import de.yisrime.lrcget.tool.HookTools.isApi
 import cn.xiaowine.xkt.LogTool.log

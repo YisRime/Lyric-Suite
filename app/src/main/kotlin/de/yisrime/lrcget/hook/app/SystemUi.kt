@@ -4,10 +4,7 @@ import android.media.MediaMetadata
 import android.media.session.PlaybackState
 import cn.lyric.getter.api.data.ExtraData
 import cn.lyric.getter.api.data.LyricData
-import cn.lyric.getter.api.listener.LyricListener
-import cn.lyric.getter.api.listener.LyricReceiver
-import cn.lyric.getter.api.tools.Tools
-import de.yisrime.lrcget.hook.BaseHook
+import de.yisrime.lyricsuite.hook.BaseHook
 import de.yisrime.lrcget.observe.MediaSessionObserve
 import de.yisrime.lrcget.observe.UidObserveService
 import de.yisrime.lrcget.tool.HookTools.eventTools
@@ -17,7 +14,6 @@ import cn.xiaowine.xkt.LogTool.log
 object SystemUi : BaseHook() {
     var isPlaying: Boolean = false
     var playingApp: String = ""
-    private lateinit var receiver: LyricReceiver
     val uidObserveService: UidObserveService by lazy {
         UidObserveService { packageName ->
             "Uid gone: $packageName".log()
@@ -42,25 +38,22 @@ object SystemUi : BaseHook() {
 
     private var useOwnMusicController: Boolean = false
 
+    fun onLyricUpdate(lyricData: LyricData) {
+        isPlaying = true
+        useOwnMusicController = lyricData.extraData.useOwnMusicController
+        if (lyricData.extraData.packageName.isNotEmpty()) {
+            playingApp = lyricData.extraData.packageName
+            uidObserveService.registerForPackage(lyricData.extraData.packageName)
+        }
+    }
+
+    fun onLyricStop() {
+        isPlaying = false
+    }
+
     override fun init() {
         super.init()
         getApplication { application ->
-            receiver = LyricReceiver(object : LyricListener() {
-                override fun onUpdate(lyricData: LyricData) {
-                    isPlaying = true
-                    useOwnMusicController = lyricData.extraData.useOwnMusicController
-                    if (lyricData.extraData.packageName.isNotEmpty()) {
-                        playingApp = lyricData.extraData.packageName
-                        uidObserveService.registerForPackage(lyricData.extraData.packageName)
-                    }
-                }
-
-                override fun onStop(lyricData: LyricData) {
-                    isPlaying = false
-                }
-            })
-            Tools.registerLyricListener(application, receiver)
-
             object : MediaSessionObserve(application) {
                 override fun onMediaDataChanged(packageName: String, metadata: MediaMetadata) {
                     super.onMediaDataChanged(packageName, metadata)

@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.media.session.PlaybackState
 import android.os.SystemClock
 import cn.lyric.getter.api.data.ExtraData
-import de.yisrime.lrcget.hook.BaseHook
+import de.yisrime.lyricsuite.hook.BaseHook
 import de.yisrime.lrcget.tool.HookTools
 import de.yisrime.lrcget.tool.HookTools.dexKitBridge
 import cn.xiaowine.xkt.LogTool.log

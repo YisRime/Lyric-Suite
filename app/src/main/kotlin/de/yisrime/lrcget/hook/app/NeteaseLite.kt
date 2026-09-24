@@ -1,7 +1,7 @@
 package de.yisrime.lrcget.hook.app
 
 import android.widget.LinearLayout
-import de.yisrime.lrcget.hook.BaseHook
+import de.yisrime.lyricsuite.hook.BaseHook
 import de.yisrime.lrcget.tool.HookTools
 import cn.xiaowine.xkt.Tool
 import io.github.kyuubiran.ezxhelper.core.util.ClassUtil.loadClass

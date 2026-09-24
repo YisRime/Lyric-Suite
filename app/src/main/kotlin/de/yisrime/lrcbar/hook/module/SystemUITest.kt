@@ -42,7 +42,7 @@ import io.github.libxposed.api.XposedInterface
 import de.yisrime.lyricsuite.R
 import de.yisrime.lrcbar.config.XposedOwnSP.config
 import de.yisrime.lrcbar.data.Data
-import de.yisrime.lrcbar.hook.BaseHook
+import de.yisrime.lyricsuite.hook.BaseHook
 import de.yisrime.lrcbar.tools.ActivityTestTools.receiveClass
 import de.yisrime.lrcbar.tools.LogTools.log
 import de.yisrime.lrcbar.tools.LyricViewTools.hideView

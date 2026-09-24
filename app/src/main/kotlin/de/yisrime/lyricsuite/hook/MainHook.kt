@@ -1,7 +1,21 @@
-package de.yisrime.lrcget.hook
+package de.yisrime.lyricsuite.hook
 
+import io.github.kyuubiran.ezxhelper.core.EzXReflection
+import io.github.kyuubiran.ezxhelper.xposed.EzXposed
+import io.github.kyuubiran.ezxhelper.xposed.EzXposed.moduleRes
+import io.github.libxposed.api.XposedModule
+import io.github.libxposed.api.XposedModuleInterface.ModuleLoadedParam
+import io.github.libxposed.api.XposedModuleInterface.PackageLoadedParam
+import cn.xiaowine.xkt.LogTool
 import de.yisrime.lyricsuite.BuildConfig
-import de.yisrime.lrcget.config.ConfigStore
+import de.yisrime.lyricsuite.R
+import de.yisrime.lrcbar.config.ConfigStore
+import de.yisrime.lrcbar.config.XposedOwnSP.config
+import de.yisrime.lrcbar.hook.module.SystemUILyric
+import de.yisrime.lrcbar.hook.module.SystemUITest
+import de.yisrime.lrcbar.tools.LogTools
+import de.yisrime.lrcbar.tools.LogTools.log
+import de.yisrime.lrcget.config.ConfigStore as GetterConfigStore
 import de.yisrime.lrcget.hook.app.APlayer
 import de.yisrime.lrcget.hook.app.Api
 import de.yisrime.lrcget.hook.app.Apple
@@ -31,13 +45,7 @@ import de.yisrime.lrcget.hook.app.RPlayer
 import de.yisrime.lrcget.hook.app.Salt
 import de.yisrime.lrcget.hook.app.SystemUi
 import de.yisrime.lrcget.hook.app.Toside
-import cn.xiaowine.xkt.LogTool
-import cn.xiaowine.xkt.LogTool.log
-import io.github.kyuubiran.ezxhelper.core.EzXReflection
-import io.github.kyuubiran.ezxhelper.xposed.EzXposed
-import io.github.libxposed.api.XposedModule
-import io.github.libxposed.api.XposedModuleInterface.ModuleLoadedParam
-import io.github.libxposed.api.XposedModuleInterface.PackageLoadedParam
+import java.util.Locale
 
 class MainHook : XposedModule() {
     override fun onModuleLoaded(param: ModuleLoadedParam) {
@@ -49,10 +57,35 @@ class MainHook : XposedModule() {
         EzXposed.initOnPackageLoaded(param)
         EzXReflection.init(param.defaultClassLoader)
         attachPreferences()
+        LogTools.init(true)
         LogTool.init("Lyrics Getter", { true }, false)
         "${frameworkName} ${frameworkVersion}(${frameworkVersionCode}) api=$apiVersion".log()
-        when (param.packageName) {
-            "com.android.systemui" -> initHooks(SystemUi)
+        if (param.packageName == SYSTEM_UI) hookDisplay() else hookLyricSource(param.packageName)
+    }
+
+    private fun hookDisplay() {
+        if (!config.masterSwitch) {
+            moduleRes.getString(R.string.master_off).log()
+            return
+        }
+        "${BuildConfig.APPLICATION_ID} - ${BuildConfig.VERSION_NAME}(${BuildConfig.VERSION_CODE}[${
+            Locale.getDefault().language
+        }] *${BuildConfig.BUILD_TYPE})".log()
+        if (config.testMode) {
+            moduleRes.getString(R.string.hook_page).log()
+            initHooks(SystemUITest())
+        } else {
+            moduleRes.getString(R.string.lyric_mode).log()
+            try {
+                initHooks(SystemUILyric(), SystemUi)
+            } catch (t: Throwable) {
+                t.log()
+            }
+        }
+    }
+
+    private fun hookLyricSource(packageName: String) {
+        when (packageName) {
             "com.tencent.qqmusic" -> initHooks(QQMusic)
             "com.miui.player" -> initHooks(MiPlayer)
             "com.netease.cloudmusic" -> initHooks(Netease)
@@ -89,6 +122,9 @@ class MainHook : XposedModule() {
     private fun attachPreferences() {
         runCatching {
             ConfigStore.attach(getRemotePreferences(ConfigStore.GROUP), false)
+        }.onFailure { it.log() }
+        runCatching {
+            GetterConfigStore.attach(getRemotePreferences(GetterConfigStore.GROUP), false)
         }.onFailure { "Remote preferences unavailable: ${it.message}".log() }
     }
 
@@ -98,11 +134,15 @@ class MainHook : XposedModule() {
                 if (it.isInit) return@forEach
                 it.init()
                 it.isInit = true
-                "Inited hook: ${it.javaClass.name}, Package Name: ${EzXposed.hookedPackageName}".log()
+                "${moduleRes.getString(R.string.hook_succeeded)}:${it.javaClass.simpleName}".log()
             } catch (e: Exception) {
-                e.printStackTrace()
-                "Init hook ${it.javaClass.name} failed".log()
+                "${moduleRes.getString(R.string.hook_failed)}:${it.javaClass.simpleName}".log()
+                e.log()
             }
         }
+    }
+
+    companion object {
+        private const val SYSTEM_UI = "com.android.systemui"
     }
 }
