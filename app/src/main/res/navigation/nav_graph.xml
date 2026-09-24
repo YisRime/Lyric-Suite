@@ -16,6 +16,11 @@
         android:label="@string/home_fragment_label"
         tools:layout="@layout/fragment_home" />
     <fragment
+        android:id="@+id/lyric_nav"
+        android:name="de.yisrime.lyricsuite.ui.fragment.LyricFragment"
+        android:label="@string/lyric_page"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
         android:id="@+id/extend_nav"
         android:name="de.yisrime.lyricsuite.ui.fragment.ExtendFragment"
         android:label="@string/extend_page"

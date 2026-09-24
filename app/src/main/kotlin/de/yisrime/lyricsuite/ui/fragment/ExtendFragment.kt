@@ -35,7 +35,7 @@ class ExtendFragment : Fragment() {
         screen.header(R.string.module_extend)
         screen.choice(
             R.string.view_location,
-            ConfigScreen.gravityLabels(requireContext(), start, end),
+            screen.labels(start, end),
             config::viewLocation
         )
         screen.switch(R.string.hide_time, prop = config::hideTime)
@@ -106,7 +106,7 @@ class ExtendFragment : Fragment() {
             )
             screen.choice(
                 R.string.title_gravity,
-                ConfigScreen.gravityLabels(requireContext(), start, center, end),
+                screen.labels(start, center, end),
                 config::titleGravity
             )
         }

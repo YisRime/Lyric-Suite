@@ -63,10 +63,14 @@ class ConfigScreen(private val context: Context) {
         @StringRes title: Int,
         @StringRes tips: Int,
         range: IntRange,
-        prop: KMutableProperty0<Int>
+        prop: KMutableProperty0<Int>,
+        onWrite: () -> Unit = {}
     ) {
         container.addView(
-            rows.integer(title, tips, range.first, range.last, get = { prop.get() }, set = { prop.set(it) })
+            rows.integer(title, tips, range.first, range.last, get = { prop.get() }, set = {
+                prop.set(it)
+                onWrite()
+            })
         )
     }
 
@@ -78,6 +82,17 @@ class ConfigScreen(private val context: Context) {
     ) {
         container.addView(
             rows.color(title, tips, fallback, get = { prop.get() }, set = { prop.set(it) })
+        )
+    }
+
+    fun gradient(
+        @StringRes title: Int,
+        @StringRes tips: Int,
+        @StringRes hint: Int = 0,
+        prop: KMutableProperty0<String>
+    ) {
+        container.addView(
+            rows.gradient(title, tips, hint, get = { prop.get() }, set = { prop.set(it) })
         )
     }
 
@@ -98,10 +113,5 @@ class ConfigScreen(private val context: Context) {
         onConfirm: () -> Unit
     ) = rows.confirm(title, message, affirmative, onConfirm)
 
-    fun string(@StringRes resId: Int): String = context.getString(resId)
-
-    companion object {
-        fun gravityLabels(context: Context, vararg ids: Int): List<String> =
-            ids.map { context.getString(it) }
-    }
+    fun labels(vararg ids: Int): List<String> = ids.map(context::getString)
 }

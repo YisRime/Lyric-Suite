@@ -1,6 +1,7 @@
 package de.yisrime.lrcget.ui.dialog
 
 import android.content.Context
+import androidx.annotation.StringRes
 import android.text.InputType
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
@@ -30,6 +31,7 @@ class EditTextDialog(private val context: Context) {
     private val editText = TextInputEditText(context)
 
     private var title: String = ""
+    private var message: Int = 0
 
     init {
         textInputLayout.addView(editText)
@@ -38,6 +40,11 @@ class EditTextDialog(private val context: Context) {
 
     fun setTitle(title: String): EditTextDialog {
         this.title = title
+        return this
+    }
+
+    fun setMessage(@StringRes resId: Int): EditTextDialog {
+        message = resId
         return this
     }
 
@@ -59,6 +66,7 @@ class EditTextDialog(private val context: Context) {
         val dialog = MaterialAlertDialogBuilder(context).apply {
             setView(rootLayout)
             setTitle(title)
+            if (message != 0) setMessage(message)
             setPositiveButton(R.string.ok) { _, _ ->
                 onConfirm(editText.text.toString())
             }
