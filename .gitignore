@@ -1,0 +1,9 @@
+.gradle/
+build/
+/.idea/
+/.kotlin/
+*.iml
+hs_err_*.log
+
+# 本地 SDK 路径与签名库口令，只留本机
+local.properties
