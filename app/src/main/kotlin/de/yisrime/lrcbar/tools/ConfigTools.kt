@@ -26,8 +26,6 @@ package de.yisrime.lrcbar.tools
 import de.yisrime.lyricsuite.config.ConfigStore
 
 class ConfigTools {
-    fun reload() = Unit
-
     fun put(key: String, any: Any) {
         ConfigStore.put(key, any)
     }

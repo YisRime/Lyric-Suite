@@ -7,7 +7,7 @@ import android.content.SharedPreferences
 import android.os.Build
 import androidx.core.content.edit
 import de.yisrime.lyricsuite.hook.BaseHook
-import de.yisrime.lrcget.tool.ConfigTools.xConfig
+import de.yisrime.lrcget.tool.ConfigTools.config
 import de.yisrime.lrcget.tool.HookTools
 import de.yisrime.lrcget.tool.HookTools.dexKitBridge
 import de.yisrime.lrcget.tool.HookTools.eventTools
@@ -47,7 +47,7 @@ object Netease : BaseHook() {
     override fun init() {
         super.init()
 
-        if (xConfig.fuckWyy2) {
+        if (config.fuckWyy2) {
             try {
                 loadClass("android.app.Instrumentation").methodFinder()
                     .filterByName("newApplication")
@@ -99,7 +99,7 @@ object Netease : BaseHook() {
                             }
                         }
                     }
-                    if (xConfig.fuckWyy) {
+                    if (config.fuckWyy) {
                         val sbNetease = dexKitBridge.findClass {
                             matcher {
                                 usingStrings("com/netease/cloudmusic/module/lyric/flyme/StatusBarLyricSettingManager.class:setSwitchStatus:(Z)V")
@@ -112,7 +112,7 @@ object Netease : BaseHook() {
                                     a.edit(commit = true) {
                                         putBoolean(
                                             "status_bar_lyric_setting_key",
-                                            xConfig.fuckWyy
+                                            config.fuckWyy
                                         )
                                     }
                                 }

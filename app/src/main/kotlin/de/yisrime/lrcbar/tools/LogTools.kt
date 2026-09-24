@@ -59,19 +59,4 @@ object LogTools {
         outprint = out
     }
 
-    private const val CAPTURE = "logcat -d -v time -s $TAG:* $XP_TAG:*"
-    private const val CLEAR = "logcat -c"
-
-    fun capture(): String? = execAsRoot(CAPTURE)
-
-    fun clear(): Boolean = execAsRoot(CLEAR) != null
-
-    private fun execAsRoot(command: String): String? = try {
-        val process = Runtime.getRuntime().exec(arrayOf("su", "-c", command))
-        val output = process.inputStream.bufferedReader().readText()
-        process.waitFor()
-        if (process.exitValue() == 0) output else null
-    } catch (_: Exception) {
-        null
-    }
 }

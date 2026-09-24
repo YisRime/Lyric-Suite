@@ -775,7 +775,6 @@ class SystemUILyric : BaseHook() {
 
     private fun updateConfig(delay: Long = 0L) {
         "Updating Config".log()
-        config.update()
         goMainThread(delay) {
             lyricView.apply {
                 setTextSize(

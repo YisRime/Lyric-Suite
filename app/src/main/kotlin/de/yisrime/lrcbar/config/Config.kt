@@ -26,11 +26,7 @@ package de.yisrime.lrcbar.config
 import de.yisrime.lrcbar.tools.ConfigTools
 
 class Config {
-    var config = ConfigTools()
-
-    fun update() {
-        config.reload()
-    }
+    private val config = ConfigTools()
 
     fun clear() {
         config.clearConfig()
@@ -485,14 +481,6 @@ class Config {
         }
         set(value) {
             config.put("automateFocusedNotice", value)
-        }
-
-    var pageRatio: Float
-        get() {
-            return config.opt("pageRatio", 0.5f)
-        }
-        set(value) {
-            config.put("pageRatio", value)
         }
 
     private val defIconHashMap by lazy {

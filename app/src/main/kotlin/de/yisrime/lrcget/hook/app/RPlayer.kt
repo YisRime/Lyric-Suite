@@ -7,7 +7,7 @@ import cn.xiaowine.xkt.Tool.isNotNull
 import io.github.kyuubiran.ezxhelper.core.util.ClassUtil.loadClassOrNull
 import io.github.kyuubiran.ezxhelper.xposed.dsl.HookFactory.`-Static`.createHook
 import io.github.kyuubiran.ezxhelper.core.finder.MethodFinder.`-Static`.methodFinder
-import de.yisrime.lrcget.tool.ConfigTools.xConfig as config
+import de.yisrime.lrcget.tool.ConfigTools.config as config
 
 object RPlayer : BaseHook() {
 

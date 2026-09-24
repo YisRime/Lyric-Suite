@@ -19,8 +19,6 @@ object ConfigStore {
     val isAttached: Boolean
         get() = prefs != null
 
-    val isEmpty: Boolean
-        get() = prefs?.all?.isEmpty() != false
 
     fun attach(source: SharedPreferences, writable: Boolean) {
         prefs = source
