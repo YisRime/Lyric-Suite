@@ -156,9 +156,6 @@
     <string name="buildtime">コンパイル時</string>
     <string name="currentdevice">現在のデバイス</string>
     <string name="info">情報</string>
-    <string name="no_lyric_getter">LyricGetter がありません</string>
-    <string name="no_supported_version_lyric_getter">LyricGetter に非対応</string>
-    <string name="click_to_install">タップで最新のバージョンをインストール</string>
     <string name="log_page">ログ</string>
     <string name="log_page_tips">モジュールのログを表示</string>
     <string name="log_refresh">再読み込み</string>

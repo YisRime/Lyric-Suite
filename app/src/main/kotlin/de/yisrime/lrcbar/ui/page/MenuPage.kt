@@ -283,7 +283,7 @@ fun MenuPage(
                             modifier = Modifier.padding(horizontal = 12.dp)
                         )
                         Text(
-                            text = "Lyric Getter",
+                            text = "Getter API",
                             modifier = Modifier.padding(start = 12.dp, end = 12.dp, top = 12.dp)
                         )
                         Text(

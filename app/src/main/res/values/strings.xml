@@ -158,9 +158,6 @@
     <string name="buildtime">Build Time</string>
     <string name="currentdevice">Current Device</string>
     <string name="info">Info</string>
-    <string name="no_lyric_getter">LyricGetter Not Found!</string>
-    <string name="no_supported_version_lyric_getter">Unsupported LyricGetter</string>
-    <string name="click_to_install">Click to install the latest version</string>
     <string name="log_page">Logs</string>
     <string name="log_page_tips">View the module log output</string>
     <string name="log_refresh">Reload</string>

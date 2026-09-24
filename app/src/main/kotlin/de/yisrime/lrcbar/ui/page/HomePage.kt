@@ -58,7 +58,7 @@ import dev.chrisbanes.haze.HazeStyle
 import dev.chrisbanes.haze.HazeTint
 import dev.chrisbanes.haze.hazeEffect
 import dev.chrisbanes.haze.hazeSource
-import de.yisrime.lyricsuite.BuildConfig
+
 import de.yisrime.lrcbar.LyricApplication
 import de.yisrime.lrcbar.MainActivity
 import de.yisrime.lyricsuite.R
@@ -93,7 +93,6 @@ fun HomePage(
     val masterSwitchState = remember(activated) {
         mutableStateOf(if (activated) config.masterSwitch else false)
     }
-    val lyricGetterApi = checkLyricGetterApi()
 
     val hazeState = remember { HazeState() }
     val hazeStyle = HazeStyle(
@@ -106,8 +105,8 @@ fun HomePage(
         )
     )
 
-    LaunchedEffect(activated, lyricGetterApi) {
-        if (lyricGetterApi != 0 || !activated) {
+    LaunchedEffect(activated) {
+        if (!activated) {
             masterSwitchState.value = false
             config.masterSwitch = false
         }
@@ -203,15 +202,6 @@ fun HomePage(
                         visible = !masterSwitchState.value
                     ) {
                         Column {
-                            if (lyricGetterApi != 0) {
-                                Card(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(horizontal = 12.dp, vertical = 6.dp)
-                                ) {
-                                    ShowLyricGetter(lyricGetterApi)
-                                }
-                            }
                             Card(
                                 modifier = Modifier
                                     .fillMaxWidth()
@@ -382,30 +372,4 @@ fun HomePage(
     }
 }
 
-@Composable
-fun ShowLyricGetter(int: Int) {
-    SuperArrow(
-        leftAction = {
-            Image(
-                modifier = Modifier.padding(end = 12.dp),
-                painter = painterResource(id = R.drawable.ic_warning),
-                contentDescription = "Warning"
-            )
-        },
-        title = stringResource(
-            if (int == 1) R.string.no_supported_version_lyric_getter else R.string.no_lyric_getter
-        ),
-        titleColor = BasicComponentDefaults.titleColor(
-            color = Color.Red
-        ),
-        summary = stringResource(R.string.click_to_install),
-        onClick = {
-            ActivityTools.openUrl("https://github.com/YisRime/Lyric-Getter/")
-        }
-    )
-}
 
-private fun checkLyricGetterApi(): Int {
-    val getter = ActivityTools.checkInstalled("de.yisrime.lrcget") ?: return 2
-    return if (getter.metaData?.getInt("Getter_Version") == BuildConfig.API_VERSION) 0 else 1
-}
