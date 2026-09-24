@@ -143,6 +143,7 @@
     <string name="lyrics_are_gradient_and_transparent_tips">16 進数の色を入力してください。複数の色はグラデーションカラーとして水平に配置され、英語のカンマで区切られます。</string>
     <string name="lyrics_are_gradient_and_transparent">歌詞のグラデーションと透過</string>
     <string name="color_error">入力した色が正しくありません。確認してください。</string>
+    <string name="value_error">入力した値が不正です。%1$d ～ %2$d の範囲で指定してください</string>
     <string name="restart_app">アプリを再起動</string>
     <string name="backup_config">設定をバックアップ</string>
     <string name="recovery_config">設定を復元</string>

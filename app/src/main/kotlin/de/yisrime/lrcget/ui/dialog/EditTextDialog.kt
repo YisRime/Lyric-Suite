@@ -1,6 +1,7 @@
 package de.yisrime.lrcget.ui.dialog
 
 import android.content.Context
+import android.text.InputType
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import de.yisrime.lyricsuite.R
@@ -43,6 +44,14 @@ class EditTextDialog(private val context: Context) {
     fun setText(text: String): EditTextDialog {
         editText.setText(text)
         editText.setSelection(text.length)
+        return this
+    }
+
+    fun setNumericInput(): EditTextDialog {
+        editText.inputType =
+            InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_SIGNED
+        editText.setText(editText.text)
+        editText.setSelection(editText.text?.length ?: 0)
         return this
     }
 

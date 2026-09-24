@@ -143,6 +143,7 @@
     <string name="lyrics_are_gradient_and_transparent_tips">請輸入 16 進制顏色，多個顏色為漸變色橫向排布，使用英文逗號分隔</string>
     <string name="lyrics_are_gradient_and_transparent">歌詞漸變色和透明度</string>
     <string name="color_error">輸入的顏色錯誤，請檢查</string>
+    <string name="value_error">輸入的值無效，應在 %1$d – %2$d 之間</string>
     <string name="restart_app">重啟軟體</string>
     <string name="backup_config">備份配置</string>
     <string name="recovery_config">恢復配置</string>

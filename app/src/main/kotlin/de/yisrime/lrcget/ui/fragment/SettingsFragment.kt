@@ -10,6 +10,7 @@ import android.widget.CompoundButton
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import de.yisrime.lyricsuite.R
 import de.yisrime.lyricsuite.databinding.FragmentSettingsBinding
 import de.yisrime.lrcget.tool.ConfigTools.config
@@ -82,6 +83,14 @@ class SettingsFragment : Fragment() {
                     onClick = {
                         val intent = Intent(context, TestActivity::class.java)
                         startActivity(intent)
+                    }
+                ))
+            addView(
+                createClickableView(
+                    context = context,
+                    titleResId = R.string.system_special_page,
+                    onClick = {
+                        findNavController().navigate(R.id.system_special_nav)
                     }
                 ))
             addView(
