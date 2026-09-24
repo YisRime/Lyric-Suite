@@ -2,6 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/lyric_nav"
+        android:icon="@drawable/ic_song"
+        android:title="@string/lyric_page" />
+    <item
         android:id="@+id/app_nav"
         android:icon="@drawable/ic_android_black_24dp"
         android:title="@string/app_rules_fragment_label" />
