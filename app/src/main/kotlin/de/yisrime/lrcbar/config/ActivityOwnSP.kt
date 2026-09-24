@@ -23,6 +23,7 @@
 
 package de.yisrime.lrcbar.config
 
+import de.yisrime.lyricsuite.config.ConfigStore
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import de.yisrime.lyricsuite.BuildConfig

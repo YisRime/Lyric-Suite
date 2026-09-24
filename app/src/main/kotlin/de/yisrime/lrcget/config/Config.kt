@@ -1,5 +1,7 @@
 package de.yisrime.lrcget.config
 
+import de.yisrime.lyricsuite.config.serialLazy
+
 class Config {
     var alreadyShowWarning: Boolean by serialLazy(false)
     var hideDesktopIcons: Boolean by serialLazy(false)

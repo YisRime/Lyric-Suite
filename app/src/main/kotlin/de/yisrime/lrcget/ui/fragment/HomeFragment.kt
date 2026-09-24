@@ -23,7 +23,7 @@ import de.yisrime.lrcget.tool.Tools.getPhoneName
 import de.yisrime.lrcget.tool.Tools.restartTheScopedSoftware
 import de.yisrime.lrcget.ui.viewmodel.HomeViewModel
 import de.yisrime.lrcget.ui.viewmodel.ShareViewModel
-import de.yisrime.lrcget.config.ConfigStore
+import de.yisrime.lyricsuite.config.ConfigStore
 import cn.xiaowine.xkt.AcTool.restartApp
 import cn.xiaowine.xkt.Tool.isNotNull
 import cn.xiaowine.xkt.Tool.toUpperFirstCaseAndLowerOthers

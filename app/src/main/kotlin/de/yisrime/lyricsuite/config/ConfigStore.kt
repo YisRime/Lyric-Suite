@@ -1,34 +1,11 @@
-/*
- * StatusBarLyric
- * Copyright (C) 2021-2022 fkj@fkj233.cn
- * Copyright (C) 2026 YisRime
- * https://github.com/Block-Network/StatusBarLyric
- *
- * Portions Copyright (C) 2026 Yis_Rime
- *
- * This software is free opensource software: you can redistribute it
- * and/or modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either
- * version 3 of the License, or any later version and our eula as
- * published by Block-Network contributors.
- *
- * This software is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * and eula along with this software.  If not, see
- * <https://www.gnu.org/licenses/>
- * <https://github.com/Block-Network/StatusBarLyric/blob/main/LICENSE>.
- */
-
-package de.yisrime.lrcbar.config
+package de.yisrime.lyricsuite.config
 
 import android.content.SharedPreferences
+import kotlin.properties.ReadWriteProperty
+import kotlin.reflect.KProperty
 
 object ConfigStore {
-    const val GROUP = "COMPOSE_CONFIG"
+    const val GROUP = "config"
 
     @Volatile
     private var prefs: SharedPreferences? = null
@@ -38,6 +15,9 @@ object ConfigStore {
 
     val source: SharedPreferences?
         get() = prefs
+
+    val isAttached: Boolean
+        get() = prefs != null
 
     val isEmpty: Boolean
         get() = prefs?.all?.isEmpty() != false
@@ -98,3 +78,14 @@ object ConfigStore {
         }
     }
 }
+
+private class ConfigStoreProperty<T>(private val default: T) : ReadWriteProperty<Any, T> {
+    override fun getValue(thisRef: Any, property: KProperty<*>): T =
+        ConfigStore.opt(property.name, default)
+
+    override fun setValue(thisRef: Any, property: KProperty<*>, value: T) {
+        ConfigStore.put(property.name, value)
+    }
+}
+
+fun <T> serialLazy(default: T): ReadWriteProperty<Any, T> = ConfigStoreProperty(default)

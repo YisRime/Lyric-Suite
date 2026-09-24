@@ -9,13 +9,12 @@ import io.github.libxposed.api.XposedModuleInterface.PackageLoadedParam
 import cn.xiaowine.xkt.LogTool
 import de.yisrime.lyricsuite.BuildConfig
 import de.yisrime.lyricsuite.R
-import de.yisrime.lrcbar.config.ConfigStore
+import de.yisrime.lyricsuite.config.ConfigStore
 import de.yisrime.lrcbar.config.XposedOwnSP.config
 import de.yisrime.lrcbar.hook.module.SystemUILyric
 import de.yisrime.lrcbar.hook.module.SystemUITest
 import de.yisrime.lrcbar.tools.LogTools
 import de.yisrime.lrcbar.tools.LogTools.log
-import de.yisrime.lrcget.config.ConfigStore as GetterConfigStore
 import de.yisrime.lrcget.hook.app.APlayer
 import de.yisrime.lrcget.hook.app.Api
 import de.yisrime.lrcget.hook.app.Apple
@@ -123,9 +122,6 @@ class MainHook : XposedModule() {
         runCatching {
             ConfigStore.attach(getRemotePreferences(ConfigStore.GROUP), false)
         }.onFailure { it.log() }
-        runCatching {
-            GetterConfigStore.attach(getRemotePreferences(GetterConfigStore.GROUP), false)
-        }.onFailure { "Remote preferences unavailable: ${it.message}".log() }
     }
 
     private fun initHooks(vararg hook: BaseHook) {

@@ -17,7 +17,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.graphics.drawable.IconCompat
 import de.yisrime.lyricsuite.R
-import de.yisrime.lrcget.config.ConfigStore
+import de.yisrime.lyricsuite.config.ConfigStore
 import cn.xiaowine.xkt.LogTool.log
 import java.io.DataOutputStream
 

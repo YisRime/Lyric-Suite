@@ -27,10 +27,6 @@ import de.yisrime.lyricsuite.BuildConfig
 import de.yisrime.lrcbar.tools.ConfigTools
 
 class Config {
-    companion object {
-        const val CONFIG_NAME = "COMPOSE_CONFIG"
-    }
-
     var config = ConfigTools()
 
     fun update() {

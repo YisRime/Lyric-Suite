@@ -26,14 +26,12 @@
 package de.yisrime.lrcbar
 
 import android.app.Application
-import android.content.Context
 import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import com.google.android.material.color.DynamicColors
 import cn.xiaowine.xkt.AcTool
 import cn.xiaowine.xkt.LogTool
-import de.yisrime.lrcbar.config.ConfigStore
-import de.yisrime.lrcget.config.ConfigStore as GetterConfigStore
+import de.yisrime.lyricsuite.config.ConfigStore
 import de.yisrime.lrcget.tool.ActivityTools
 import de.yisrime.lrcget.tool.ConfigTools.config
 import io.github.libxposed.service.XposedService
@@ -52,14 +50,6 @@ class LyricApplication : Application() {
             override fun onServiceBind(service: XposedService) {
                 runCatching {
                     ConfigStore.attach(service.getRemotePreferences(ConfigStore.GROUP), true)
-                    importLegacy(ConfigStore.GROUP, ConfigStore.isEmpty) { ConfigStore.putAll(it) }
-                    GetterConfigStore.attach(
-                        service.getRemotePreferences(GetterConfigStore.GROUP),
-                        true
-                    )
-                    importLegacy(GetterConfigStore.GROUP, GetterConfigStore.isEmpty) {
-                        GetterConfigStore.putAll(it)
-                    }
                     config.updateTime = System.currentTimeMillis()
                 }.onFailure { Log.e(TAG, "框架服务绑定失败", it) }
                 ready.value = ConfigStore.source != null
@@ -70,7 +60,6 @@ class LyricApplication : Application() {
 
             override fun onServiceDied(service: XposedService) {
                 ConfigStore.detach()
-                GetterConfigStore.detach()
                 framework = null
                 ready.value = false
                 scoped.value = false
@@ -78,22 +67,6 @@ class LyricApplication : Application() {
                 Log.w(TAG, "框架服务已断开")
             }
         })
-    }
-
-    private fun importLegacy(
-        name: String,
-        empty: Boolean,
-        putAll: (Map<String, *>) -> Unit
-    ) {
-        if (!empty) return
-        val direct = createDeviceProtectedStorageContext()
-        val legacy = listOf(
-            direct.getSharedPreferences(name, Context.MODE_PRIVATE),
-            getSharedPreferences(name, Context.MODE_PRIVATE),
-        )
-        legacy.firstOrNull { !it.all.isNullOrEmpty() }?.let { putAll(it.all) }
-        direct.deleteSharedPreferences(name)
-        deleteSharedPreferences(name)
     }
 
     companion object {
