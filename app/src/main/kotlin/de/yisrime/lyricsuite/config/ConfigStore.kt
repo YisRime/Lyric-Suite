@@ -1,6 +1,8 @@
 package de.yisrime.lyricsuite.config
 
 import android.content.SharedPreferences
+import android.util.Log
+import de.yisrime.lrcbar.tools.LogTools
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
@@ -44,14 +46,19 @@ object ConfigStore {
         }
     }
 
+    // 同步落盘
     fun put(key: String, value: Any?) {
-        val editor = editor() ?: return
+        val editor = editor()
+        if (editor == null) {
+            Log.w(LogTools.TAG, "配置写入被丢弃: $key")
+            return
+        }
         editor.putTyped(key, value)
-        editor.apply()
+        editor.commit()
     }
 
     fun clearAll() {
-        editor()?.clear()?.apply()
+        editor()?.clear()?.commit()
     }
 
     private fun editor(): SharedPreferences.Editor? {

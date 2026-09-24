@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 
 class ShareViewModel(private val state: SavedStateHandle) : ViewModel() {
     var activated: Boolean
-        get() = state.get<Boolean>("activated") != false
+        get() = state.get<Boolean>("activated") == true
         set(value) {
             state.set("activated", value)
         }

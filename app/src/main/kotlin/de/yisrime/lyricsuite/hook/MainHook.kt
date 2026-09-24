@@ -59,7 +59,11 @@ class MainHook : XposedModule() {
         LogTools.init(true)
         LogTool.init("Lyrics Getter", { true }, false)
         "${frameworkName} ${frameworkVersion}(${frameworkVersionCode}) api=$apiVersion".log()
-        if (param.packageName == SYSTEM_UI) hookDisplay() else hookLyricSource(param.packageName)
+        when (param.packageName) {
+            SYSTEM_UI -> hookDisplay()
+            SELF -> Unit
+            else -> hookLyricSource(param.packageName)
+        }
     }
 
     private fun hookDisplay() {
@@ -140,5 +144,6 @@ class MainHook : XposedModule() {
 
     companion object {
         private const val SYSTEM_UI = "com.android.systemui"
+        private val SELF = BuildConfig.APPLICATION_ID
     }
 }
