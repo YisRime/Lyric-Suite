@@ -21,7 +21,6 @@
     <string name="lyric_page">Lyric Page</string>
     <string name="icon_page">Icon Page</string>
     <string name="extend_page">Extend Page</string>
-    <string name="choose_page">Choose Page</string>
     <string name="lyric_width">Lyric Width</string>
     <string name="lyric_width_tips">Range: 0~100, 0 is adaptive width</string>
     <string name="fixed_lyric_width">Fixed lyric width</string>
@@ -142,7 +141,6 @@
     <string name="automate_focused_notice">Automate focus notifications</string>
     <string name="lyrics_animation_horizontalflip">Horizontal Flip</string>
     <string name="lyrics_animation_verticalflip">Vertical Flip</string>
-    <string name="version_code">Version Code</string>
     <string name="log_page">Logs</string>
     <string name="log_refresh">Reload</string>
     <string name="log_clear">Clear</string>
@@ -164,7 +162,6 @@
     <string name="restart">Restart</string>
     <string name="api_version_label">API version</string>
     <string name="config_version_label">Configuration file version</string>
-    <string name="show_hide_desktop_icons">Show/hide Home screen icons</string>
     <string name="getting_app_information">Getting app information</string>
     <string name="getting_app_information_tips">Please wait…</string>
     <string name="api">API mode: %s</string>
@@ -176,7 +173,6 @@
     <string name="un_know">Not included</string>
     <string name="app_rules_version_label">App support list version</string>
     <string name="show_app_rules">Show all app support list</string>
-    <string name="update_app_rules">Update support list</string>
     <string name="multi_rule">Details %1$s: %2$s</string>
     <string name="uninstall_rule">Not installed: Supports %s modes in total</string>
     <string name="app_rules_tips">Not included: It doesn\'t mean that it can\'t be used; it just means that you don\'t know the minimum supported version, so there are no inclusion rules.\nSome software isn\'t included. You\'re welcome to provide feedback and report errors.</string>
@@ -186,13 +182,6 @@
     <string name="allow_some_software_to_output_after_the_screen">Allow some software to continue output after the screen is off</string>
     <string name="regex_replace">Regular expression to block lyrics</string>
     <string name="device_label">Device information</string>
-    <string name="new_rule_detected_loading">New app support list detected. Loading…</string>
-    <string name="new_rule_detected">New app support list detected</string>
-    <string name="new_rule_detected_tips">New app support list detected. Restart to take effect.</string>
-    <string name="new_version_detected">New version detected</string>
-    <string name="update">Update</string>
-    <string name="check_update_error">An error occurred while checking for updates</string>
-    <string name="app_rules_api_version_label">App support list API version</string>
     <string name="backup">Backup</string>
     <string name="recovery">Recovery</string>
     <string name="recovery_summary">Restart the app to take effect</string>

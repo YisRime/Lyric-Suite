@@ -23,7 +23,6 @@ import de.yisrime.lrcget.data.Rule
 import de.yisrime.lyricsuite.databinding.FragmentAppRulesBinding
 import de.yisrime.lyricsuite.databinding.ItemsAppBinding
 import de.yisrime.lrcget.tool.ActivityTools.getAppRules
-import de.yisrime.lrcget.tool.ActivityTools.updateAppRules
 import de.yisrime.lrcget.tool.AppRulesTools.getAppStatus
 import de.yisrime.lrcget.tool.AppRulesTools.getAppStatusDescription
 import de.yisrime.lrcget.tool.AppRulesTools.lyricType
@@ -31,7 +30,6 @@ import de.yisrime.lrcget.tool.ConfigTools.config
 import de.yisrime.lrcget.ui.adapter.AppRulesAdapter
 import de.yisrime.lrcget.ui.dialog.MaterialProgressDialog
 import de.yisrime.lrcget.ui.viewmodel.AppRulesViewModel
-import cn.xiaowine.xkt.AcTool.openURL
 import cn.xiaowine.xkt.Tool.goMainThread
 import cn.xiaowine.xkt.Tool.toUpperFirstCaseAndLowerOthers
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -123,16 +121,9 @@ class AppRulesFragment : Fragment() {
                             config.showAllRules = it.isChecked
                             loadAppRules(isFirst = false, isSwipeRefresh = false)
                         }
-
-                        R.id.update_app_rules -> {
-                            updateAppRules()
-                        }
                     }
                     true
                 }
-            }
-            card.setOnClickListener {
-                "https://github.com/YisRime/Lyric-Getter/issues/new?assignees=&labels=&projects=&template=feature_request.md&title=App%E8%A7%84%E5%88%99%E6%94%B9%E5%8A%A8".openURL()
             }
             recyclerView.apply {
                 layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)

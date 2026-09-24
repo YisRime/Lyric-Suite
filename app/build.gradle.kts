@@ -29,7 +29,6 @@ android {
         buildConfigField("long", "BUILD_TIME", "$buildTime")
         buildConfigField("int", "API_VERSION", "6")
         buildConfigField("int", "CONFIG_VERSION", "1")
-        buildConfigField("int", "APP_RULES_API_VERSION", "14")
     }
 
     val config = localProperties.getProperty("androidStoreFile")?.let {
@@ -102,9 +101,6 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.swiperefreshlayout)
     implementation(libs.kotlinx.serialization.json)
-    implementation(libs.markwon)
-    implementation(libs.markwon.image)
-    implementation(libs.markwon.image.glide)
 
 
     implementation(libs.ezxhelper.core)

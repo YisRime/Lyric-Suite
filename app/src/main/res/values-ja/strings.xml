@@ -21,7 +21,6 @@
     <string name="lyric_page">歌詞のページ</string>
     <string name="icon_page">アイコンのページ</string>
     <string name="extend_page">拡張のページ</string>
-    <string name="choose_page">ページを選択</string>
     <string name="lyric_width">歌詞の幅</string>
     <string name="lyric_width_tips">範囲: 0~100 – 0 は適応幅です</string>
     <string name="fixed_lyric_width">歌詞の幅を固定</string>
@@ -140,7 +139,6 @@
     <string name="automate_focused_notice">フォーカス通知の自動処理</string>
     <string name="lyrics_animation_horizontalflip">水平フリップ</string>
     <string name="lyrics_animation_verticalflip">垂直フリップ</string>
-    <string name="version_code">バージョン番号</string>
     <string name="log_page">ログ</string>
     <string name="log_refresh">再読み込み</string>
     <string name="log_clear">ログを消去</string>
@@ -162,7 +160,6 @@
   <string name="restart">再起動</string>
   <string name="api_version_label">API バージョン</string>
   <string name="config_version_label">設定ファイルのバージョン</string>
-  <string name="show_hide_desktop_icons">アイコンを表示または非表示</string>
   <string name="getting_app_information">アプリ情報を取得</string>
   <string name="getting_app_information_tips">お待ちください…</string>
   <string name="api">API モード %s</string>
@@ -174,7 +171,6 @@
   <string name="un_know">含まれていない</string>
   <string name="app_rules_version_label">アプリサポートリストのバージョン</string>
   <string name="show_app_rules">サポートリストをすべて表示</string>
-  <string name="update_app_rules">サポートリストを更新</string>
   <string name="multi_rule">詳細 %1$s: %2$s</string>
   <string name="uninstall_rule">未インストール: 合計で %s 件のモードに対応</string>
   <string name="app_rules_tips">含まれていない: 使用できないわけではなく、対応している最小バージョンが不明なだけなので含めるルールがないだけです。\n一部のアプリが含まれていません。エラーを取得してフィードバックを送信してください。</string>
@@ -184,13 +180,6 @@
   <string name="allow_some_software_to_output_after_the_screen">画面を消灯後でも歌詞を表示 (一部)</string>
   <string name="regex_replace">歌詞をブロックする正規表現</string>
   <string name="device_label">デバイス情報</string>
-  <string name="new_rule_detected_loading">新しいアプリサポートリストを検出、読み込み中です。</string>
-  <string name="new_rule_detected">新しいアプリサポートリストを検出しました</string>
-  <string name="new_rule_detected_tips">新しいアプリサポートリストを検出、再起動で設定が反映されます。</string>
-  <string name="new_version_detected">新しいバージョンを検出しました</string>
-  <string name="update">更新</string>
-  <string name="check_update_error">更新の確認中にエラーが発生しました</string>
-  <string name="app_rules_api_version_label">アプリサポートリスト API バージョン</string>
   <string name="backup">バックアップ</string>
   <string name="recovery">復元</string>
   <string name="recovery_summary">アプリの再起動後に設定が反映されます</string>

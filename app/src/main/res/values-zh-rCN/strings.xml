@@ -21,7 +21,6 @@
     <string name="lyric_page">歌词样式</string>
     <string name="icon_page">图标样式</string>
     <string name="extend_page">扩展选项</string>
-    <string name="choose_page">锚点选择页</string>
     <string name="lyric_width">歌词宽度</string>
     <string name="lyric_width_tips">范围：0~100，0 代表自适应宽度</string>
     <string name="fixed_lyric_width">固定歌词宽度</string>
@@ -140,7 +139,6 @@
     <string name="automate_focused_notice">自动处理焦点通知</string>
     <string name="lyrics_animation_horizontalflip">水平翻转</string>
     <string name="lyrics_animation_verticalflip">垂直翻转</string>
-    <string name="version_code">版本号</string>
     <string name="log_page">日志</string>
     <string name="log_refresh">重新读取</string>
     <string name="log_clear">清空日志</string>

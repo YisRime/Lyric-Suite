@@ -10,9 +10,4 @@
             android:layout_height="wrap_content"
             android:title="@string/show_app_rules" />
     </group>
-    <item
-        android:id="@+id/update_app_rules"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:title="@string/update_app_rules" />
 </menu>

@@ -11,7 +11,6 @@ material = "1.12.0"
 
 kotlinx-serialization-json = "1.8.0"
 hidden-api = "4.3.3"
-markwon = "4.6.2"
 ezxhelper = "3.2.0-preview1"
 libxposed = "101.0.1"
 libxposed-service = "101.0.0"
@@ -27,9 +26,6 @@ androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx",
 androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "androidx-swiperefreshlayout" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
-markwon = { module = "io.noties.markwon:core", version.ref = "markwon" }
-markwon-image = { module = "io.noties.markwon:image", version.ref = "markwon" }
-markwon-image-glide = { module = "io.noties.markwon:image-glide", version.ref = "markwon" }
 dev-rikka-hidden-compat = { module = "dev.rikka.hidden:compat", version.ref = "hidden-api" }
 dev-rikka-hidden-stub = { module = "dev.rikka.hidden:stub", version.ref = "hidden-api" }
 libxposed-api = { module = "io.github.libxposed:api", version.ref = "libxposed" }

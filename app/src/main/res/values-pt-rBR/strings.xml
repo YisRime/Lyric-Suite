@@ -14,7 +14,6 @@
     <string name="restart">Reiniciar</string>
     <string name="api_version_label">Versão da API</string>
     <string name="config_version_label">Versão do arquivo de configuração</string>
-    <string name="show_hide_desktop_icons">Mostrar/ocultar ícones da Tela inicial</string>
     <string name="getting_app_information">Obtendo informações do app</string>
     <string name="getting_app_information_tips">Por favor, aguarde…</string>
     <string name="api">Modo da API: %s</string>
@@ -26,7 +25,6 @@
     <string name="un_know">Não incluído</string>
     <string name="app_rules_version_label">Versão da lista de suporte de apps</string>
     <string name="show_app_rules">Mostrar lista de suporte de todos os apps</string>
-    <string name="update_app_rules">Atualizar lista de suporte</string>
     <string name="multi_rule">Detalhes %1$s: %2$s</string>
     <string name="uninstall_rule">Não instalado: Suporta %s modos no total</string>
     <string name="app_rules_tips">Não incluído: Isso não significa que não possa ser usado, significa apenas que você não sabe a versão mínima suportada, portanto, não há regras de inclusão.\nAlguns softwares não estão incluídos. Fique à vontade para fornecer feedback e relatar erros.</string>
@@ -36,13 +34,6 @@
     <string name="allow_some_software_to_output_after_the_screen">Permitir que algum software continue a exibir saída após a tela desligar</string>
     <string name="regex_replace">Expressão regular para bloquear letras</string>
     <string name="device_label">Informações do dispositivo</string>
-    <string name="new_rule_detected_loading">Nova lista de suporte de apps detectada. Carregando…</string>
-    <string name="new_rule_detected">Nova lista de suporte de apps detectada</string>
-    <string name="new_rule_detected_tips">Nova lista de suporte de apps detectada. Reinicie para entrar em vigor.</string>
-    <string name="new_version_detected">Nova versão detectada</string>
-    <string name="update">Atualizar</string>
-    <string name="check_update_error">Ocorreu um erro ao verificar por atualizações</string>
-    <string name="app_rules_api_version_label">Versão da API da lista de suporte de apps</string>
     <string name="backup">Backup</string>
     <string name="recovery">Recuperação</string>
     <string name="recovery_summary">Reinicie o app para entrar em vigor</string>

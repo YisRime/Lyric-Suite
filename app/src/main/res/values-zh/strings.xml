@@ -14,7 +14,6 @@
     <string name="restart">重启</string>
     <string name="api_version_label">API 版本</string>
     <string name="config_version_label">配置文件版本</string>
-    <string name="show_hide_desktop_icons">显示/隐藏桌面图标</string>
     <string name="getting_app_information">正在获取应用信息</string>
     <string name="getting_app_information_tips">请稍后…</string>
     <string name="api">API 模式 %s</string>
@@ -26,7 +25,6 @@
     <string name="un_know">未收录</string>
     <string name="app_rules_version_label">App 支持列表版本</string>
     <string name="show_app_rules">显示所有 App 支持列表</string>
-    <string name="update_app_rules">更新支持列表</string>
     <string name="multi_rule">详情 %1$s：%2$s</string>
     <string name="uninstall_rule">未安装：共支持 %s 个模式</string>
     <string name="app_rules_tips">未收录：不代表不能用，仅仅代表不知道最低的支持版本，故没有收录规则。部分支持的软件也没有收录，欢迎提供和反馈错误</string>
@@ -36,13 +34,6 @@
     <string name="allow_some_software_to_output_after_the_screen">允许部分软件息屏后依旧输出</string>
     <string name="regex_replace">正则表达式屏蔽歌词</string>
     <string name="device_label">设备信息</string>
-    <string name="new_rule_detected_loading">检测到新的 App 支持列表，正在加载</string>
-    <string name="new_rule_detected">检测到新的 App 支持列表</string>
-    <string name="new_rule_detected_tips">检测到新的 App 支持列表，重启生效</string>
-    <string name="new_version_detected">检测到新版本</string>
-    <string name="update">更新</string>
-    <string name="check_update_error">检查更新时出现错误</string>
-    <string name="app_rules_api_version_label">App 支持列表 API 版本</string>
     <string name="backup">备份</string>
     <string name="recovery">恢复</string>
     <string name="recovery_summary">重启应用程序生效</string>
