@@ -10,6 +10,8 @@ import de.yisrime.lrcbar.tools.Tools.shell
 
 class TestFragment : ConfigFragment() {
 
+    override val titleRes = R.string.hook_page
+
     override fun ConfigScreen.content() {
         header(R.string.test_mode_tips)
         switch(R.string.test_mode, prop = config::testMode) { invalidate() }

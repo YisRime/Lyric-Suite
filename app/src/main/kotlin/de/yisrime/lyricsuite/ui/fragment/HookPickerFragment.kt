@@ -13,6 +13,8 @@ import de.yisrime.lrcbar.tools.ActivityTestTools.showView
 
 class HookPickerFragment : ConfigFragment() {
 
+    override val titleRes = R.string.select_hook
+
     override fun ConfigScreen.content() {
         header(R.string.choose_page_tips)
         HookProbe.points.forEach { data ->

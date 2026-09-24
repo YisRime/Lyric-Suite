@@ -9,6 +9,8 @@ import de.yisrime.lrcbar.tools.Tools.shell
 
 class SystemSpecialFragment : ConfigFragment() {
 
+    override val titleRes = R.string.system_special_page
+
     override fun ConfigScreen.content() {
         header(R.string.miui_and_hyperos)
         switch(R.string.miui_hide_network_speed, prop = config::mMiuiHideNetworkSpeed)

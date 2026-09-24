@@ -7,6 +7,8 @@ import de.yisrime.lrcbar.config.XposedOwnSP.config
 
 class IconFragment : ConfigFragment() {
 
+    override val titleRes = R.string.icon_page
+
     override fun ConfigScreen.content() {
         switch(R.string.icon_switch, prop = config::iconSwitch) { invalidate() }
         resetSystemUiRow()

@@ -51,6 +51,7 @@ class ConfigScreen(private val context: Context) {
         onChange: (Boolean) -> Unit = {}
     ) {
         val row = row(title, summary)
+        row.preferencesButton.visibility = View.VISIBLE
         row.preferencesButton.isChecked = prop.get()
         row.preferencesButton.setOnCheckedChangeListener { _, checked ->
             prop.set(checked)
@@ -219,6 +220,7 @@ class ConfigScreen(private val context: Context) {
     ): Preferences {
         val row = Preferences(context)
         row.preferencesTitle.setText(title)
+        row.preferencesButton.visibility = View.GONE
         val tail = listOfNotNull(
             value ?: if (summary == 0) null else context.getString(summary),
             if (hint == 0) null else context.getString(hint)

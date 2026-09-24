@@ -16,6 +16,11 @@ class Preferences(context: Context) {
     val preferencesTitle: TextView = preferencesView.findViewById(R.id.switchTitle)
     val preferencesSummary: TextView = preferencesView.findViewById(R.id.switchSummary)
 
+    // 重建为准
+    init {
+        preferencesButton.isSaveEnabled = false
+    }
+
     fun getView(): View = preferencesView
 
     fun setTitle(title: String) {

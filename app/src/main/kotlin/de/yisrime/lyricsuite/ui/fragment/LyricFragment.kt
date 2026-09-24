@@ -8,6 +8,8 @@ import de.yisrime.lrcbar.tools.Tools.shell
 
 class LyricFragment : ConfigFragment() {
 
+    override val titleRes = R.string.lyric_page
+
     override fun ConfigScreen.content() {
         val context = requireContext()
         header(R.string.module_second)

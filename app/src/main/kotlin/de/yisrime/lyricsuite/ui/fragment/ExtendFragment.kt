@@ -8,6 +8,8 @@ import de.yisrime.lrcbar.tools.Tools.shell
 
 class ExtendFragment : ConfigFragment() {
 
+    override val titleRes = R.string.extend_page
+
     override fun ConfigScreen.content() {
         val start = R.string.title_gravity_start
         val center = R.string.title_gravity_center
