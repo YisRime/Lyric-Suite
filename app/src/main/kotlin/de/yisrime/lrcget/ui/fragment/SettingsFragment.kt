@@ -88,6 +88,14 @@ class SettingsFragment : Fragment() {
             addView(
                 createClickableView(
                     context = context,
+                    titleResId = R.string.extend_page,
+                    onClick = {
+                        findNavController().navigate(R.id.extend_nav)
+                    }
+                ))
+            addView(
+                createClickableView(
+                    context = context,
                     titleResId = R.string.system_special_page,
                     onClick = {
                         findNavController().navigate(R.id.system_special_nav)

@@ -113,6 +113,27 @@ class ConfigRows(private val context: Context) {
             .show()
     }
 
+    fun choice(
+        @StringRes title: Int,
+        options: List<String>,
+        get: () -> Int,
+        set: (Int) -> Unit
+    ): View {
+        val preferences = row(title, 0, options[get().coerceIn(options.indices)])
+        preferences.preferencesButton.visibility = View.GONE
+        preferences.getView().setOnClickListener {
+            MaterialAlertDialogBuilder(context)
+                .setTitle(title)
+                .setItems(options.toTypedArray()) { dialog, which ->
+                    set(which)
+                    preferences.setSummary(options[which])
+                    dialog.dismiss()
+                }
+                .show()
+        }
+        return preferences.getView()
+    }
+
     private fun isColor(value: String): Boolean = try {
         value.toColorInt()
         true
