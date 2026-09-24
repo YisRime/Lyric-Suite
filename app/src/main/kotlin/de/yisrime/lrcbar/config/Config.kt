@@ -46,13 +46,6 @@ class Config {
         set(value) {
             config.put("hideTime", value)
         }
-    var showLauncherIcon: Boolean
-        get() {
-            return config.opt("showLauncherIcon", true)
-        }
-        set(value) {
-            config.put("showLauncherIcon", value)
-        }
     var hideNotificationIcon: Boolean
         get() {
             return config.opt("hideNotificationIcon", false)

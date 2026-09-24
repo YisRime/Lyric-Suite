@@ -76,11 +76,8 @@ class SettingsFragment : Fragment() {
                 createSwitchView(
                     context = context,
                     titleResId = R.string.show_launcher_icon,
-                    isChecked = barConfig.showLauncherIcon,
-                    onCheckedChange = { _, isChecked ->
-                        barConfig.showLauncherIcon = isChecked
-                        toggleLauncherIcon(isChecked)
-                    }
+                    isChecked = launcherIconShown(),
+                    onCheckedChange = { _, isChecked -> toggleLauncherIcon(isChecked) }
                 ))
             addView(
                 createSwitchView(
@@ -263,6 +260,14 @@ class SettingsFragment : Fragment() {
             .show()
     }
 
+
+    private fun launcherIconShown(): Boolean {
+        val state = requireContext().packageManager.getComponentEnabledSetting(
+            ComponentName(requireContext(), LAUNCHER_ALIAS)
+        )
+        return state == PackageManager.COMPONENT_ENABLED_STATE_ENABLED ||
+                state == PackageManager.COMPONENT_ENABLED_STATE_DEFAULT
+    }
 
     private fun toggleLauncherIcon(enabled: Boolean) {
         requireContext().packageManager.setComponentEnabledSetting(
