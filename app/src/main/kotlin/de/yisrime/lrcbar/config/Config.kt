@@ -23,7 +23,6 @@
 
 package de.yisrime.lrcbar.config
 
-import de.yisrime.lyricsuite.BuildConfig
 import de.yisrime.lrcbar.tools.ConfigTools
 
 class Config {
