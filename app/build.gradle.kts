@@ -122,7 +122,7 @@ dependencies {
     implementation(libs.dexkit)
     implementation(libs.dev.rikka.hidden.compat)
     implementation(libs.libxposed.service)
-    implementation(libs.lyric.getter.api)
+    implementation(files("libs/Lyric-Getter-Api-7.0.0.aar"))
     implementation(libs.xkt)
 
     debugImplementation(libs.androidx.ui.tooling.preview)

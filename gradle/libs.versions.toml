@@ -19,7 +19,6 @@ ezxhelper = "3.2.0-preview1"
 libxposed = "101.0.1"
 libxposed-service = "101.0.0"
 dexkit = "2.0.3"
-lyric-getter-api = "7.0.0"
 xkt = "1.0.12"
 haze = "1.5.4"
 miuix = "0.4.3"
@@ -51,7 +50,6 @@ ezxhelper-core = { module = "io.github.kyuubiran.ezxhelper:core", version.ref = 
 ezxhelper-xposed = { module = "io.github.kyuubiran.ezxhelper:xposed-api-101", version.ref = "ezxhelper" }
 ezxhelper-android-utils = { module = "io.github.kyuubiran.ezxhelper:android-utils", version.ref = "ezxhelper" }
 dexkit = { module = "org.luckypray:dexkit", version.ref = "dexkit" }
-lyric-getter-api = { module = "com.github.HChenX:Lyric-Getter-Api", version.ref = "lyric-getter-api" }
 xkt = { module = "com.github.xiaowine:XKT", version.ref = "xkt" }
 haze = { module = "dev.chrisbanes.haze:haze", version.ref = "haze" }
 miuix = { module = "top.yukonga.miuix.kmp:miuix-android", version.ref = "miuix" }
