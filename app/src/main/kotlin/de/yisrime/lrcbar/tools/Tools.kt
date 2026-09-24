@@ -38,7 +38,7 @@ import android.widget.Toast
 import io.github.kyuubiran.ezxhelper.xposed.EzXposed
 import io.github.kyuubiran.ezxhelper.core.util.ObjectUtil
 import de.yisrime.lyricsuite.BuildConfig
-import de.yisrime.lrcbar.MainActivity
+import de.yisrime.lrcbar.LyricApplication
 import de.yisrime.lyricsuite.R
 import de.yisrime.lrcbar.config.XposedOwnSP
 import de.yisrime.lrcbar.tools.LogTools.log
@@ -181,7 +181,7 @@ object Tools {
                 } catch (_: Exception) {
                     // Su shell command failed
                     Handler(Looper.getMainLooper()).post {
-                        Toast.makeText(MainActivity.appContext, "Root permissions required!!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(LyricApplication.appContext, "Root permissions required!!", Toast.LENGTH_SHORT).show()
                     }
                 }
             } else {

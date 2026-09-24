@@ -26,8 +26,8 @@
 package de.yisrime.lrcbar
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
-import androidx.compose.runtime.mutableStateOf
 import com.google.android.material.color.DynamicColors
 import cn.xiaowine.xkt.AcTool
 import cn.xiaowine.xkt.LogTool
@@ -38,10 +38,10 @@ import io.github.libxposed.service.XposedService
 import io.github.libxposed.service.XposedServiceHelper
 
 class LyricApplication : Application() {
-    var activatedChange: ((Boolean) -> Unit)? = null
 
     override fun onCreate() {
         super.onCreate()
+        appContext = this
         DynamicColors.applyToActivitiesIfAvailable(this)
         AcTool.init(this)
         ActivityTools.application = this
@@ -52,17 +52,17 @@ class LyricApplication : Application() {
                     ConfigStore.attach(service.getRemotePreferences(ConfigStore.GROUP), true)
                     config.updateTime = System.currentTimeMillis()
                 }.onFailure { Log.e(TAG, "框架服务绑定失败", it) }
-                ready.value = ConfigStore.source != null
+                ready = ConfigStore.source != null
                 framework = service
                 refreshScope()
-                activatedChange?.invoke(ready.value)
+                activatedChange?.invoke(ready && scoped)
             }
 
             override fun onServiceDied(service: XposedService) {
                 ConfigStore.detach()
                 framework = null
-                ready.value = false
-                scoped.value = false
+                ready = false
+                scoped = false
                 activatedChange?.invoke(false)
                 Log.w(TAG, "框架服务已断开")
             }
@@ -70,29 +70,37 @@ class LyricApplication : Application() {
     }
 
     companion object {
+        var activatedChange: ((Boolean) -> Unit)? = null
+
         private const val TAG = "StatusBarLyric"
         private const val GETTER_LOG_TAG = "Lyrics Getter"
         private const val SYSTEM_UI = "com.android.systemui"
 
-        val ready = mutableStateOf(false)
-        val scoped = mutableStateOf(false)
+        lateinit var appContext: Context
+            private set
+
+        var ready: Boolean = false
+            private set
+        var scoped: Boolean = false
+            private set
 
         private var framework: XposedService? = null
 
         fun refreshScope() {
             val service = framework
             if (service == null) {
-                scoped.value = false
+                scoped = false
                 Log.i(TAG, "激活判定: 框架服务未绑定")
                 return
             }
             runCatching {
-                scoped.value = service.getScope().contains(SYSTEM_UI)
+                scoped = service.getScope().contains(SYSTEM_UI)
             }.onFailure {
-                scoped.value = false
+                scoped = false
                 Log.e(TAG, "作用域查询失败", it)
             }
-            Log.i(TAG, "激活判定: 服务绑定=${ready.value} 作用域含SystemUI=${scoped.value}")
+            Log.i(TAG, "激活判定: 服务绑定=$ready 作用域含SystemUI=$scoped")
+            activatedChange?.invoke(ready && scoped)
         }
     }
 }

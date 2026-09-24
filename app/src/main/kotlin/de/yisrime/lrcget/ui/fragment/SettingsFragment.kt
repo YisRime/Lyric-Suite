@@ -29,7 +29,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 class SettingsFragment : Fragment() {
 
     companion object {
-        private const val LAUNCHER_ALIAS = "de.yisrime.lrcbar.AliasActivity"
+        private const val LAUNCHER_ALIAS = "de.yisrime.lyricsuite.LauncherAlias"
     }
 
 

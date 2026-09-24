@@ -21,30 +21,24 @@
         android:theme="@style/Theme.StatusbarLyric"
         tools:targetApi="s">
         <activity
-            android:name="de.yisrime.lrcbar.MainActivity"
+            android:name="de.yisrime.lrcget.ui.activity.MainActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize">
+            android:theme="@style/Theme.MyApplication"
+            android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="de.robv.android.xposed.category.MODULE_SETTINGS" />
             </intent-filter>
         </activity>
         <activity-alias
-            android:name="de.yisrime.lrcbar.AliasActivity"
+            android:name="de.yisrime.lyricsuite.LauncherAlias"
             android:exported="true"
-            android:targetActivity="de.yisrime.lrcbar.MainActivity"
-            android:windowSoftInputMode="adjustResize">
+            android:targetActivity="de.yisrime.lrcget.ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
-
-        <activity
-            android:name="de.yisrime.lrcget.ui.activity.MainActivity"
-            android:exported="true"
-            android:theme="@style/Theme.MyApplication"
-            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name="de.yisrime.lrcget.ui.activity.TestActivity"
             android:exported="true"

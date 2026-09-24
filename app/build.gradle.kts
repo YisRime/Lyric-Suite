@@ -7,7 +7,6 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.compose.compiler)
 }
 
 val buildTime = System.currentTimeMillis()
@@ -29,7 +28,6 @@ android {
         ndk.abiFilters += arrayOf("arm64-v8a", "armeabi-v7a", "x86", "x86_64")
         buildConfigField("long", "BUILD_TIME", "$buildTime")
         buildConfigField("int", "API_VERSION", "6")
-        buildConfigField("int", "COMPOSE_CONFIG_VERSION", "1")
         buildConfigField("int", "CONFIG_VERSION", "1")
         buildConfigField("int", "APP_RULES_API_VERSION", "14")
     }
@@ -108,13 +106,6 @@ dependencies {
     implementation(libs.markwon.image)
     implementation(libs.markwon.image.glide)
 
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.compose.foundation)
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.haze)
-    implementation(libs.miuix)
 
     implementation(libs.ezxhelper.core)
     implementation(libs.ezxhelper.xposed)
@@ -125,6 +116,4 @@ dependencies {
     implementation(files("libs/Lyric-Getter-Api-7.0.0.aar"))
     implementation(libs.xkt)
 
-    debugImplementation(libs.androidx.ui.tooling.preview)
-    debugImplementation(libs.androidx.ui.tooling)
 }

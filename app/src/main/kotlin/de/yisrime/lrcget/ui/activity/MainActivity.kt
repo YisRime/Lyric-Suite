@@ -42,19 +42,19 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        (application as LyricApplication).activatedChange = activatedChange
+        LyricApplication.activatedChange = activatedChange
     }
 
     override fun onStart() {
         super.onStart()
+        LyricApplication.refreshScope()
         (binding.nav as NavigationBarView).setupWithNavController(findNavController(R.id.nav_host_fragment))
         checkUpdate()
         updateAppRules()
     }
 
     override fun onDestroy() {
-        val app = application as LyricApplication
-        if (app.activatedChange === activatedChange) app.activatedChange = null
+        if (LyricApplication.activatedChange === activatedChange) LyricApplication.activatedChange = null
         super.onDestroy()
     }
 

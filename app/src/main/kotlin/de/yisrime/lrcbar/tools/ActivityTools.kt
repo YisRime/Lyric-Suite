@@ -29,7 +29,7 @@ import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
 import androidx.core.graphics.toColorInt
-import de.yisrime.lrcbar.MainActivity
+import de.yisrime.lrcbar.LyricApplication
 import de.yisrime.lyricsuite.R
 import de.yisrime.lrcbar.data.Data
 import de.yisrime.lrcbar.tools.LogTools.log
@@ -44,7 +44,7 @@ object ActivityTools {
     fun showToastOnLooper(message: Any?) {
         try {
             handler.post {
-                Toast.makeText(MainActivity.appContext, message.toString(), Toast.LENGTH_LONG).show()
+                Toast.makeText(LyricApplication.appContext, message.toString(), Toast.LENGTH_LONG).show()
                 message.log()
             }
         } catch (e: RuntimeException) {
@@ -59,7 +59,7 @@ object ActivityTools {
             try {
                 value.toColorInt()
             } catch (_: Exception) {
-                showToastOnLooper(MainActivity.appContext.getString(R.string.color_error))
+                showToastOnLooper(LyricApplication.appContext.getString(R.string.color_error))
                 return
             }
         }
@@ -77,7 +77,7 @@ object ActivityTools {
                     }
                 }
             } catch (_: Exception) {
-                showToastOnLooper(MainActivity.appContext.getString(R.string.color_error))
+                showToastOnLooper(LyricApplication.appContext.getString(R.string.color_error))
                 return
             }
         }
@@ -85,9 +85,9 @@ object ActivityTools {
     }
 
     fun restartApp() {
-        val intent = MainActivity.appContext.packageManager.getLaunchIntentForPackage(MainActivity.appContext.packageName)
+        val intent = LyricApplication.appContext.packageManager.getLaunchIntentForPackage(LyricApplication.appContext.packageName)
         intent!!.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        MainActivity.appContext.startActivity(intent)
+        LyricApplication.appContext.startActivity(intent)
         exitProcess(0)
     }
 }

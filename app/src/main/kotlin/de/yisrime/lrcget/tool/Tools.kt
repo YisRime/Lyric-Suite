@@ -1,5 +1,7 @@
 package de.yisrime.lrcget.tool
 
+import de.yisrime.lrcbar.LyricApplication
+
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.NotificationChannel
@@ -23,9 +25,11 @@ import java.io.DataOutputStream
 
 object Tools {
     private const val LOG_TAG = "Lyrics Getter"
+    private const val DISPLAY_TAG = "StatusBarLyric"
+    private const val BRIDGE_TAG = "LSPosed-Bridge"
 
     val xpActivation: Boolean
-        get() = ConfigStore.isAttached
+        get() = ConfigStore.isAttached && LyricApplication.scoped
 
     val getPhoneName by lazy {
         val marketName = getSystemProperties("ro.product.marketname")
@@ -56,7 +60,7 @@ object Tools {
     fun captureLogs(): String? = try {
         val process = Runtime.getRuntime().exec(arrayOf("su", "-c", "logcat -d -v time"))
         val output = process.inputStream.bufferedReader().lineSequence()
-            .filter { it.contains(LOG_TAG) }
+            .filter { it.contains(LOG_TAG) || it.contains(DISPLAY_TAG) || it.contains(BRIDGE_TAG) }
             .joinToString("\n")
         process.waitFor()
         if (process.exitValue() == 0) output else null
