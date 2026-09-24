@@ -63,7 +63,6 @@ import dev.chrisbanes.haze.hazeSource
 import de.yisrime.lyricsuite.R
 import de.yisrime.lrcbar.config.ActivityOwnSP.config
 import de.yisrime.lrcbar.tools.ActivityTools
-import de.yisrime.lrcbar.tools.ActivityTools.changeConfig
 import de.yisrime.lrcbar.tools.AnimTools
 import de.yisrime.lrcbar.tools.Tools.isNotNull
 import top.yukonga.miuix.kmp.basic.BasicComponent
@@ -174,7 +173,6 @@ fun IconPage(
                             onCheckedChange = {
                                 iconSwitch.value = it
                                 config.iconSwitch = it
-                                changeConfig()
                             }
                         )
                     }
@@ -300,7 +298,6 @@ fun IconPage(
                                     onCheckedChange = {
                                         forceTheIconToBeDisplayed.value = it
                                         config.forceTheIconToBeDisplayed = it
-                                        changeConfig()
                                     }
                                 )
                                 SuperArrow(
@@ -391,7 +388,6 @@ fun IconSizeDialog(showDialog: MutableState<Boolean>) {
                         value.value = "0"
                     }
                     showDialog.value = false
-                    changeConfig()
                 }
             )
         }
@@ -429,7 +425,6 @@ fun IconColorDialog(showDialog: MutableState<Boolean>) {
                 onClick = {
                     ActivityTools.colorCheck(value.value, unit = { config.iconColor = it })
                     showDialog.value = false
-                    changeConfig()
                 }
             )
         }
@@ -467,7 +462,6 @@ fun IconBgColorDialog(showDialog: MutableState<Boolean>) {
                 onClick = {
                     ActivityTools.colorCheck(value.value, unit = { config.iconBgColor = it })
                     showDialog.value = false
-                    changeConfig()
                 }
             )
         }
@@ -512,7 +506,6 @@ fun IconTopMarginsDialog(showDialog: MutableState<Boolean>) {
                         value.value = "0"
                     }
                     showDialog.value = false
-                    changeConfig()
                 }
             )
         }
@@ -555,7 +548,6 @@ fun IconBottomMarginsDialog(showDialog: MutableState<Boolean>) {
                         value.value = "0"
                     }
                     showDialog.value = false
-                    changeConfig()
                 }
             )
         }
@@ -599,7 +591,6 @@ fun IconStartMarginsDialog(showDialog: MutableState<Boolean>) {
                         value.value = if (config.mHyperOSTexture) "20" else "0"
                     }
                     showDialog.value = false
-                    changeConfig()
                 }
             )
         }
@@ -638,7 +629,6 @@ fun IconChangeAllIconsDialog(showDialog: MutableState<Boolean>) {
                     if (value.value.isEmpty()) value.value = ""
                     config.changeAllIcons = value.value
                     showDialog.value = false
-                    changeConfig()
                 }
             )
         }

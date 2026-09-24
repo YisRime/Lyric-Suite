@@ -67,6 +67,7 @@ import cn.lyric.getter.api.listener.LyricReceiver
 import cn.lyric.getter.api.tools.Tools.base64ToBitmap
 import cn.lyric.getter.api.tools.Tools.registerLyricListener
 import de.yisrime.lyricsuite.R
+import de.yisrime.lyricsuite.config.ConfigStore
 import de.yisrime.lrcbar.config.XposedOwnSP.config
 import de.yisrime.lyricsuite.hook.BaseHook
 import de.yisrime.lrcbar.hook.module.xiaomi.FocusNotifyController
@@ -584,7 +585,6 @@ class SystemUILyric : BaseHook() {
     private var lastArtist: String = ""
     private var lastAlbum: String = ""
     private var playingApp: String = ""
-    private var updateConfig: UpdateConfig = UpdateConfig()
     private var screenLockReceiver: ScreenLockReceiver = ScreenLockReceiver()
     private val timeoutRestore: Int = 0
     private val handler: Handler = object : Handler(Looper.getMainLooper()) {
@@ -598,6 +598,10 @@ class SystemUILyric : BaseHook() {
         }
     }
     private var lastRunnable: Runnable? = null
+
+    private val configReload = Runnable {
+        if (isReady) updateConfig()
+    }
     private val showTitleConsumer: Consumer<LyricData> = object : Consumer<LyricData> {
         override fun accept(value: LyricData) {
             if (!isMusicPlaying) return
@@ -657,14 +661,9 @@ class SystemUILyric : BaseHook() {
             })
         )
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            context.registerReceiver(
-                updateConfig,
-                IntentFilter("updateConfig"),
-                Context.RECEIVER_EXPORTED
-            )
-        } else {
-            context.registerReceiver(updateConfig, IntentFilter("updateConfig"))
+        ConfigStore.source?.registerOnSharedPreferenceChangeListener { _, _ ->
+            handler.removeCallbacks(configReload)
+            handler.postDelayed(configReload, 50L)
         }
 
         if (config.hideLyricWhenLockScreen) {
@@ -908,20 +907,6 @@ class SystemUILyric : BaseHook() {
     private fun scaleWidth(): Int {
         "Scale Width".log()
         return (config.lyricWidth / 100f * if (context.isLandscape()) displayHeight else displayWidth).toInt()
-    }
-
-    inner class UpdateConfig : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            when (intent.getStringExtra("type")) {
-                "normal" -> {
-                    if (!isReady) return
-                    updateConfig()
-                }
-
-                "change_font" -> {}
-                "reset_font" -> {}
-            }
-        }
     }
 
     inner class ScreenLockReceiver : BroadcastReceiver() {

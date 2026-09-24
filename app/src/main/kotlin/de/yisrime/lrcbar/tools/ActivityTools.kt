@@ -41,16 +41,6 @@ object ActivityTools {
 
     lateinit var dataList: ArrayList<Data>
 
-    fun changeConfig(type: String = "normal", path: String = "") {
-        Thread {
-            Thread.sleep(200)
-            MainActivity.appContext.sendBroadcast(Intent("updateConfig").apply {
-                putExtra("type", type)
-                putExtra("path", path)
-            })
-        }.start()
-    }
-
     fun showToastOnLooper(message: Any?) {
         try {
             handler.post {

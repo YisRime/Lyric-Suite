@@ -64,7 +64,6 @@ import dev.chrisbanes.haze.hazeSource
 import de.yisrime.lyricsuite.R
 import de.yisrime.lrcbar.config.ActivityOwnSP.config
 import de.yisrime.lrcbar.tools.ActivityTools
-import de.yisrime.lrcbar.tools.ActivityTools.changeConfig
 import de.yisrime.lrcbar.tools.Tools.isNotNull
 import top.yukonga.miuix.kmp.basic.BasicComponent
 import top.yukonga.miuix.kmp.basic.BasicComponentDefaults
@@ -221,7 +220,6 @@ fun LyricPage(
                                 onCheckedChange = {
                                     fixedLyricWidth.value = it
                                     config.fixedLyricWidth = it
-                                    changeConfig()
                                 }
                             )
                         }
@@ -342,7 +340,6 @@ fun LyricPage(
                             onSelectedIndexChange = { newOption ->
                                 lyricAnimSelectedOption.intValue = newOption
                                 config.lyricAnimation = newOption
-                                changeConfig()
                             },
                         )
                         SuperDropdown(
@@ -352,7 +349,6 @@ fun LyricPage(
                             onSelectedIndexChange = { newOption ->
                                 lyricInterpolatorSelectedOption.intValue = newOption
                                 config.lyricInterpolator = newOption
-                                changeConfig()
                             },
                         )
                         SuperArrow(
@@ -442,7 +438,6 @@ fun LyricWidthDialog(showDialog: MutableState<Boolean>, lyricWidth: MutableState
                         lyricWidth.value = "0"
                     }
                     showDialog.value = false
-                    changeConfig()
                 }
             )
         }
@@ -488,7 +483,6 @@ fun LyricSizeDialog(showDialog: MutableState<Boolean>) {
                         value.value = "0"
                     }
                     showDialog.value = false
-                    changeConfig()
                 }
             )
         }
@@ -528,7 +522,6 @@ fun LyricColorDialog(showDialog: MutableState<Boolean>) {
                 onClick = {
                     ActivityTools.colorCheck(value.value, unit = { config.lyricColor = it })
                     showDialog.value = false
-                    changeConfig()
                 }
             )
         }
@@ -609,7 +602,6 @@ fun LyricGradientBgColorDialog(showDialog: MutableState<Boolean>) {
                 onClick = {
                     ActivityTools.colorSCheck(value.value, unit = { config.lyricBackgroundColor = it })
                     showDialog.value = false
-                    changeConfig()
                 }
             )
         }
@@ -652,7 +644,6 @@ fun LyricBgRadiusDialog(showDialog: MutableState<Boolean>) {
                         value.value = "0"
                     }
                     showDialog.value = false
-                    changeConfig()
                 }
             )
         }
@@ -695,7 +686,6 @@ fun LyricLetterSpacingDialog(showDialog: MutableState<Boolean>) {
                         value.value = "0"
                     }
                     showDialog.value = false
-                    changeConfig()
                 }
             )
         }
@@ -742,7 +732,6 @@ fun LyricStrokeWidthDialog(showDialog: MutableState<Boolean>) {
                         value.value = "0"
                     }
                     showDialog.value = false
-                    changeConfig()
                 }
             )
         }
@@ -785,7 +774,6 @@ fun LyricSpeedDialog(showDialog: MutableState<Boolean>) {
                         value.value = "1"
                     }
                     showDialog.value = false
-                    changeConfig()
                 }
             )
         }
@@ -828,7 +816,6 @@ fun LyricTopMarginsDialog(showDialog: MutableState<Boolean>) {
                         value.value = "0"
                     }
                     showDialog.value = false
-                    changeConfig()
                 }
             )
         }
@@ -871,7 +858,6 @@ fun LyricBottomMarginsDialog(showDialog: MutableState<Boolean>) {
                         value.value = "0"
                     }
                     showDialog.value = false
-                    changeConfig()
                 }
             )
         }
@@ -916,7 +902,6 @@ fun LyricStartMarginsDialog(showDialog: MutableState<Boolean>) {
                         value.value = if (config.mHyperOSTexture) "20" else "8"
                     }
                     showDialog.value = false
-                    changeConfig()
                 }
             )
         }
@@ -961,7 +946,6 @@ fun LyricEndMarginsDialog(showDialog: MutableState<Boolean>) {
                         value.value = if (config.mHyperOSTexture) "20" else "10"
                     }
                     showDialog.value = false
-                    changeConfig()
                 }
             )
         }
@@ -1004,7 +988,6 @@ fun LyricAnimDurationDialog(showDialog: MutableState<Boolean>) {
                         value.value = "300"
                     }
                     showDialog.value = false
-                    changeConfig()
                 }
             )
         }
