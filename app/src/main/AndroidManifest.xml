@@ -29,15 +29,6 @@
                 <category android:name="de.robv.android.xposed.category.MODULE_SETTINGS" />
             </intent-filter>
         </activity>
-        <activity-alias
-            android:name="de.yisrime.lyricsuite.LauncherAlias"
-            android:exported="true"
-            android:targetActivity="de.yisrime.lrcget.ui.activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity-alias>
         <activity
             android:name="de.yisrime.lrcget.ui.activity.TestActivity"
             android:exported="true"

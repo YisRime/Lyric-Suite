@@ -28,7 +28,6 @@ import de.yisrime.lrcget.tool.AppRulesTools.getAppStatusDescription
 import de.yisrime.lrcget.tool.AppRulesTools.lyricType
 import de.yisrime.lrcget.tool.ConfigTools.config
 import de.yisrime.lrcget.ui.adapter.AppRulesAdapter
-import de.yisrime.lrcget.ui.dialog.MaterialProgressDialog
 import de.yisrime.lrcget.ui.viewmodel.AppRulesViewModel
 import cn.xiaowine.xkt.Tool.goMainThread
 import cn.xiaowine.xkt.Tool.toUpperFirstCaseAndLowerOthers
@@ -181,11 +180,6 @@ class AppRulesFragment : Fragment() {
                     "${getString(R.string.app_rules_fragment_label)} (${appRulesViewModel.dataLists.size})"
             }
         } else {
-            val dialog = MaterialProgressDialog(requireContext()).apply {
-                setTitle(getString(R.string.getting_app_information))
-                setMessage(getString(R.string.getting_app_information_tips))
-                show()
-            }
             Thread {
                 val installedPackages = manager.getInstalledPackages(0)
 
@@ -206,7 +200,6 @@ class AppRulesFragment : Fragment() {
                                 .setNegativeButton(R.string.cancel, null)
                                 .show()
                         }
-                        dialog.dismiss()
                     }
                     return@Thread
                 }
@@ -243,7 +236,6 @@ class AppRulesFragment : Fragment() {
                     }
                     goMainThread { appInfos?.let { appAdapter.addData(it) } }
                 }
-                dialog.dismiss()
                 goMainThread {
                     binding.toolbar.title =
                         "${getString(R.string.app_rules_fragment_label)} (${appAdapter.dataLists.size})"

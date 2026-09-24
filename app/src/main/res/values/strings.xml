@@ -6,7 +6,6 @@
     <string name="module_fourth">Margin settings</string>
     <string name="module_fifth">Floating title</string>
     <string name="module_sixth">Animation settings</string>
-    <string name="show_launcher_icon">Show Icon</string>
     <string name="module_extend">Please restart the system interface and player after modifying this page</string>
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
@@ -18,7 +17,7 @@
     <string name="test_mode_tips">When installing the module for the first time, please set the anchor point before you can use this module\nEnable the anchor setting mode, restart the system interface, obtain the anchor and select it, turn off the anchor mode, and restart the system interface again</string>
     <string name="relax_conditions">Relax Conditions</string>
     <string name="relax_conditions_tips">Some classes are allowed, but there may be many more hook points</string>
-    <string name="lyric_page">Lyric Page</string>
+    <string name="lyric_page">Lyric</string>
     <string name="icon_page">Icon Page</string>
     <string name="extend_page">Extend Page</string>
     <string name="lyric_width">Lyric Width</string>
@@ -151,8 +150,8 @@
     <string name="version_name_label">Module version</string>
     <string name="version_code_label">Module version number</string>
     <string name="version_type_label">Module release version</string>
-    <string name="settings_fragment_label">Settings</string>
-    <string name="app_rules_fragment_label">Supported app</string>
+    <string name="settings_fragment_label">Options</string>
+    <string name="app_rules_fragment_label">Apps</string>
     <string name="activated">Activated</string>
     <string name="unactivated">Not activated</string>
     <string name="build_time_label">Build time</string>
@@ -162,8 +161,6 @@
     <string name="restart">Restart</string>
     <string name="api_version_label">API version</string>
     <string name="config_version_label">Configuration file version</string>
-    <string name="getting_app_information">Getting app information</string>
-    <string name="getting_app_information_tips">Please wait…</string>
     <string name="api">API mode: %s</string>
     <string name="more_api">Too high API version\nCurrent version %s, required version %s</string>
     <string name="low_api">Too low API version\nCurrent version %s, required version %s</string>
@@ -175,7 +172,6 @@
     <string name="show_app_rules">Show all app support list</string>
     <string name="multi_rule">Details %1$s: %2$s</string>
     <string name="uninstall_rule">Not installed: Supports %s modes in total</string>
-    <string name="app_rules_tips">Not included: It doesn\'t mean that it can\'t be used; it just means that you don\'t know the minimum supported version, so there are no inclusion rules.\nSome software isn\'t included. You\'re welcome to provide feedback and report errors.</string>
     <string name="output_repeated_lyrics">Output repeated lyrics</string>
     <string name="enhanced_hidden_lyrics">Enhanced hidden lyrics</string>
     <string name="enhanced_hidden_lyrics_summary">Some software isn\'t applicable, this will cause the lyrics to be ghosted.</string>

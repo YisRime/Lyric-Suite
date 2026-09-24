@@ -6,7 +6,6 @@
     <string name="module_fourth">余白の設定</string>
     <string name="module_fifth">フローティングタイトル</string>
     <string name="module_sixth">アニメーションの設定</string>
-    <string name="show_launcher_icon">アイコンを表示</string>
     <string name="module_extend">このページを変更後にシステムインターフェースとプレーヤーを再起動してください</string>
     <string name="cancel">キャンセル</string>
     <string name="ok">OK</string>
@@ -160,8 +159,6 @@
   <string name="restart">再起動</string>
   <string name="api_version_label">API バージョン</string>
   <string name="config_version_label">設定ファイルのバージョン</string>
-  <string name="getting_app_information">アプリ情報を取得</string>
-  <string name="getting_app_information_tips">お待ちください…</string>
   <string name="api">API モード %s</string>
   <string name="more_api">API バージョンが高すぎます。\n現在のバージョン: %s、必要なバージョン: %s</string>
   <string name="low_api">API バージョンが低すぎます。\n現在のバージョン: %s、必要なバージョン: %s</string>
@@ -173,7 +170,6 @@
   <string name="show_app_rules">サポートリストをすべて表示</string>
   <string name="multi_rule">詳細 %1$s: %2$s</string>
   <string name="uninstall_rule">未インストール: 合計で %s 件のモードに対応</string>
-  <string name="app_rules_tips">含まれていない: 使用できないわけではなく、対応している最小バージョンが不明なだけなので含めるルールがないだけです。\n一部のアプリが含まれていません。エラーを取得してフィードバックを送信してください。</string>
   <string name="output_repeated_lyrics">繰り返しで歌詞を出力</string>
   <string name="enhanced_hidden_lyrics">強化された隠された歌詞</string>
   <string name="enhanced_hidden_lyrics_summary">一部のアプリでは適用できず、歌詞がゴースト化する可能性があります</string>

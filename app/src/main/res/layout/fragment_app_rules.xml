@@ -41,27 +41,6 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/card"
-                        style="@style/Widget.Material3.CardView.Elevated"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/m3_appbar_expanded_title_margin_horizontal"
-                        android:layout_marginVertical="?dialogPreferredPadding"
-                        app:cardBackgroundColor="?colorPrimary"
-                        tools:ignore="PrivateResource">
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-medium"
-                            android:padding="?dialogPreferredPadding"
-                            android:text="@string/app_rules_tips"
-                            android:textAppearance="?textAppearanceTitleMedium"
-                            android:textColor="?colorOnPrimary"
-                            android:textSize="16sp" />
-                    </com.google.android.material.card.MaterialCardView>
-
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recycler_view"
                         android:layout_width="match_parent"

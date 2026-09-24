@@ -6,7 +6,6 @@
     <string name="module_fourth">边距设置</string>
     <string name="module_fifth">悬浮标题</string>
     <string name="module_sixth">动效设置</string>
-    <string name="show_launcher_icon">显示图标</string>
     <string name="module_extend">修改本页面后请重启系统界面及播放器</string>
     <string name="cancel">取消</string>
     <string name="ok">确定</string>
@@ -18,7 +17,7 @@
     <string name="test_mode_tips">第一次安装模块，请先设置锚点\n开启锚点设置模式，重启系统界面，获取锚点并选择后关闭锚点模式再次重启系统界面</string>
     <string name="relax_conditions">宽松过滤</string>
     <string name="relax_conditions_tips">允许更多锚点出现</string>
-    <string name="lyric_page">歌词样式</string>
+    <string name="lyric_page">歌词</string>
     <string name="icon_page">图标样式</string>
     <string name="extend_page">扩展选项</string>
     <string name="lyric_width">歌词宽度</string>

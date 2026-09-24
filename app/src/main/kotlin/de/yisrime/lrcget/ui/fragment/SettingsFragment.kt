@@ -1,24 +1,19 @@
 package de.yisrime.lrcget.ui.fragment
 
-import android.content.ComponentName
 import android.content.Context
-import android.content.pm.PackageManager
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.Toast
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import de.yisrime.lyricsuite.R
 import de.yisrime.lyricsuite.databinding.FragmentSettingsBinding
 import de.yisrime.lrcget.tool.ConfigTools.config
 import de.yisrime.lrcbar.tools.ActivityTools
-import de.yisrime.lrcget.tool.Tools.xpActivation
 import de.yisrime.lrcbar.config.XposedOwnSP.config as barConfig
 import de.yisrime.lrcget.tool.Tools.dp2px
 import de.yisrime.lrcget.ui.activity.DialogTransparentActivity
@@ -28,10 +23,6 @@ import de.yisrime.lrcget.ui.view.Preferences
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class SettingsFragment : Fragment() {
-
-    companion object {
-        private const val LAUNCHER_ALIAS = "de.yisrime.lyricsuite.LauncherAlias"
-    }
 
 
     private var _binding: FragmentSettingsBinding? = null
@@ -58,27 +49,6 @@ class SettingsFragment : Fragment() {
         val context = context ?: return
 
         binding.fragmentSettingLinearlayout.apply {
-            addView(
-                createSwitchView(
-                    context = context,
-                    titleResId = R.string.master_switch,
-                    isChecked = barConfig.masterSwitch,
-                    onCheckedChange = { _, isChecked ->
-                        if (xpActivation) {
-                            barConfig.masterSwitch = isChecked
-                        } else {
-                            barConfig.masterSwitch = false
-                            Toast.makeText(context, R.string.module_inactivated, Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                ))
-            addView(
-                createSwitchView(
-                    context = context,
-                    titleResId = R.string.show_launcher_icon,
-                    isChecked = launcherIconShown(),
-                    onCheckedChange = { _, isChecked -> toggleLauncherIcon(isChecked) }
-                ))
             addView(
                 createSwitchView(
                     context = context,
@@ -115,38 +85,6 @@ class SettingsFragment : Fragment() {
                     onClick = {
                         val intent = Intent(context, TestActivity::class.java)
                         startActivity(intent)
-                    }
-                ))
-            addView(
-                createClickableView(
-                    context = context,
-                    titleResId = R.string.hook_page,
-                    onClick = {
-                        findNavController().navigate(R.id.test_nav)
-                    }
-                ))
-            addView(
-                createClickableView(
-                    context = context,
-                    titleResId = R.string.icon_page,
-                    onClick = {
-                        findNavController().navigate(R.id.icon_nav)
-                    }
-                ))
-            addView(
-                createClickableView(
-                    context = context,
-                    titleResId = R.string.extend_page,
-                    onClick = {
-                        findNavController().navigate(R.id.extend_nav)
-                    }
-                ))
-            addView(
-                createClickableView(
-                    context = context,
-                    titleResId = R.string.system_special_page,
-                    onClick = {
-                        findNavController().navigate(R.id.system_special_nav)
                     }
                 ))
             addView(
@@ -252,26 +190,6 @@ class SettingsFragment : Fragment() {
             .show()
     }
 
-
-    private fun launcherIconShown(): Boolean {
-        val state = requireContext().packageManager.getComponentEnabledSetting(
-            ComponentName(requireContext(), LAUNCHER_ALIAS)
-        )
-        return state == PackageManager.COMPONENT_ENABLED_STATE_ENABLED ||
-                state == PackageManager.COMPONENT_ENABLED_STATE_DEFAULT
-    }
-
-    private fun toggleLauncherIcon(enabled: Boolean) {
-        requireContext().packageManager.setComponentEnabledSetting(
-            ComponentName(requireContext(), LAUNCHER_ALIAS),
-            if (enabled) {
-                PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-            } else {
-                PackageManager.COMPONENT_ENABLED_STATE_DISABLED
-            },
-            PackageManager.DONT_KILL_APP
-        )
-    }
 
     private fun createScrollableDialogLayout(context: Context): Pair<ScrollView, LinearLayout> {
         val scrollView = ScrollView(context).apply {
