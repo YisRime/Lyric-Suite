@@ -258,4 +258,5 @@
     <string name="mifocus_tips">Only HyperOS 2.0 is available and resolves whitelisting. Please turn on notifications when using it.</string>
     <string name="mifocus">Send HyperOS focus notifications</string>
     <string name="test_lyric_tips">Warning: If the test here doesn\'t show any issues, it may be a problem with other software. If there are issues when sending the test lyrics, please provide your feedback. If there are no issues, the cause is something else. The focus notification is used to test if you\'ve disabled the whitelist.</string>
+    <string name="none_set">Not set</string>
 </resources>

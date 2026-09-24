@@ -88,6 +88,14 @@ class SettingsFragment : Fragment() {
             addView(
                 createClickableView(
                     context = context,
+                    titleResId = R.string.icon_page,
+                    onClick = {
+                        findNavController().navigate(R.id.icon_nav)
+                    }
+                ))
+            addView(
+                createClickableView(
+                    context = context,
                     titleResId = R.string.lyric_page,
                     onClick = {
                         findNavController().navigate(R.id.lyric_nav)

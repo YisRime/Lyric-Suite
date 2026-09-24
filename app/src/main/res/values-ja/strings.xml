@@ -234,4 +234,5 @@
   <string name="multiple_modes_work">通常使用できるモードが複数あります</string>
   <string name="show_title">タイトル表示を強制</string>
   <string name="version_differences">リリース版はログを出力しませんが、デバッグ版はログを出力します。開発者以外はデバッグ版をインストールしないことを推奨します。</string>
+    <string name="none_set">未設定</string>
 </resources>

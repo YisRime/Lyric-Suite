@@ -122,6 +122,23 @@ class ConfigRows(private val context: Context) {
             .show()
     }
 
+    fun text(
+        @StringRes title: Int,
+        @StringRes tips: Int,
+        get: () -> String,
+        set: (String) -> Unit
+    ): View {
+        val preferences = row(title, tips, get().ifEmpty { context.getString(R.string.none_set) })
+        preferences.preferencesButton.visibility = View.GONE
+        preferences.getView().setOnClickListener {
+            editNumber(title, tips, get(), numeric = false) { value ->
+                set(value.trim())
+                preferences.setSummary(value.trim().ifEmpty { context.getString(R.string.none_set) })
+            }
+        }
+        return preferences.getView()
+    }
+
     fun choice(
         @StringRes title: Int,
         options: List<String>,

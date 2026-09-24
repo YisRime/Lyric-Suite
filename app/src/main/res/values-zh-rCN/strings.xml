@@ -164,4 +164,5 @@
     <string name="log_loading">正在读取日志…</string>
     <string name="log_no_root">读取日志需要 Root 授权</string>
     <string name="log_empty">暂无日志</string>
+    <string name="none_set">未设置</string>
 </resources>

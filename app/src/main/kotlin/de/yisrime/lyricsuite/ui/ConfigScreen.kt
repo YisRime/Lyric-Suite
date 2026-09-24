@@ -96,6 +96,14 @@ class ConfigScreen(private val context: Context) {
         )
     }
 
+    fun text(
+        @StringRes title: Int,
+        @StringRes tips: Int,
+        prop: KMutableProperty0<String>
+    ) {
+        container.addView(rows.text(title, tips, get = { prop.get() }, set = { prop.set(it) }))
+    }
+
     fun choice(
         @StringRes title: Int,
         options: List<String>,
