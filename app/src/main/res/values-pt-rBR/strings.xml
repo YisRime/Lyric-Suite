@@ -26,8 +26,6 @@
     <string name="multi_rule">Detalhes %1$s: %2$s</string>
     <string name="uninstall_rule">Não instalado: Suporta %s modos no total</string>
     <string name="output_repeated_lyrics">Saída de letras repetidas</string>
-    <string name="enhanced_hidden_lyrics">Letras ocultas aprimoradas</string>
-    <string name="enhanced_hidden_lyrics_summary">Alguns softwares não são aplicáveis, isso fará com que as letras fiquem fantasmas.</string>
     <string name="allow_some_software_to_output_after_the_screen">Permitir que algum software continue a exibir saída após a tela desligar</string>
     <string name="regex_replace">Expressão regular para bloquear letras</string>
     <string name="device_label">Informações do dispositivo</string>
@@ -54,7 +52,6 @@
     <string name="salt_use_flyme">Salt/Sweet e Sour Music usa a interface Meizu</string>
     <string name="salt_use_flyme_summary">Não é recomendado alternar quando o Modo da API estiver normal</string>
     <string name="multiple_modes_work">Existem vários modos que podem ser usados ​​normalmente</string>
-    <string name="show_title">Forçar título de exibição</string>
     <string name="version_differences">A versão de lançamento não gera logs, enquanto a versão Debug gera logs. Por isso, recomenda-se não instalar a versão Debug.</string>
     <string name="fuck_wyy">Forçar abertura das letras na barra de status do NetEase Cloud</string>
     <string name="fuck_wyy_tips">Ativar o interruptor pode causar anomalias no NetEase Cloud, que não se responsabiliza por este módulo.</string>

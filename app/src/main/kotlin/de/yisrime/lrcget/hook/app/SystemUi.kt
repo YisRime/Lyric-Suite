@@ -22,19 +22,6 @@ object SystemUi : BaseHook() {
         }
     }
 
-    // data class TitleInfo(
-    //     val caller: String,
-    //     val title: String
-    // )
-    //
-    // private var title: TitleInfo by observableChange(TitleInfo("", "")) { _, _, newValue ->
-    //     "title: $newValue".log()
-    //     if (config.enhancedHiddenLyrics)
-    //         eventTools.cleanLyric(newValue.caller)
-    //
-    //      if (config.showTitle)
-    //          eventTools.sendLyric(newValue.title)
-    // }
 
     private var useOwnMusicController: Boolean = false
 

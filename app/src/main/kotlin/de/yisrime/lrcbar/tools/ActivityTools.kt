@@ -27,29 +27,12 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
-import android.widget.Toast
 import de.yisrime.lrcbar.LyricApplication
-import de.yisrime.lyricsuite.R
-import de.yisrime.lrcbar.data.Data
-import de.yisrime.lrcbar.tools.LogTools.log
 import kotlin.system.exitProcess
 
 @SuppressLint("StaticFieldLeak")
 object ActivityTools {
     private val handler by lazy { Handler(Looper.getMainLooper()) }
-
-    lateinit var dataList: ArrayList<Data>
-
-    fun showToastOnLooper(message: Any?) {
-        try {
-            handler.post {
-                Toast.makeText(LyricApplication.appContext, message.toString(), Toast.LENGTH_LONG).show()
-                message.log()
-            }
-        } catch (e: RuntimeException) {
-            e.printStackTrace()
-        }
-    }
 
     fun restartApp() {
         val intent = LyricApplication.appContext.packageManager.getLaunchIntentForPackage(LyricApplication.appContext.packageName)

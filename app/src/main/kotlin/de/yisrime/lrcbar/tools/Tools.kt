@@ -26,7 +26,6 @@ package de.yisrime.lrcbar.tools
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Configuration
-import android.icu.text.SimpleDateFormat
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
@@ -37,14 +36,12 @@ import android.widget.TextView
 import android.widget.Toast
 import io.github.kyuubiran.ezxhelper.xposed.EzXposed
 import io.github.kyuubiran.ezxhelper.core.util.ObjectUtil
-import de.yisrime.lyricsuite.BuildConfig
 import de.yisrime.lrcbar.LyricApplication
 import de.yisrime.lyricsuite.R
 import de.yisrime.lrcbar.config.XposedOwnSP
 import de.yisrime.lrcbar.tools.LogTools.log
 import java.io.DataOutputStream
 import java.lang.reflect.Field
-import java.util.Locale
 import java.util.Objects
 import java.util.regex.Pattern
 import kotlin.properties.Delegates
@@ -52,10 +49,6 @@ import kotlin.properties.ReadWriteProperty
 
 @SuppressLint("StaticFieldLeak")
 object Tools {
-
-
-    val buildTime: String =
-        SimpleDateFormat("yyyy/M/d H:m:s", Locale.CHINA).format(BuildConfig.BUILD_TIME)
 
     val isPad by lazy { getSystemProperties("ro.build.characteristics") == "tablet" }
 
