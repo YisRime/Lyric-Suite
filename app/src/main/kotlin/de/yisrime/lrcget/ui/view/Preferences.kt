@@ -3,7 +3,6 @@ package de.yisrime.lrcget.ui.view
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.CompoundButton
 import android.widget.TextView
 import androidx.annotation.StringRes
 import de.yisrime.lyricsuite.R
@@ -14,7 +13,7 @@ class Preferences(context: Context) {
         LayoutInflater.from(context).inflate(R.layout.items_md3_preferences, null)
     val preferencesButton: MaterialSwitch = preferencesView.findViewById(R.id.switchButton)
     val preferencesTitle: TextView = preferencesView.findViewById(R.id.switchTitle)
-    val preferencesSummary: TextView = preferencesView.findViewById(R.id.switchSummary)
+    private val preferencesSummary: TextView = preferencesView.findViewById(R.id.switchSummary)
 
     // 重建为准
     init {
@@ -22,18 +21,6 @@ class Preferences(context: Context) {
     }
 
     fun getView(): View = preferencesView
-
-    fun setTitle(title: String) {
-        preferencesTitle.text = title
-    }
-
-    fun setSwitchChecked(isChecked: Boolean) {
-        preferencesButton.isChecked = isChecked
-    }
-
-    fun setSwitchListener(listener: CompoundButton.OnCheckedChangeListener) {
-        preferencesButton.setOnCheckedChangeListener(listener)
-    }
 
     fun setViewClickToggleSwitch() {
         preferencesView.setOnClickListener {

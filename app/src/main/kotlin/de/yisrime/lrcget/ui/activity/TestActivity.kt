@@ -1,10 +1,7 @@
 package de.yisrime.lrcget.ui.activity
 
 import android.Manifest
-import android.content.Context
 import android.os.Bundle
-import android.view.View
-import android.widget.CompoundButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresPermission
@@ -16,9 +13,9 @@ import cn.lyric.getter.api.listener.LyricListener
 import cn.lyric.getter.api.listener.LyricReceiver
 import cn.lyric.getter.api.tools.Tools.registerLyricListener
 import cn.lyric.getter.api.tools.Tools.unregisterLyricListener
+import de.yisrime.lyricsuite.ui.ConfigScreen
 import de.yisrime.lrcget.tool.EventTools
 import de.yisrime.lrcget.tool.Tools
-import de.yisrime.lrcget.ui.view.Preferences
 import com.google.android.material.appbar.MaterialToolbar
 
 class TestActivity : AppCompatActivity() {
@@ -64,37 +61,17 @@ class TestActivity : AppCompatActivity() {
         })
         registerLyricListener(this@TestActivity, API.API_VERSION, receiver)
 
-        testView.apply {
-            addView(
-                createClickableView(
-                    context = context,
-                    titleResId = R.string.send_test_lyric,
-                    onClick = { EventTools(context).sendLyric("testlyric") }
-                )
-            )
-            addView(
-                createClickableView(
-                    context = context,
-                    titleResId = R.string.clean_test_lyric,
-                    onClick = { EventTools(context).cleanLyric() }
-                )
-            )
-            addView(
-                createSwitchView(
-                    context = context,
-                    titleResId = R.string.mifocus,
-                    summaryResId = R.string.mifocus_tips,
-                    isChecked = mi,
-                    onCheckedChange = { _, isChecked ->
-                        mi = isChecked
-                        if (!isChecked) {
-                            Tools.cancelNotification(context = this@TestActivity)
-                        }
-                    }
-                )
-            )
+        ConfigScreen(this, testView).apply {
+            action(R.string.send_test_lyric) {
+                EventTools(this@TestActivity).sendLyric("testlyric")
+            }
+            action(R.string.clean_test_lyric) {
+                EventTools(this@TestActivity).cleanLyric()
+            }
+            switch(R.string.mifocus, R.string.mifocus_tips, prop = this@TestActivity::mi) {
+                if (!it) Tools.cancelNotification(context = this@TestActivity)
+            }
         }
-
     }
 
     override fun onStop() {
@@ -129,75 +106,5 @@ class TestActivity : AppCompatActivity() {
         testAppPlay.text = lyricData.type.toString()
         this.let { testAppName.text = it.getPackageManager().getApplicationInfo(lyricData.extraData.packageName, 0).loadLabel(it.packageManager) }
         testAppDelay.text = lyricData.extraData.delay.toString()
-    }
-
-    private fun createSwitchView(
-        context: Context,
-        titleResId: Int,
-        summaryResId: Int = 0,
-        isChecked: Boolean = false,
-        onCheckedChange: (CompoundButton, Boolean) -> Unit
-    ): View {
-        return createCustomView(
-            context = context,
-            titleResId = titleResId,
-            summaryResId = summaryResId,
-            isChecked = isChecked,
-            onCheckedChange = onCheckedChange,
-            hideSummary = summaryResId == 0,
-            hideSwitch = false
-        )
-    }
-
-    private fun createClickableView(
-        context: Context,
-        titleResId: Int,
-        onClick: (View) -> Unit
-    ): View {
-        return createCustomView(
-            context = context,
-            titleResId = titleResId,
-            onClick = onClick,
-            hideSummary = true,
-            hideSwitch = true
-        )
-    }
-
-    private fun createCustomView(
-        context: Context,
-        titleResId: Int,
-        summaryResId: Int = 0,
-        isChecked: Boolean = false,
-        onCheckedChange: ((CompoundButton, Boolean) -> Unit)? = null,
-        hideSummary: Boolean = false,
-        hideSwitch: Boolean = false,
-        onClick: ((View) -> Unit)? = null
-    ): View {
-        val preferences = Preferences(context)
-        preferences.setViewClickToggleSwitch()
-        val switchView = preferences.getView()
-
-        // Title
-        preferences.preferencesTitle.setText(titleResId)
-
-        // Summary
-        if (hideSummary || summaryResId == 0) {
-            preferences.preferencesSummary.visibility = View.GONE
-        } else {
-            preferences.setSummary(summaryResId)
-        }
-
-        // Switch
-        if (hideSwitch || onCheckedChange == null) {
-            preferences.preferencesButton.visibility = View.GONE
-        } else {
-            preferences.preferencesButton.isChecked = isChecked
-            preferences.preferencesButton.setOnCheckedChangeListener(onCheckedChange)
-        }
-
-        // Click listener
-        onClick?.let { switchView.setOnClickListener(it) }
-
-        return switchView
     }
 }

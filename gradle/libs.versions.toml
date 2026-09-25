@@ -4,7 +4,6 @@ kotlin = "2.3.21"
 
 androidx-core-kit = "1.16.0"
 androidx-lifecycle-viewmodel = "2.8.7"
-androidx-preference = "1.2.1"
 androidx-navigation = "2.8.9"
 androidx-swiperefreshlayout = "1.2.0-beta01"
 material = "1.12.0"
@@ -20,7 +19,6 @@ xkt = "1.0.12"
 [libraries]
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core-kit" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle-viewmodel" }
-androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "androidx-preference" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "androidx-navigation" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "androidx-navigation" }
 androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "androidx-swiperefreshlayout" }
@@ -32,7 +30,6 @@ libxposed-api = { module = "io.github.libxposed:api", version.ref = "libxposed" 
 libxposed-service = { module = "io.github.libxposed:service", version.ref = "libxposed-service" }
 ezxhelper-core = { module = "io.github.kyuubiran.ezxhelper:core", version.ref = "ezxhelper" }
 ezxhelper-xposed = { module = "io.github.kyuubiran.ezxhelper:xposed-api-101", version.ref = "ezxhelper" }
-ezxhelper-android-utils = { module = "io.github.kyuubiran.ezxhelper:android-utils", version.ref = "ezxhelper" }
 dexkit = { module = "org.luckypray:dexkit", version.ref = "dexkit" }
 xkt = { module = "com.github.xiaowine:XKT", version.ref = "xkt" }
 

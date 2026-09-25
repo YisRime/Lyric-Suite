@@ -22,7 +22,7 @@ import de.yisrime.lrcget.data.AppRule
 import de.yisrime.lrcget.data.Rule
 import de.yisrime.lyricsuite.databinding.FragmentAppRulesBinding
 import de.yisrime.lyricsuite.databinding.ItemsAppBinding
-import de.yisrime.lrcget.tool.ActivityTools.getAppRules
+import de.yisrime.lrcget.tool.ActivityTools.rules
 import de.yisrime.lrcget.tool.AppRulesTools.getAppStatus
 import de.yisrime.lrcget.tool.AppRulesTools.getAppStatusDescription
 import de.yisrime.lrcget.tool.AppRulesTools.lyricType
@@ -39,7 +39,7 @@ class AppRulesFragment : Fragment() {
 
     private val appRulesViewModel: AppRulesViewModel by viewModels()
 
-    private val appRules: List<AppRule> by lazy { getAppRules().appRules }
+    private val appRules: List<AppRule> by lazy { rules.appRules }
     private val manager: PackageManager by lazy { requireContext().packageManager }
     private val packageManager: PackageManager by lazy { requireContext().packageManager }
     private var _binding: FragmentAppRulesBinding? = null

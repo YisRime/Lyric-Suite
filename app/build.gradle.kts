@@ -96,7 +96,6 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.material)
-    implementation(libs.androidx.preference.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.swiperefreshlayout)
@@ -105,7 +104,6 @@ dependencies {
 
     implementation(libs.ezxhelper.core)
     implementation(libs.ezxhelper.xposed)
-    implementation(libs.ezxhelper.android.utils)
     implementation(libs.dexkit)
     implementation(libs.dev.rikka.hidden.compat)
     implementation(libs.libxposed.service)

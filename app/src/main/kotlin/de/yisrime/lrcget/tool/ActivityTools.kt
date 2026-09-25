@@ -11,7 +11,7 @@ object ActivityTools {
     lateinit var context: Context
     lateinit var application: Application
 
-    fun getAppRules(): AppRules = context.assets.open("app_rules.json").use {
-        it.reader().parseJSON<AppRules>()
+    val rules: AppRules by lazy {
+        context.assets.open("app_rules.json").use { it.reader().parseJSON<AppRules>() }
     }
 }

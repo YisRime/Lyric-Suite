@@ -17,11 +17,16 @@ import de.yisrime.lrcbar.tools.Tools.shell
 import de.yisrime.lyricsuite.R
 import kotlin.reflect.KMutableProperty0
 
-class ConfigScreen(private val context: Context) {
-    private val container = LinearLayout(context).apply {
-        orientation = LinearLayout.VERTICAL
+class ConfigScreen(private val context: Context, private val container: LinearLayout) {
+
+    constructor(context: Context) : this(
+        context,
+        LinearLayout(context).apply { orientation = LinearLayout.VERTICAL }
+    )
+
+    val root: View by lazy {
+        ScrollView(context).apply { addView(container) }
     }
-    val root: View = ScrollView(context).apply { addView(container) }
 
     private var content: ((ConfigScreen) -> Unit)? = null
 

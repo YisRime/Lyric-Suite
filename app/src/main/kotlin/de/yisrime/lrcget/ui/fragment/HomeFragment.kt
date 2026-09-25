@@ -14,7 +14,7 @@ import androidx.fragment.app.viewModels
 import de.yisrime.lyricsuite.BuildConfig
 import de.yisrime.lyricsuite.R
 import de.yisrime.lyricsuite.databinding.FragmentHomeBinding
-import de.yisrime.lrcget.tool.ActivityTools.getAppRules
+import de.yisrime.lrcget.tool.ActivityTools.rules
 import de.yisrime.lrcget.tool.BackupTools
 import de.yisrime.lrcget.tool.Tools.getPhoneName
 import de.yisrime.lrcget.tool.Tools.restartTheScopedSoftware
@@ -126,7 +126,7 @@ class HomeFragment : Fragment() {
             buildTimeValue.text = homeViewModel.buildTimeValue ?: SimpleDateFormat("yyyy-MM-dd HH:mm z", Locale.getDefault()).format(BuildConfig.BUILD_TIME)
             apiVersionValue.text = BuildConfig.API_VERSION.toString()
             configVersionValue.text = BuildConfig.CONFIG_VERSION.toString()
-            appRulesVersionValue.text = homeViewModel.appRulesVersionValue ?: getAppRules().appRulesVersion.toString()
+            appRulesVersionValue.text = homeViewModel.appRulesVersionValue ?: rules.appRulesVersion.toString()
         }
     }
 
