@@ -102,7 +102,8 @@ class Config {
     var titleShowWithSameLyric: Boolean by serialLazy(false)
     var titleGravity: Int by serialLazy(0)
     var changeAllIcons: String by serialLazy("")
-    var viewLocation: Int by serialLazy(0)
+    // 时钟右侧
+    var viewLocation: Int by serialLazy(1)
     var automateFocusedNotice: Boolean by serialLazy(true)
 
     private val defIconHashMap by lazy {
