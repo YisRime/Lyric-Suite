@@ -16,6 +16,10 @@ object HookProbe {
         private set
 
     private var listener: (() -> Unit)? = null
+
+    fun clear() {
+        points = emptyList()
+    }
     private var registered = false
 
     private val receiver = object : BroadcastReceiver() {

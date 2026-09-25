@@ -33,7 +33,7 @@ class HookPickerFragment : ConfigFragment() {
         super.onViewCreated(view, savedInstanceState)
         HookProbe.observe { screen.invalidate() }
         view.postDelayed({
-            if (HookProbe.points.isEmpty()) {
+            if (isAdded && HookProbe.points.isEmpty()) {
                 Toast.makeText(requireContext(), R.string.broadcast_receive_timeout, Toast.LENGTH_SHORT)
                     .show()
             }

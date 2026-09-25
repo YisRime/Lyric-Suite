@@ -1,7 +1,4 @@
 <resources>
-<array name="xposed_scope">
-        <item>com.android.systemui</item>
-    </array>
 <array name="need_module">
         <item>com.android.systemui</item>
         <item>cn.lyric.getter.api.demo</item>

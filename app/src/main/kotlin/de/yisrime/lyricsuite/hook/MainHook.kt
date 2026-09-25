@@ -60,13 +60,14 @@ class MainHook : XposedModule() {
         LogTool.init("Lyrics Getter", { true }, false)
         "${frameworkName} ${frameworkVersion}(${frameworkVersionCode}) api=$apiVersion".log()
         when (param.packageName) {
-            SYSTEM_UI -> hookDisplay()
+            SYSTEM_UI -> hookSystemUi()
             SELF -> Unit
             else -> hookLyricSource(param.packageName)
         }
     }
 
-    private fun hookDisplay() {
+    private fun hookSystemUi() {
+        initHooks(SystemUi)
         if (!config.masterSwitch) {
             moduleRes.getString(R.string.master_off).log()
             return
@@ -80,7 +81,7 @@ class MainHook : XposedModule() {
         } else {
             moduleRes.getString(R.string.lyric_mode).log()
             try {
-                initHooks(SystemUILyric(), SystemUi)
+                initHooks(SystemUILyric())
             } catch (t: Throwable) {
                 t.log()
             }

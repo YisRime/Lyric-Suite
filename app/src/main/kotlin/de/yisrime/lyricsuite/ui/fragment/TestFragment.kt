@@ -7,6 +7,7 @@ import de.yisrime.lyricsuite.ui.ConfigScreen
 import de.yisrime.lrcbar.config.XposedOwnSP.config
 import de.yisrime.lrcbar.tools.ActivityTestTools.getClass
 import de.yisrime.lrcbar.tools.Tools.shell
+import de.yisrime.lyricsuite.ui.HookProbe
 
 class TestFragment : ConfigFragment() {
 
@@ -22,6 +23,7 @@ class TestFragment : ConfigFragment() {
                 prop = config::relaxConditions
             )
             action(R.string.get_hook, R.string.tips1) {
+                HookProbe.clear()
                 requireContext().getClass()
                 findNavController().navigate(R.id.hook_picker_nav)
             }
