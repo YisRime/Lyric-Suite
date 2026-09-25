@@ -36,7 +36,6 @@ import android.graphics.LinearGradient
 import android.graphics.Point
 import android.graphics.PorterDuff
 import android.graphics.Shader
-import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.os.Handler
@@ -96,7 +95,6 @@ import de.yisrime.lrcbar.tools.XiaomiUtils.isHyperOS
 import de.yisrime.lrcbar.view.LyricSwitchView
 import de.yisrime.lrcget.hook.app.SystemUi
 import de.yisrime.lrcbar.view.TitleDialog
-import java.io.File
 import kotlin.math.abs
 import kotlin.math.min
 
@@ -841,12 +839,6 @@ class SystemUILyric : BaseHook() {
                     inAnimation =
                         LyricViewTools.switchViewInAnima(animation, interpolator, duration)
                     outAnimation = LyricViewTools.switchViewOutAnima(animation, duration)
-                }
-                runCatching {
-                    val file = File("${context.filesDir.path}/font")
-                    if (file.exists() && file.canRead()) {
-                        setTypeface(Typeface.createFromFile(file))
-                    }
                 }
             }
             if (!config.iconSwitch) {

@@ -9,7 +9,6 @@ class Config {
     var allowSomeSoftwareToOutputAfterTheScreen: Boolean by serialLazy(false)
     var regexReplace: String by serialLazy("")
     var saltUseFlyme: Boolean by serialLazy(false)
-    var updateTime: Long by serialLazy(0L)
     var fuckWyy: Boolean by serialLazy(false)
     var fuckWyy2: Boolean by serialLazy(false)
 }

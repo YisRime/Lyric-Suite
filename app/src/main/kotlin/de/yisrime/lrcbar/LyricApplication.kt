@@ -34,7 +34,6 @@ import cn.xiaowine.xkt.LogTool
 import de.yisrime.lyricsuite.config.ConfigStore
 import de.yisrime.lyricsuite.ui.HookProbe
 import de.yisrime.lrcget.tool.ActivityTools
-import de.yisrime.lrcget.tool.ConfigTools.config
 import io.github.libxposed.service.XposedService
 import io.github.libxposed.service.XposedServiceHelper
 
@@ -52,7 +51,6 @@ class LyricApplication : Application() {
             override fun onServiceBind(service: XposedService) {
                 runCatching {
                     ConfigStore.attach(service.getRemotePreferences(ConfigStore.GROUP), true)
-                    config.updateTime = System.currentTimeMillis()
                 }.onFailure { Log.e(TAG, "框架服务绑定失败", it) }
                 ready = ConfigStore.source != null
                 framework = service
