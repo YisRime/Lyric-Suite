@@ -1,15 +1,15 @@
 package de.yisrime.lrcget.config
 
-import de.yisrime.lyricsuite.config.serialLazy
+import de.yisrime.lyricsuite.config.getterLazy
 
 class Config {
-    var alreadyShowWarning: Boolean by serialLazy(false)
-    var showAllRules: Boolean by serialLazy(false)
-    var outputRepeatedLyrics: Boolean by serialLazy(false)
-    var allowSomeSoftwareToOutputAfterTheScreen: Boolean by serialLazy(false)
-    var regexReplace: String by serialLazy("")
-    var saltUseFlyme: Boolean by serialLazy(false)
-    var fuckWyy: Boolean by serialLazy(false)
-    var fuckWyy2: Boolean by serialLazy(false)
+    var alreadyShowWarning: Boolean by getterLazy(false)
+    var showAllRules: Boolean by getterLazy(false)
+    var outputRepeatedLyrics: Boolean by getterLazy(false)
+    var allowSomeSoftwareToOutputAfterTheScreen: Boolean by getterLazy(false)
+    var regexReplace: String by getterLazy("")
+    var saltUseFlyme: Boolean by getterLazy(false)
+    var fuckWyy: Boolean by getterLazy(false)
+    var fuckWyy2: Boolean by getterLazy(false)
 }
         

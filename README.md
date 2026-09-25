@@ -18,11 +18,11 @@
 - `app/libs/Lyric-Getter-Api-7.0.0.aar` 原样随仓并附校验文件，不再从远端取；本模块只保留对宿主内嵌 SDK 的中继，不再向第三方发布该 API。
 - 应用规则的唯一真相是 `app/src/main/assets/app_rules.json`，随仓分发。不存在远端规则版本比对、规则下载与「新规则需重启」提示，也不做版本更新检测；清单不声明 `INTERNET` 权限，产物内不得出现 HTTP 客户端与 markdown 渲染库类，此点以 `dexdump` 与 `unzip -l assets` 取证。
 - `hook/app/Api.kt` 读取的是宿主 APK 内已发布的字节码字段 `API_VERSION`，该字段只用于与宿主内已发布副本比对，改动等于对已装宿主断供；`app_rules.json` 中 `useApi` 条目必须与该实现同步。
-- 配置落在框架守护进程的 `configs(module_pkg_name, user_id, group, key)`，本模块只用一个 group `config`。换 `applicationId` 等于清空全部已存配置与作用域并需重新登记。
+- 配置落在框架守护进程的 `configs(module_pkg_name, user_id, group, key)`，两侧各占一个 group：显示侧 `config`，取词侧 `getter`，挂载点见 `GroupStore` 的 `DisplayStore` 与 `GetterStore`。清除配置按组各一个入口，备份导出按组嵌套、恢复时按组回填（无组层的旧扁平文件按取词侧处理）。换 `applicationId` 等于清空全部已存配置与作用域并需重新登记。
 
 ## 判据
 
-激活状态取「框架服务已绑定」且「`getScope()` 含 `com.android.systemui`」两条同时成立，见 `LyricApplication` 的 `ready` 与 `scoped`；任一不成立时总开关被写为 `false`。首页的激活位未收到过回调时按未激活显示。设置写入与注入侧读取同一 group，注入侧只读，配置生效依赖框架的变更推送，不再有自造的刷新广播。
+激活状态取「框架服务已绑定」且「`getScope()` 含 `com.android.systemui`」两条同时成立，见 `LyricApplication` 的 `ready` 与 `scoped`；任一不成立时总开关被写为 `false`。首页的激活位未收到过回调时按未激活显示。设置写入与注入侧读取同一 group，注入侧只读，两个 group 在同一时机各挂载一次；配置生效依赖框架的变更推送，不再有自造的刷新广播。
 
 配置的唯一存储是框架侧的 `RemotePreferences`，它只在模块被注入的进程里可达。框架只为「自身在作用域内」的包注入模块，因此 `META-INF/xposed/scope.list` 第二条是本包名自己：作用域里取消勾选该项时，设置进程不被注入、框架服务永不到达，所有读取得到默认值、所有写入被丢弃，此时 `ConfigStore.put` 记一行 `配置写入被丢弃`。装机说明须写明作用域至少勾 `com.android.systemui` 与本模块自身两项。
 

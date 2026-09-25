@@ -19,7 +19,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.graphics.drawable.IconCompat
 import de.yisrime.lyricsuite.R
-import de.yisrime.lyricsuite.config.ConfigStore
+import de.yisrime.lyricsuite.config.DisplayStore
 import cn.xiaowine.xkt.LogTool.log
 import java.io.DataOutputStream
 
@@ -29,7 +29,7 @@ object Tools {
     private const val BRIDGE_TAG = "LSPosed-Bridge"
 
     val xpActivation: Boolean
-        get() = ConfigStore.isAttached && LyricApplication.scoped
+        get() = DisplayStore.isAttached && LyricApplication.scoped
 
     val getPhoneName by lazy {
         val marketName = getSystemProperties("ro.product.marketname")

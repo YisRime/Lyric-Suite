@@ -20,7 +20,6 @@ import de.yisrime.lrcget.tool.Tools.getPhoneName
 import de.yisrime.lrcget.tool.Tools.restartTheScopedSoftware
 import de.yisrime.lrcget.ui.viewmodel.HomeViewModel
 import de.yisrime.lrcget.ui.viewmodel.ShareViewModel
-import de.yisrime.lyricsuite.config.ConfigStore
 import cn.xiaowine.xkt.AcTool.restartApp
 import cn.xiaowine.xkt.Tool.isNotNull
 import cn.xiaowine.xkt.Tool.toUpperFirstCaseAndLowerOthers
@@ -33,7 +32,7 @@ import java.util.Locale
 class HomeFragment : Fragment() {
     private var recoveryPickerLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) {
         it.isNotNull { uri ->
-            ConfigStore.source.isNotNull { sp -> BackupTools.handleReadDocument(requireActivity(), sp, uri) }
+            BackupTools.handleReadDocument(requireActivity(), uri)
             MaterialAlertDialogBuilder(requireContext()).apply {
                 setTitle(R.string.recovery)
                 setCancelable(false)
@@ -47,7 +46,7 @@ class HomeFragment : Fragment() {
     }
     private var backupPickerLauncher = registerForActivityResult(ActivityResultContracts.CreateDocument("application/json")) {
         it.isNotNull { uri ->
-            ConfigStore.source.isNotNull { sp -> BackupTools.handleCreateDocument(requireActivity(), sp, uri) }
+            BackupTools.handleCreateDocument(requireActivity(), uri)
         }
     }
 

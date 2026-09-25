@@ -226,7 +226,8 @@
     <string name="xposed_tips">If the lyrics cannot be displayed, please try to stop the music software and restart the SystemUI</string>
     <string name="broadcast_receive_timeout">Broadcast Receive Timeout</string>
     <string name="not_found_hook">Hook not found</string>
-    <string name="clear_config">Clear Config</string>
-    <string name="clear_config_tips">This clears every setting on both the lyric display side and the lyric fetching side. Are you sure you want to reset?</string>
+    <string name="clear_config_tips">This side of the configuration returns to its defaults and the app restarts. Are you sure you want to reset?</string>
     <string name="unit_pixel">Pixel</string>
+    <string name="clear_display_config">Clear display settings</string>
+    <string name="clear_getter_config">Clear fetching settings</string>
 </resources>

@@ -31,7 +31,8 @@ import android.util.Log
 import com.google.android.material.color.DynamicColors
 import cn.xiaowine.xkt.AcTool
 import cn.xiaowine.xkt.LogTool
-import de.yisrime.lyricsuite.config.ConfigStore
+import de.yisrime.lyricsuite.config.DisplayStore
+import de.yisrime.lyricsuite.config.GetterStore
 import de.yisrime.lyricsuite.ui.HookProbe
 import de.yisrime.lrcget.tool.ActivityTools
 import io.github.libxposed.service.XposedService
@@ -50,16 +51,18 @@ class LyricApplication : Application() {
         XposedServiceHelper.registerListener(object : XposedServiceHelper.OnServiceListener {
             override fun onServiceBind(service: XposedService) {
                 runCatching {
-                    ConfigStore.attach(service.getRemotePreferences(ConfigStore.GROUP), true)
+                    DisplayStore.attach(service.getRemotePreferences(DisplayStore.group), true)
+                    GetterStore.attach(service.getRemotePreferences(GetterStore.group), true)
                 }.onFailure { Log.e(TAG, "框架服务绑定失败", it) }
-                ready = ConfigStore.source != null
+                ready = DisplayStore.isAttached && GetterStore.isAttached
                 framework = service
                 refreshScope()
                 activatedChange?.invoke(ready && scoped)
             }
 
             override fun onServiceDied(service: XposedService) {
-                ConfigStore.detach()
+                DisplayStore.detach()
+                GetterStore.detach()
                 framework = null
                 ready = false
                 scoped = false

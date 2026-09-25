@@ -148,7 +148,8 @@
     <string name="xposed_tips">如無法顯示歌詞請重新啟動系統界面及播放器</string>
     <string name="broadcast_receive_timeout">廣播接收超時</string>
     <string name="not_found_hook">未找到錨點</string>
-    <string name="clear_config">重設配置</string>
-    <string name="clear_config_tips">將清除歌詞顯示與取詞兩側的全部配置，確定要重設嗎？</string>
+    <string name="clear_config_tips">該側配置將恢復默認值並重啟應用，確定要重設嗎？</string>
     <string name="unit_pixel">像素</string>
+    <string name="clear_display_config">清除顯示側配置</string>
+    <string name="clear_getter_config">清除取詞側配置</string>
 </resources>

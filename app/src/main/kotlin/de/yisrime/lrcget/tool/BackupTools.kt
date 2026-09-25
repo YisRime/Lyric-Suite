@@ -4,67 +4,83 @@ import android.app.Activity
 import android.content.SharedPreferences
 import android.net.Uri
 import cn.xiaowine.xkt.AcTool.showToast
-import cn.xiaowine.xkt.Tool.isNotNull
+import de.yisrime.lyricsuite.config.DisplayStore
+import de.yisrime.lyricsuite.config.GetterStore
+import de.yisrime.lyricsuite.config.GroupStore
 import org.json.JSONObject
-import java.io.BufferedReader
 import java.io.BufferedWriter
-import java.io.InputStreamReader
 import java.io.OutputStreamWriter
 
 object BackupTools {
-    fun handleReadDocument(activity: Activity, sp: SharedPreferences, data: Uri) {
-        val edit = sp.edit()
-        try {
-            activity.contentResolver.openInputStream(data)?.let { loadFile ->
-                BufferedReader(InputStreamReader(loadFile)).apply {
-                    val sb = StringBuffer()
-                    var line = readLine()
-                    while (line.isNotNull()) {
-                        sb.append(line)
-                        line = readLine()
-                    }
-                    val read = sb.toString()
-                    JSONObject(read).apply {
-                        val key = keys()
-                        while (key.hasNext()) {
-                            val keys = key.next()
-                            when (val value = get(keys)) {
-                                is String -> {
-                                    if (value.startsWith("Float:")) {
-                                        edit.putFloat(keys, value.substring("Float:".length).toFloat() / 1000)
-                                    } else {
-                                        edit.putString(keys, value)
-                                    }
-                                }
+    private val stores = listOf(DisplayStore, GetterStore)
 
-                                is Boolean -> edit.putBoolean(keys, value)
-                                is Int -> edit.putInt(keys, value)
-                                is Long -> edit.putLong(keys, value)
-                            }
-                        }
-                    }
-                    close()
-                }
+    fun handleReadDocument(activity: Activity, data: Uri) {
+        try {
+            val text = activity.contentResolver.openInputStream(data)?.bufferedReader()?.use { it.readText() }
+            if (text.isNullOrEmpty()) {
+                "load fail".showToast()
+                return
             }
-            edit.commit()
+            if (DisplayStore.source == null && GetterStore.source == null) {
+                "load fail\n存储未挂载".showToast()
+                return
+            }
+            val root = JSONObject(text)
+            var restored = 0
+            stores.forEach { store ->
+                val group = root.optJSONObject(store.group) ?: return@forEach
+                store.source?.let { restoreInto(it, group) }
+                restored += 1
+            }
+            if (restored == 0) {
+                GetterStore.source?.let { restoreInto(it, root) }
+            }
             "load ok".showToast()
         } catch (e: Exception) {
             "load fail\n${e.message}".showToast()
         }
     }
 
-    fun handleCreateDocument(activity: Activity, sp: SharedPreferences, data: Uri) {
+    private fun restoreInto(sp: SharedPreferences, group: JSONObject) {
+        val edit = sp.edit()
+        val key = group.keys()
+        while (key.hasNext()) {
+            val name = key.next()
+            when (val value = group.get(name)) {
+                is String -> {
+                    if (value.startsWith("Float:")) {
+                        edit.putFloat(name, value.substring("Float:".length).toFloat() / 1000)
+                    } else {
+                        edit.putString(name, value)
+                    }
+                }
+
+                is Boolean -> edit.putBoolean(name, value)
+                is Int -> edit.putInt(name, value)
+                is Long -> edit.putLong(name, value)
+                is Double -> edit.putFloat(name, value.toFloat())
+            }
+        }
+        edit.commit()
+    }
+
+    fun handleCreateDocument(activity: Activity, data: Uri) {
         try {
+            val root = JSONObject()
+            stores.forEach { store ->
+                val body = JSONObject()
+                store.source?.all?.forEach { (name, value) ->
+                    if (value is Float) {
+                        body.put(name, "Float:" + (value * 1000).toInt().toString())
+                    } else {
+                        body.put(name, value)
+                    }
+                }
+                root.put(store.group, body)
+            }
             activity.contentResolver.openOutputStream(data)?.let { saveFile ->
                 BufferedWriter(OutputStreamWriter(saveFile)).apply {
-                    write(JSONObject().also {
-                        for (entry: Map.Entry<String, *> in sp.all) {
-                            when (entry.value) {
-                                Float -> it.put(entry.key, "Float:" + (entry.value as Float * 1000).toInt().toString())
-                                else -> it.put(entry.key, entry.value)
-                            }
-                        }
-                    }.toString())
+                    write(root.toString())
                     close()
                 }
             }

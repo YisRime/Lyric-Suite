@@ -14,7 +14,8 @@ import de.yisrime.lyricsuite.databinding.FragmentSettingsBinding
 import de.yisrime.lyricsuite.ui.ConfigScreen
 import de.yisrime.lrcget.tool.ConfigTools.config
 import de.yisrime.lrcbar.tools.ActivityTools
-import de.yisrime.lyricsuite.config.ConfigStore
+import de.yisrime.lyricsuite.config.DisplayStore
+import de.yisrime.lyricsuite.config.GetterStore
 import de.yisrime.lrcget.ui.activity.DialogTransparentActivity
 import de.yisrime.lrcget.ui.activity.LogActivity
 import de.yisrime.lrcget.ui.activity.TestActivity
@@ -48,19 +49,29 @@ class SettingsFragment : Fragment() {
             action(R.string.lyric_test) {
                 startActivity(Intent(context, TestActivity::class.java))
             }
-            action(R.string.clear_config) {
-                confirm(R.string.clear_config, R.string.clear_config_tips, R.string.ok) {
-                    ConfigStore.clearAll()
-                    Thread {
-                        Thread.sleep(500)
-                        ActivityTools.restartApp()
-                    }.start()
+            action(R.string.clear_display_config) {
+                confirm(R.string.clear_display_config, R.string.clear_config_tips, R.string.ok) {
+                    DisplayStore.clearAll()
+                    restartAfterClear()
+                }
+            }
+            action(R.string.clear_getter_config) {
+                confirm(R.string.clear_getter_config, R.string.clear_config_tips, R.string.ok) {
+                    GetterStore.clearAll()
+                    restartAfterClear()
                 }
             }
             action(R.string.log_page) {
                 startActivity(Intent(context, LogActivity::class.java))
             }
         }
+    }
+
+    private fun restartAfterClear() {
+        Thread {
+            Thread.sleep(500)
+            ActivityTools.restartApp()
+        }.start()
     }
 
     private fun showLyricSettingsDialog(context: Context) {

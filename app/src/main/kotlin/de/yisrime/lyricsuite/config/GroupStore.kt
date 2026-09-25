@@ -6,8 +6,11 @@ import de.yisrime.lrcbar.tools.LogTools
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
-object ConfigStore {
-    const val GROUP = "config"
+object DisplayStore : GroupStore("config")
+
+object GetterStore : GroupStore("getter")
+
+open class GroupStore(val group: String) {
 
     @Volatile
     private var prefs: SharedPreferences? = null
@@ -20,7 +23,6 @@ object ConfigStore {
 
     val isAttached: Boolean
         get() = prefs != null
-
 
     fun attach(source: SharedPreferences, writable: Boolean) {
         prefs = source
@@ -60,6 +62,11 @@ object ConfigStore {
         editor()?.clear()?.commit()
     }
 
+    fun <T> lazy(default: T): ReadWriteProperty<Any, T> = StoreProperty(null, default, this)
+
+    fun <T> lazy(key: String, default: T): ReadWriteProperty<Any, T> =
+        StoreProperty(key, default, this)
+
     private fun editor(): SharedPreferences.Editor? {
         val sp = prefs ?: return null
         if (!writable) return null
@@ -77,17 +84,22 @@ object ConfigStore {
     }
 }
 
-private class ConfigStoreProperty<T>(private val key: String?, private val default: T) :
-    ReadWriteProperty<Any, T> {
+private class StoreProperty<T>(
+    private val key: String?,
+    private val default: T,
+    private val store: GroupStore
+) : ReadWriteProperty<Any, T> {
     override fun getValue(thisRef: Any, property: KProperty<*>): T =
-        ConfigStore.opt(key ?: property.name, default)
+        store.opt(key ?: property.name, default)
 
     override fun setValue(thisRef: Any, property: KProperty<*>, value: T) {
-        ConfigStore.put(key ?: property.name, value)
+        store.put(key ?: property.name, value)
     }
 }
 
-fun <T> serialLazy(default: T): ReadWriteProperty<Any, T> = ConfigStoreProperty(null, default)
+fun <T> serialLazy(default: T): ReadWriteProperty<Any, T> = DisplayStore.lazy(default)
 
 fun <T> serialLazy(key: String, default: T): ReadWriteProperty<Any, T> =
-    ConfigStoreProperty(key, default)
+    DisplayStore.lazy(key, default)
+
+fun <T> getterLazy(default: T): ReadWriteProperty<Any, T> = GetterStore.lazy(default)

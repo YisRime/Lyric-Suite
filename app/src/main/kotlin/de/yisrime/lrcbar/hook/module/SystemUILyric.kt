@@ -66,7 +66,7 @@ import cn.lyric.getter.api.listener.LyricReceiver
 import cn.lyric.getter.api.tools.Tools.base64ToBitmap
 import cn.lyric.getter.api.tools.Tools.registerLyricListener
 import de.yisrime.lyricsuite.R
-import de.yisrime.lyricsuite.config.ConfigStore
+import de.yisrime.lyricsuite.config.DisplayStore
 import de.yisrime.lrcbar.config.XposedOwnSP.config
 import de.yisrime.lyricsuite.hook.BaseHook
 import de.yisrime.lrcbar.hook.module.xiaomi.FocusNotifyController
@@ -663,7 +663,7 @@ class SystemUILyric : BaseHook() {
             })
         )
 
-        ConfigStore.source?.registerOnSharedPreferenceChangeListener { _, _ ->
+        DisplayStore.source?.registerOnSharedPreferenceChangeListener { _, _ ->
             handler.removeCallbacks(configReload)
             handler.postDelayed(configReload, 50L)
         }

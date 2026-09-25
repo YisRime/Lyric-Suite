@@ -23,7 +23,7 @@
 
 package de.yisrime.lrcbar.config
 
-import de.yisrime.lyricsuite.config.ConfigStore
+import de.yisrime.lyricsuite.config.DisplayStore
 import de.yisrime.lyricsuite.config.serialLazy
 
 class Config {
@@ -41,22 +41,22 @@ class Config {
 
     var lyricSize: Int by serialLazy(0)
     var lyricStartMargins: Int
-        get() = ConfigStore.opt("lyricStart", if (mHyperOSTexture) 20 else 8)
+        get() = DisplayStore.opt("lyricStart", if (mHyperOSTexture) 20 else 8)
         set(value) {
-            ConfigStore.put("lyricStart", value)
+            DisplayStore.put("lyricStart", value)
         }
     var lyricTopMargins: Int by serialLazy("lyricTop", 0)
     var lyricEndMargins: Int
-        get() = ConfigStore.opt("lyricEnd", if (mHyperOSTexture) 20 else 10)
+        get() = DisplayStore.opt("lyricEnd", if (mHyperOSTexture) 20 else 10)
         set(value) {
-            ConfigStore.put("lyricEnd", value)
+            DisplayStore.put("lyricEnd", value)
         }
     var lyricBottomMargins: Int by serialLazy("lyricBottom", 0)
     var iconTopMargins: Int by serialLazy("iconTop", 0)
     var iconStartMargins: Int
-        get() = ConfigStore.opt("iconStart", if (mHyperOSTexture) 20 else 0)
+        get() = DisplayStore.opt("iconStart", if (mHyperOSTexture) 20 else 0)
         set(value) {
-            ConfigStore.put("iconStart", value)
+            DisplayStore.put("iconStart", value)
         }
     var iconBottomMargins: Int by serialLazy("iconBottom", 0)
     var lyricWidth: Int by serialLazy(0)

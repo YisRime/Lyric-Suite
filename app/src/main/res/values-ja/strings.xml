@@ -202,7 +202,8 @@
     <string name="xposed_tips">歌詞を表示できないときは、音楽アプリを停止してシステム UI を再起動してください</string>
     <string name="broadcast_receive_timeout">ブロードキャスト受信のタイムアウト</string>
     <string name="not_found_hook">フックがありません</string>
-    <string name="clear_config">設定を消去</string>
-    <string name="clear_config_tips">歌詞表示側と歌詞取得側の設定をすべて消去します。重置してもよろしいですか？</string>
+    <string name="clear_config_tips">この側の設定は既定値に戻り、アプリが再起動します。よろしいですか？</string>
     <string name="unit_pixel">ピクセル</string>
+    <string name="clear_display_config">表示側の設定を消去</string>
+    <string name="clear_getter_config">取得側の設定を消去</string>
 </resources>

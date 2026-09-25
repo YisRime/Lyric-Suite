@@ -9,7 +9,8 @@ import io.github.libxposed.api.XposedModuleInterface.PackageLoadedParam
 import cn.xiaowine.xkt.LogTool
 import de.yisrime.lyricsuite.BuildConfig
 import de.yisrime.lyricsuite.R
-import de.yisrime.lyricsuite.config.ConfigStore
+import de.yisrime.lyricsuite.config.DisplayStore
+import de.yisrime.lyricsuite.config.GetterStore
 import de.yisrime.lrcbar.config.XposedOwnSP.config
 import de.yisrime.lrcbar.hook.module.SystemUILyric
 import de.yisrime.lrcbar.hook.module.SystemUITest
@@ -125,7 +126,8 @@ class MainHook : XposedModule() {
 
     private fun attachPreferences() {
         runCatching {
-            ConfigStore.attach(getRemotePreferences(ConfigStore.GROUP), false)
+            DisplayStore.attach(getRemotePreferences(DisplayStore.group), false)
+            GetterStore.attach(getRemotePreferences(GetterStore.group), false)
         }.onFailure { it.log() }
     }
 
