@@ -501,12 +501,7 @@ class SystemUILyric : BaseHook() {
     private fun lyricInit() {
         goMainThread(1) {
             "LyricView init".log()
-            runCatching { (lyricLayout.parent as ViewGroup).removeView(lyricLayout) }
-            if (config.viewLocation == 0) {
-                targetView.addView(lyricLayout, 0)
-            } else {
-                targetView.addView(lyricLayout)
-            }
+            attachLyricView()
             if (isHyperOS && config.mHyperOSTexture) {
                 val blurRadio = config.mHyperOSTextureRadio
                 val cornerRadius = cornerRadius(config.mHyperOSTextureCorner.toFloat())
@@ -519,6 +514,15 @@ class SystemUILyric : BaseHook() {
         }
 
         updateConfig(1)
+    }
+
+    private fun attachLyricView() {
+        runCatching { (lyricLayout.parent as? ViewGroup)?.removeView(lyricLayout) }
+        if (config.viewLocation == 0) {
+            targetView.addView(lyricLayout, 0)
+        } else {
+            targetView.addView(lyricLayout)
+        }
     }
 
     private var statusBarShowing: Boolean = true
@@ -776,6 +780,12 @@ class SystemUILyric : BaseHook() {
     private fun updateConfig(delay: Long = 0L) {
         "Updating Config".log()
         goMainThread(delay) {
+            if (isReady) {
+                val desired = if (config.viewLocation == 0) 0 else targetView.childCount - 1
+                if (lyricLayout.parent !== targetView ||
+                    targetView.indexOfChild(lyricLayout) != desired
+                ) attachLyricView()
+            }
             lyricView.apply {
                 setTextSize(
                     TypedValue.COMPLEX_UNIT_SHIFT,
