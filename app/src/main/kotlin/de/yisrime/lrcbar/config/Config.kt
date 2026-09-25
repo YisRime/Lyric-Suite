@@ -27,10 +27,6 @@ import de.yisrime.lyricsuite.config.ConfigStore
 import de.yisrime.lyricsuite.config.serialLazy
 
 class Config {
-    fun clear() {
-        ConfigStore.clearAll()
-    }
-
     var masterSwitch: Boolean by serialLazy(false)
     var hideTime: Boolean by serialLazy(false)
     var hideNotificationIcon: Boolean by serialLazy(false)

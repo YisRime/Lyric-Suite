@@ -111,7 +111,6 @@ class SystemUITest : BaseHook() {
                                     view.id,
                                     parentView::class.java.name,
                                     parentView.id,
-                                    false,
                                     0,
                                     view.textSize,
                                     context.resources.getResourceEntryName(view.id)

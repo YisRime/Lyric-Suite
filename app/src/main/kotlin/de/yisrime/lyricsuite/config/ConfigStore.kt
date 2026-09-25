@@ -41,7 +41,6 @@ object ConfigStore {
             is Long -> sp.getLong(key, default) as T
             is Boolean -> sp.getBoolean(key, default) as T
             is Float -> sp.getFloat(key, default) as T
-            is Double -> sp.getFloat(key, default.toFloat())?.toDouble() as T
             else -> default
         }
     }

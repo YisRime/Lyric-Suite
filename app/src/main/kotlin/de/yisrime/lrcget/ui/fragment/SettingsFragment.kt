@@ -14,7 +14,7 @@ import de.yisrime.lyricsuite.databinding.FragmentSettingsBinding
 import de.yisrime.lyricsuite.ui.ConfigScreen
 import de.yisrime.lrcget.tool.ConfigTools.config
 import de.yisrime.lrcbar.tools.ActivityTools
-import de.yisrime.lrcbar.config.XposedOwnSP.config as barConfig
+import de.yisrime.lyricsuite.config.ConfigStore
 import de.yisrime.lrcget.ui.activity.DialogTransparentActivity
 import de.yisrime.lrcget.ui.activity.LogActivity
 import de.yisrime.lrcget.ui.activity.TestActivity
@@ -50,7 +50,7 @@ class SettingsFragment : Fragment() {
             }
             action(R.string.clear_config) {
                 confirm(R.string.clear_config, R.string.clear_config_tips, R.string.ok) {
-                    barConfig.clear()
+                    ConfigStore.clearAll()
                     Thread {
                         Thread.sleep(500)
                         ActivityTools.restartApp()
