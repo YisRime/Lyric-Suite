@@ -116,25 +116,8 @@ class SystemUITest : BaseHook() {
                                     view.textSize,
                                     context.resources.getResourceEntryName(view.id)
                                 )
-                                var index = 0
-                                val exists = dataHashMap.values.any { data ->
-                                    if (data.textViewClassName == className
-                                        && data.textViewId == view.id
-                                        && data.parentViewClassName == parentView::class.java.name
-                                        && data.parentViewId == parentView.id
-                                        && data.textSize == view.textSize
-                                        && data.idName == context.resources.getResourceEntryName(
-                                            view.id
-                                        )
-                                    ) {
-                                        index += 1
-                                        true
-                                    } else {
-                                        false
-                                    }
-                                }
-                                if (!exists) {
-                                    newData.index = index
+                                if (!dataHashMap.containsKey(view)) {
+                                    newData.index = parentView.indexOfChild(view)
                                     dataHashMap[view] = newData
                                     moduleRes.getString(R.string.first_filter)
                                         .format(newData, dataHashMap.size).log()

@@ -68,6 +68,11 @@ class MainHook : XposedModule() {
 
     private fun hookSystemUi() {
         initHooks(SystemUi)
+        if (config.testMode) {
+            moduleRes.getString(R.string.hook_page).log()
+            initHooks(SystemUITest())
+            return
+        }
         if (!config.masterSwitch) {
             moduleRes.getString(R.string.master_off).log()
             return
@@ -75,16 +80,11 @@ class MainHook : XposedModule() {
         "${BuildConfig.APPLICATION_ID} - ${BuildConfig.VERSION_NAME}(${BuildConfig.VERSION_CODE}[${
             Locale.getDefault().language
         }] *${BuildConfig.BUILD_TYPE})".log()
-        if (config.testMode) {
-            moduleRes.getString(R.string.hook_page).log()
-            initHooks(SystemUITest())
-        } else {
-            moduleRes.getString(R.string.lyric_mode).log()
-            try {
-                initHooks(SystemUILyric())
-            } catch (t: Throwable) {
-                t.log()
-            }
+        moduleRes.getString(R.string.lyric_mode).log()
+        try {
+            initHooks(SystemUILyric())
+        } catch (t: Throwable) {
+            t.log()
         }
     }
 

@@ -19,7 +19,7 @@ class HookPickerFragment : ConfigFragment() {
         header(R.string.choose_page_tips)
         HookProbe.points.forEach { data ->
             entry(
-                title = "${data.textViewClassName} ${data.textViewId}",
+                title = "${data.textViewClassName} ${data.textViewId} [${data.index}]",
                 summary = "idName: ${data.idName}; textSize: ${data.textSize}f\n" +
                         "${data.parentViewClassName} ${data.parentViewId}"
             ) {

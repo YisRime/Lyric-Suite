@@ -53,7 +53,6 @@ import kotlin.properties.ReadWriteProperty
 @SuppressLint("StaticFieldLeak")
 object Tools {
 
-    private var index: Int = 0
 
     val buildTime: String =
         SimpleDateFormat("yyyy/M/d H:m:s", Locale.CHINA).format(BuildConfig.BUILD_TIME)
@@ -134,10 +133,8 @@ object Tools {
                             val parentView = (this.parent as LinearLayout)
                             if (parentView::class.java.name == parentViewClassName) {
                                 if (parentViewId == parentView.id) {
-                                    if (index == XposedOwnSP.config.index) {
+                                    if (parentView.indexOfChild(this) == XposedOwnSP.config.index) {
                                         return true
-                                    } else {
-                                        index += 1
                                     }
                                 }
                             }
