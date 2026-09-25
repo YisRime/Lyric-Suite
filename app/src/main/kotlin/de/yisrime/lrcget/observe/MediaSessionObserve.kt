@@ -10,7 +10,6 @@ import android.service.notification.NotificationListenerService
 import cn.xiaowine.xkt.LogTool.log
 
 open class MediaSessionObserve(context: Context) {
-    private var mediaSessionManager: MediaSessionManager? = null
     private val activeControllers = mutableMapOf<MediaController, MediaControllerCallback>()
 
     // 监听活跃会话的变化
@@ -31,32 +30,19 @@ open class MediaSessionObserve(context: Context) {
     }
 
     init {
-        mediaSessionManager = context.getSystemService(Context.MEDIA_SESSION_SERVICE) as? MediaSessionManager
-        mediaSessionManager?.getActiveSessions(ComponentName(context, NotificationListenerService::class.java))?.forEach {
-            registerMediaControllerCallback(it)
-        }
-        mediaSessionManager?.addOnActiveSessionsChangedListener(
+        val manager = context.getSystemService(Context.MEDIA_SESSION_SERVICE) as? MediaSessionManager
+        manager?.getActiveSessions(ComponentName(context, NotificationListenerService::class.java))
+            ?.forEach { registerMediaControllerCallback(it) }
+        manager?.addOnActiveSessionsChangedListener(
             activeSessionsListener,
             ComponentName(context, NotificationListenerService::class.java)
         )
     }
 
     private fun registerMediaControllerCallback(controller: MediaController) {
-        // handleMediaController(controller)
-
         val callback = MediaControllerCallback(controller)
         activeControllers[controller] = callback
         controller.registerCallback(callback)
-    }
-
-    private fun handleMediaController(controller: MediaController) {
-        controller.metadata?.let { metadata ->
-            onMediaDataChanged(controller.packageName, metadata)
-        }
-
-        controller.playbackState?.let { state ->
-            onStateChanged(controller.packageName, state.state)
-        }
     }
 
     // MediaController 回调
@@ -86,11 +72,6 @@ open class MediaSessionObserve(context: Context) {
     //         onMediaDataChanged(packageName, title)
     //     }
     // }
-
-    fun cleanup() {
-        mediaSessionManager?.removeOnActiveSessionsChangedListener(activeSessionsListener)
-        activeControllers.forEach { it.key.unregisterCallback(it.value) }
-    }
 
     open fun onMediaDataChanged(packageName: String, metadata: MediaMetadata) {}
 

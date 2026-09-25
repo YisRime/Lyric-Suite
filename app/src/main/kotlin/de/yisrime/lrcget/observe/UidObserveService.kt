@@ -25,7 +25,10 @@ class UidObserveService(private val onUidGoneCallback: (String) -> Unit) {
     }
 
     fun registerForPackage(packageName: String) {
-        if (appUid != 0 && appPackageName != "") return
+        if (appPackageName == packageName && appUid != 0) return
+        if (appUid != 0) {
+            runCatching { ActivityManagerApis.unregisterUidObserver(uidObserver) }
+        }
         appPackageName = packageName
         getIPackageManager().onSuccess { pm ->
             appUid = getPackageUidCompat(pm, packageName, 0, 0)
