@@ -32,11 +32,6 @@ class AppRulesAdapter : RecyclerView.Adapter<BaseViewHolder<*>>() {
         dataLists.add(position, value)
     }
 
-    fun removeData(position: Int) {
-        notifyItemRemoved(position)
-        dataLists.removeAt(position)
-    }
-
     fun removeAllData() {
         notifyItemRangeRemoved(0, dataLists.size)
         dataLists.clear()

@@ -28,7 +28,6 @@ import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
-import androidx.core.graphics.toColorInt
 import de.yisrime.lrcbar.LyricApplication
 import de.yisrime.lyricsuite.R
 import de.yisrime.lrcbar.data.Data
@@ -50,38 +49,6 @@ object ActivityTools {
         } catch (e: RuntimeException) {
             e.printStackTrace()
         }
-    }
-
-    fun colorCheck(value: String, unit: (String) -> Unit, default: String = "") {
-        if (value.isEmpty()) {
-            unit(default)
-        } else {
-            try {
-                value.toColorInt()
-            } catch (_: Exception) {
-                showToastOnLooper(LyricApplication.appContext.getString(R.string.color_error))
-                return
-            }
-        }
-        unit(value)
-    }
-
-    fun colorSCheck(value: String, unit: (String) -> Unit, default: String = "") {
-        if (value.isEmpty()) {
-            unit(default)
-        } else {
-            try {
-                value.split(",").forEach {
-                    if (it.isNotEmpty()) {
-                        it.trim().toColorInt()
-                    }
-                }
-            } catch (_: Exception) {
-                showToastOnLooper(LyricApplication.appContext.getString(R.string.color_error))
-                return
-            }
-        }
-        unit(value)
     }
 
     fun restartApp() {
