@@ -13,16 +13,16 @@ import java.io.OutputStreamWriter
 object BackupTools {
     private val stores = listOf(DisplayStore, GetterStore)
 
-    fun handleReadDocument(activity: Activity, data: Uri) {
-        try {
+    fun handleReadDocument(activity: Activity, data: Uri): Boolean {
+        return try {
             val text = activity.contentResolver.openInputStream(data)?.bufferedReader()?.use { it.readText() }
             if (text.isNullOrEmpty()) {
                 "load fail".showToast()
-                return
+                return false
             }
             if (DisplayStore.source == null && GetterStore.source == null) {
                 "load fail\n存储未挂载".showToast()
-                return
+                return false
             }
             val root = JSONObject(text)
             var restored = 0
@@ -35,8 +35,10 @@ object BackupTools {
                 GetterStore.source?.let { restoreInto(it, root) }
             }
             "load ok".showToast()
+            true
         } catch (e: Exception) {
             "load fail\n${e.message}".showToast()
+            false
         }
     }
 

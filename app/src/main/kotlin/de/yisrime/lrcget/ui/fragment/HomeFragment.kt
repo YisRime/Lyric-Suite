@@ -32,15 +32,16 @@ import java.util.Locale
 class HomeFragment : Fragment() {
     private var recoveryPickerLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) {
         it.isNotNull { uri ->
-            BackupTools.handleReadDocument(requireActivity(), uri)
-            MaterialAlertDialogBuilder(requireContext()).apply {
-                setTitle(R.string.recovery)
-                setCancelable(false)
-                setMessage(R.string.recovery_summary)
-                setPositiveButton(R.string.restart) { _, _ ->
-                    restartApp()
+            if (BackupTools.handleReadDocument(requireActivity(), uri)) {
+                MaterialAlertDialogBuilder(requireContext()).apply {
+                    setTitle(R.string.recovery)
+                    setCancelable(false)
+                    setMessage(R.string.recovery_summary)
+                    setPositiveButton(R.string.restart) { _, _ ->
+                        restartApp()
+                    }
+                    show()
                 }
-                show()
             }
         }
     }
