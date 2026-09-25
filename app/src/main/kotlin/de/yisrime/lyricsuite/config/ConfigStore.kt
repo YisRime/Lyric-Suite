@@ -78,13 +78,17 @@ object ConfigStore {
     }
 }
 
-private class ConfigStoreProperty<T>(private val default: T) : ReadWriteProperty<Any, T> {
+private class ConfigStoreProperty<T>(private val key: String?, private val default: T) :
+    ReadWriteProperty<Any, T> {
     override fun getValue(thisRef: Any, property: KProperty<*>): T =
-        ConfigStore.opt(property.name, default)
+        ConfigStore.opt(key ?: property.name, default)
 
     override fun setValue(thisRef: Any, property: KProperty<*>, value: T) {
-        ConfigStore.put(property.name, value)
+        ConfigStore.put(key ?: property.name, value)
     }
 }
 
-fun <T> serialLazy(default: T): ReadWriteProperty<Any, T> = ConfigStoreProperty(default)
+fun <T> serialLazy(default: T): ReadWriteProperty<Any, T> = ConfigStoreProperty(null, default)
+
+fun <T> serialLazy(key: String, default: T): ReadWriteProperty<Any, T> =
+    ConfigStoreProperty(key, default)

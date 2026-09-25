@@ -23,458 +23,91 @@
 
 package de.yisrime.lrcbar.config
 
-import de.yisrime.lrcbar.tools.ConfigTools
+import de.yisrime.lyricsuite.config.ConfigStore
+import de.yisrime.lyricsuite.config.serialLazy
 
 class Config {
-    private val config = ConfigTools()
-
     fun clear() {
-        config.clearConfig()
+        ConfigStore.clearAll()
     }
 
-    var masterSwitch: Boolean
-        get() {
-            return config.opt("masterSwitch", false)
-        }
-        set(value) {
-            config.put("masterSwitch", value)
-        }
-    var hideTime: Boolean
-        get() {
-            return config.opt("hideTime", false)
-        }
-        set(value) {
-            config.put("hideTime", value)
-        }
-    var hideNotificationIcon: Boolean
-        get() {
-            return config.opt("hideNotificationIcon", false)
-        }
-        set(value) {
-            config.put("hideNotificationIcon", value)
-        }
-    var testMode: Boolean
-        get() {
-            return config.opt("testMode", false)
-        }
-        set(value) {
-            config.put("testMode", value)
-        }
-    var relaxConditions: Boolean
-        get() {
-            return config.opt("relaxConditions", false)
-        }
-        set(value) {
-            config.put("relaxConditions", value)
-        }
-    var textViewClassName: String
-        get() {
-            return config.opt("textViewClassName", "")
-        }
-        set(value) {
-            config.put("textViewClassName", value)
-        }
-    var textViewId: Int
-        get() {
-            return config.opt("textViewId", 0)
-        }
-        set(value) {
-            config.put("textViewId", value)
-        }
-    var parentViewClassName: String
-        get() {
-            return config.opt("parentViewClassName", "")
-        }
-        set(value) {
-            config.put("parentViewClassName", value)
-        }
-    var parentViewId: Int
-        get() {
-            return config.opt("parentViewId", 0)
-        }
-        set(value) {
-            config.put("parentViewId", value)
-        }
-    var index: Int
-        get() {
-            return config.opt("index", 0)
-        }
-        set(value) {
-            config.put("index", value)
-        }
-    var textSize: Float
-        get() {
-            return config.opt("textSize", 0f)
-        }
-        set(value) {
-            config.put("textSize", value)
-        }
+    var masterSwitch: Boolean by serialLazy(false)
+    var hideTime: Boolean by serialLazy(false)
+    var hideNotificationIcon: Boolean by serialLazy(false)
+    var testMode: Boolean by serialLazy(false)
+    var relaxConditions: Boolean by serialLazy(false)
+    var textViewClassName: String by serialLazy("")
+    var textViewId: Int by serialLazy(0)
+    var parentViewClassName: String by serialLazy("")
+    var parentViewId: Int by serialLazy(0)
+    var index: Int by serialLazy(0)
+    var textSize: Float by serialLazy(0f)
 
-    var lyricSize: Int
-        get() {
-            return config.opt("lyricSize", 0)
-        }
-        set(value) {
-            config.put("lyricSize", value)
-        }
+    var lyricSize: Int by serialLazy(0)
     var lyricStartMargins: Int
-        get() {
-            return config.opt("lyricStart", if (mHyperOSTexture) 20 else 8)
-        }
+        get() = ConfigStore.opt("lyricStart", if (mHyperOSTexture) 20 else 8)
         set(value) {
-            config.put("lyricStart", value)
+            ConfigStore.put("lyricStart", value)
         }
-    var lyricTopMargins: Int
-        get() {
-            return config.opt("lyricTop", 0)
-        }
-        set(value) {
-            config.put("lyricTop", value)
-        }
+    var lyricTopMargins: Int by serialLazy("lyricTop", 0)
     var lyricEndMargins: Int
-        get() {
-            return config.opt("lyricEnd", if (mHyperOSTexture) 20 else 10)
-        }
+        get() = ConfigStore.opt("lyricEnd", if (mHyperOSTexture) 20 else 10)
         set(value) {
-            config.put("lyricEnd", value)
+            ConfigStore.put("lyricEnd", value)
         }
-    var lyricBottomMargins: Int
-        get() {
-            return config.opt("lyricBottom", 0)
-        }
-        set(value) {
-            config.put("lyricBottom", value)
-        }
-    var iconTopMargins: Int
-        get() {
-            return config.opt("iconTop", 0)
-        }
-        set(value) {
-            config.put("iconTop", value)
-        }
+    var lyricBottomMargins: Int by serialLazy("lyricBottom", 0)
+    var iconTopMargins: Int by serialLazy("iconTop", 0)
     var iconStartMargins: Int
-        get() {
-            return config.opt("iconStart", if (mHyperOSTexture) 20 else 0)
-        }
+        get() = ConfigStore.opt("iconStart", if (mHyperOSTexture) 20 else 0)
         set(value) {
-            config.put("iconStart", value)
+            ConfigStore.put("iconStart", value)
         }
-    var iconBottomMargins: Int
-        get() {
-            return config.opt("iconBottom", 0)
-        }
-        set(value) {
-            config.put("iconBottom", value)
-        }
-    var lyricWidth: Int
-        get() {
-            return config.opt("lyricWidth", 0)
-        }
-        set(value) {
-            config.put("lyricWidth", value)
-        }
-    var fixedLyricWidth: Boolean
-        get() {
-            return config.opt("fixedLyricWidth", false)
-        }
-        set(value) {
-            config.put("fixedLyricWidth", value)
-        }
-    var lyricColor: String
-        get() {
-            return config.opt("lyricColor", "")
-        }
-        set(value) {
-            config.put("lyricColor", value)
-        }
-    var lyricGradientColor: String
-        get() {
-            return config.opt("lyricGradientColor", "")
-        }
-        set(value) {
-            config.put("lyricGradientColor", value)
-        }
-    var lyricBackgroundColor: String
-        get() {
-            return config.opt("lyricBackgroundColor", "#00000000")
-        }
-        set(value) {
-            config.put("lyricBackgroundColor", value)
-        }
-    var lyricBackgroundRadius: Int
-        get() {
-            return config.opt("lyricBackgroundRadius", 0)
-        }
-        set(value) {
-            config.put("lyricBackgroundRadius", value)
-        }
-    var iconColor: String
-        get() {
-            return config.opt("iconColor", "")
-        }
-        set(value) {
-            config.put("iconColor", value)
-        }
-    var iconBgColor: String
-        get() {
-            return config.opt("iconBgColor", "")
-        }
-        set(value) {
-            config.put("iconBgColor", value)
-        }
-    var limitVisibilityChange: Boolean
-        get() {
-            return config.opt("limitVisibilityChange", true)
-        }
-        set(value) {
-            config.put("limitVisibilityChange", value)
-        }
-    var timeoutRestore: Boolean
-        get() {
-            return config.opt("timeoutRestore", true)
-        }
-        set(value) {
-            config.put("timeoutRestore", value)
-        }
-    var longClickStatusBarStop: Boolean
-        get() {
-            return config.opt("longClickStatusBarStop", false)
-        }
-        set(value) {
-            config.put("longClickStatusBarStop", value)
-        }
-    var lyricLetterSpacing: Int
-        get() {
-            return config.opt("lyricLetterSpacing", 0)
-        }
-        set(value) {
-            config.put("lyricLetterSpacing", value)
-        }
-    var lyricStrokeWidth: Int
-        get() {
-            return config.opt("lyricStrokeWidth", 0)
-        }
-        set(value) {
-            config.put("lyricStrokeWidth", value)
-        }
-    var lyricSpeed: Int
-        get() {
-            return config.opt("lyricSpeed", 1)
-        }
-        set(value) {
-            config.put("lyricSpeed", value)
-        }
-    var iconSwitch: Boolean
-        get() {
-            return config.opt("iconSwitch", false)
-        }
-        set(value) {
-            config.put("iconSwitch", value)
-        }
-    var iconSize: Int
-        get() {
-            return config.opt("iconSize", 0)
-        }
-        set(value) {
-            config.put("iconSize", value)
-        }
-    var forceTheIconToBeDisplayed: Boolean
-        get() {
-            return config.opt("forceTheIconToBeDisplayed", false)
-        }
-        set(value) {
-            config.put("forceTheIconToBeDisplayed", value)
-        }
-    var lyricAnimation: Int
-        get() {
-            return config.opt("lyricAnimation", 1)
-        }
-        set(value) {
-            config.put("lyricAnimation", value)
-        }
-    var lyricInterpolator: Int
-        get() {
-            return config.opt("lyricInterpolator", 3)
-        }
-        set(value) {
-            config.put("lyricInterpolator", value)
-        }
-    var animationDuration: Int
-        get() {
-            return config.opt("animationDuration", 500)
-        }
-        set(value) {
-            config.put("animationDuration", value)
-        }
-    var hideLyricWhenLockScreen: Boolean
-        get() {
-            return config.opt("hideLyricWhenLockScreen", true)
-        }
-        set(value) {
-            config.put("hideLyricWhenLockScreen", value)
-        }
-    var hideCarrier: Boolean
-        get() {
-            return config.opt("hideCarrier", false)
-        }
-        set(value) {
-            config.put("hideCarrier", value)
-        }
-    var dynamicLyricSpeed: Boolean
-        get() {
-            return config.opt("dynamicLyricSpeed", false)
-        }
-        set(value) {
-            config.put("dynamicLyricSpeed", value)
-        }
-    var clickStatusBarToHideLyric: Boolean
-        get() {
-            return config.opt("clickStatusBarToHideLyric", false)
-        }
-        set(value) {
-            config.put("clickStatusBarToHideLyric", value)
-        }
+    var iconBottomMargins: Int by serialLazy("iconBottom", 0)
+    var lyricWidth: Int by serialLazy(0)
+    var fixedLyricWidth: Boolean by serialLazy(false)
+    var lyricColor: String by serialLazy("")
+    var lyricGradientColor: String by serialLazy("")
+    var lyricBackgroundColor: String by serialLazy("#00000000")
+    var lyricBackgroundRadius: Int by serialLazy(0)
+    var iconColor: String by serialLazy("")
+    var iconBgColor: String by serialLazy("")
+    var limitVisibilityChange: Boolean by serialLazy(true)
+    var timeoutRestore: Boolean by serialLazy(true)
+    var longClickStatusBarStop: Boolean by serialLazy(false)
+    var lyricLetterSpacing: Int by serialLazy(0)
+    var lyricStrokeWidth: Int by serialLazy(0)
+    var lyricSpeed: Int by serialLazy(1)
+    var iconSwitch: Boolean by serialLazy(false)
+    var iconSize: Int by serialLazy(0)
+    var forceTheIconToBeDisplayed: Boolean by serialLazy(false)
+    var lyricAnimation: Int by serialLazy(1)
+    var lyricInterpolator: Int by serialLazy(3)
+    var animationDuration: Int by serialLazy(500)
+    var hideLyricWhenLockScreen: Boolean by serialLazy(true)
+    var hideCarrier: Boolean by serialLazy(false)
+    var dynamicLyricSpeed: Boolean by serialLazy(false)
+    var clickStatusBarToHideLyric: Boolean by serialLazy(false)
 
-    var mMiuiHideNetworkSpeed: Boolean
-        get() {
-            return config.opt("mMiuiHideNetworkSpeed", false)
-        }
-        set(value) {
-            config.put("mMiuiHideNetworkSpeed", value)
-        }
-    var slideStatusBarCutSongs: Boolean
-        get() {
-            return config.opt("slideStatusBarCutSongs", false)
-        }
-        set(value) {
-            config.put("slideStatusBarCutSongs", value)
-        }
-    var slideStatusBarCutSongsXRadius: Int
-        get() {
-            return config.opt("slideStatusBarCutSongsXRadius", 150)
-        }
-        set(value) {
-            config.put("slideStatusBarCutSongsXRadius", value)
-        }
-    var slideStatusBarCutSongsYRadius: Int
-        get() {
-            return config.opt("slideStatusBarCutSongsYRadius", 25)
-        }
-        set(value) {
-            config.put("slideStatusBarCutSongsYRadius", value)
-        }
-    var mMiuiPadOptimize: Boolean
-        get() {
-            return config.opt("mMiuiPadOptimize", false)
-        }
-        set(value) {
-            config.put("mMiuiPadOptimize", value)
-        }
-    var mHyperOSTexture: Boolean
-        get() {
-            return config.opt("mHyperOSTexture", false)
-        }
-        set(value) {
-            config.put("mHyperOSTexture", value)
-        }
-    var mHyperOSTextureRadio: Int
-        get() {
-            return config.opt("mHyperOSTextureRadio", 25)
-        }
-        set(value) {
-            config.put("mHyperOSTextureRadio", value)
-        }
-    var mHyperOSTextureCorner: Int
-        get() {
-            return config.opt("mHyperOSTextureCorner", 32)
-        }
-        set(value) {
-            config.put("mHyperOSTextureCorner", value)
-        }
-    var mHyperOSTextureBgColor: String
-        get() {
-            return config.opt("mHyperOSTextureBgColor", "#15818181")
-        }
-        set(value) {
-            config.put("mHyperOSTextureBgColor", value)
-        }
-    var titleSwitch: Boolean
-        get() {
-            return config.opt("titleSwitch", true)
-        }
-        set(value) {
-            config.put("titleSwitch", value)
-        }
-    var titleDelayDuration: Int
-        get() {
-            return config.opt("title_delay_duration", 3000)
-        }
-        set(value) {
-            config.put("title_delay_duration", value)
-        }
-    var titleColorAndTransparency: String
-        get() {
-            return config.opt("titleColorAndTransparency", "#000000")
-        }
-        set(value) {
-            config.put("titleColorAndTransparency", value)
-        }
-    var titleBackgroundRadius: Int
-        get() {
-            return config.opt("titleBackgroundRadius", 50)
-        }
-        set(value) {
-            config.put("titleBackgroundRadius", value)
-        }
-    var titleBackgroundStrokeWidth: Int
-        get() {
-            return config.opt("titleBackgroundStrokeWidth", 0)
-        }
-        set(value) {
-            config.put("titleBackgroundStrokeWidth", value)
-        }
-    var titleBackgroundStrokeColorAndTransparency: String
-        get() {
-            return config.opt("titleBackgroundStrokeColorAndTransparency", "#FFFFFF")
-        }
-        set(value) {
-            config.put("titleBackgroundStrokeColorAndTransparency", value)
-        }
-    var titleShowWithSameLyric: Boolean
-        get() {
-            return config.opt("titleShowWithSameLyric", false)
-        }
-        set(value) {
-            config.put("titleShowWithSameLyric", value)
-        }
-    var titleGravity: Int
-        get() {
-            return config.opt("titleGravity", 0)
-        }
-        set(value) {
-            config.put("titleGravity", value)
-        }
-    var changeAllIcons: String
-        get() {
-            return config.opt("changeAllIcons", "")
-        }
-        set(value) {
-            config.put("changeAllIcons", value)
-        }
-    var viewLocation: Int
-        get() {
-            return config.opt("viewLocation", 0)
-        }
-        set(value) {
-            config.put("viewLocation", value)
-        }
-    var automateFocusedNotice: Boolean
-        get() {
-            return config.opt("automateFocusedNotice", true)
-        }
-        set(value) {
-            config.put("automateFocusedNotice", value)
-        }
+    var mMiuiHideNetworkSpeed: Boolean by serialLazy(false)
+    var slideStatusBarCutSongs: Boolean by serialLazy(false)
+    var slideStatusBarCutSongsXRadius: Int by serialLazy(150)
+    var slideStatusBarCutSongsYRadius: Int by serialLazy(25)
+    var mMiuiPadOptimize: Boolean by serialLazy(false)
+    var mHyperOSTexture: Boolean by serialLazy(false)
+    var mHyperOSTextureRadio: Int by serialLazy(25)
+    var mHyperOSTextureCorner: Int by serialLazy(32)
+    var mHyperOSTextureBgColor: String by serialLazy("#15818181")
+    var titleSwitch: Boolean by serialLazy(true)
+    var titleDelayDuration: Int by serialLazy("title_delay_duration", 3000)
+    var titleColorAndTransparency: String by serialLazy("#000000")
+    var titleBackgroundRadius: Int by serialLazy(50)
+    var titleBackgroundStrokeWidth: Int by serialLazy(0)
+    var titleBackgroundStrokeColorAndTransparency: String by serialLazy("#FFFFFF")
+    var titleShowWithSameLyric: Boolean by serialLazy(false)
+    var titleGravity: Int by serialLazy(0)
+    var changeAllIcons: String by serialLazy("")
+    var viewLocation: Int by serialLazy(0)
+    var automateFocusedNotice: Boolean by serialLazy(true)
 
     private val defIconHashMap by lazy {
         HashMap<String, String>().apply {
