@@ -125,10 +125,10 @@ class MainHook : XposedModule() {
     }
 
     private fun attachPreferences() {
-        runCatching {
-            DisplayStore.attach(getRemotePreferences(DisplayStore.group), false)
-            GetterStore.attach(getRemotePreferences(GetterStore.group), false)
-        }.onFailure { it.log() }
+        listOf(DisplayStore, GetterStore).forEach { store ->
+            runCatching { store.attach(getRemotePreferences(store.group), false) }
+                .onFailure { it.log() }
+        }
     }
 
     private fun initHooks(vararg hook: BaseHook) {

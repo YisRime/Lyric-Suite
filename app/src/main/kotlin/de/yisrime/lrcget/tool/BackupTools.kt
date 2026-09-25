@@ -6,7 +6,6 @@ import android.net.Uri
 import cn.xiaowine.xkt.AcTool.showToast
 import de.yisrime.lyricsuite.config.DisplayStore
 import de.yisrime.lyricsuite.config.GetterStore
-import de.yisrime.lyricsuite.config.GroupStore
 import org.json.JSONObject
 import java.io.BufferedWriter
 import java.io.OutputStreamWriter

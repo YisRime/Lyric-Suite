@@ -50,10 +50,10 @@ class LyricApplication : Application() {
         HookProbe.start(this)
         XposedServiceHelper.registerListener(object : XposedServiceHelper.OnServiceListener {
             override fun onServiceBind(service: XposedService) {
-                runCatching {
-                    DisplayStore.attach(service.getRemotePreferences(DisplayStore.group), true)
-                    GetterStore.attach(service.getRemotePreferences(GetterStore.group), true)
-                }.onFailure { Log.e(TAG, "框架服务绑定失败", it) }
+                listOf(DisplayStore, GetterStore).forEach { store ->
+                    runCatching { store.attach(service.getRemotePreferences(store.group), true) }
+                        .onFailure { Log.e(TAG, "框架服务绑定失败", it) }
+                }
                 ready = DisplayStore.isAttached && GetterStore.isAttached
                 framework = service
                 refreshScope()
