@@ -149,6 +149,6 @@
     <string name="broadcast_receive_timeout">廣播接收超時</string>
     <string name="not_found_hook">未找到錨點</string>
     <string name="clear_config">重設配置</string>
-    <string name="clear_config_tips">確定要重設配置嗎？</string>
+    <string name="clear_config_tips">將清除歌詞顯示與取詞兩側的全部配置，確定要重設嗎？</string>
     <string name="unit_pixel">像素</string>
 </resources>

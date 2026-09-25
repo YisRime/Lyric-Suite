@@ -230,6 +230,6 @@
     <string name="broadcast_receive_timeout">Broadcast Receive Timeout</string>
     <string name="not_found_hook">Hook not found</string>
     <string name="clear_config">Clear Config</string>
-    <string name="clear_config_tips">Are you sure you want to clear the configuration?</string>
+    <string name="clear_config_tips">This clears every setting on both the lyric display side and the lyric fetching side. Are you sure you want to reset?</string>
     <string name="unit_pixel">Pixel</string>
 </resources>

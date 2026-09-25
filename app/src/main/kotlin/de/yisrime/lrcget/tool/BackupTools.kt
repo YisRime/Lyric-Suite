@@ -46,7 +46,7 @@ object BackupTools {
                     close()
                 }
             }
-            edit.apply()
+            edit.commit()
             "load ok".showToast()
         } catch (e: Exception) {
             "load fail\n${e.message}".showToast()

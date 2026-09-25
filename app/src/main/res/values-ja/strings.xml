@@ -206,6 +206,6 @@
     <string name="broadcast_receive_timeout">ブロードキャスト受信のタイムアウト</string>
     <string name="not_found_hook">フックがありません</string>
     <string name="clear_config">設定を消去</string>
-    <string name="clear_config_tips">設定を消去してもよろしいですか？</string>
+    <string name="clear_config_tips">歌詞表示側と歌詞取得側の設定をすべて消去します。重置してもよろしいですか？</string>
     <string name="unit_pixel">ピクセル</string>
 </resources>
