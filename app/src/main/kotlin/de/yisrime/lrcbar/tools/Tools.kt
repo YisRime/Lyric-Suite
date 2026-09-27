@@ -113,22 +113,20 @@ object Tools {
         val textViewId = XposedOwnSP.config.textViewId
         val parentViewClassName = XposedOwnSP.config.parentViewClassName
         val parentViewId = XposedOwnSP.config.parentViewId
-        val textSize = XposedOwnSP.config.textSize
-        if (textViewClassName.isEmpty() || parentViewClassName.isEmpty() || textViewId == 0 || parentViewId == 0 || textSize == 0f) {
+        // 不比对 textSize：锚点由类名 + id + 父容器 + 父 id + 位次唯一确定，样式项会让系统字体缩放后锚点失效
+        if (textViewClassName.isEmpty() || parentViewClassName.isEmpty() || textViewId == 0 || parentViewId == 0) {
             EzXposed.moduleRes.getString(R.string.load_class_empty).log()
             return false
         }
         if (this is TextView) {
             if (this::class.java.name == textViewClassName) {
                 if (this.id == textViewId) {
-                    if (this.textSize == textSize) {
-                        if (this.parent is LinearLayout) {
-                            val parentView = (this.parent as LinearLayout)
-                            if (parentView::class.java.name == parentViewClassName) {
-                                if (parentViewId == parentView.id) {
-                                    if (parentView.indexOfChild(this) == XposedOwnSP.config.index) {
-                                        return true
-                                    }
+                    if (this.parent is LinearLayout) {
+                        val parentView = (this.parent as LinearLayout)
+                        if (parentView::class.java.name == parentViewClassName) {
+                            if (parentViewId == parentView.id) {
+                                if (parentView.indexOfChild(this) == XposedOwnSP.config.index) {
+                                    return true
                                 }
                             }
                         }

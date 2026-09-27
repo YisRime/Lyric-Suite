@@ -51,7 +51,6 @@ class HookPickerFragment : ConfigFragment() {
         config.parentViewClassName = data.parentViewClassName
         config.parentViewId = data.parentViewId
         config.index = data.index
-        config.textSize = data.textSize
     }
 
     companion object {

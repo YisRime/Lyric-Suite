@@ -38,7 +38,6 @@ class Config {
     var parentViewClassName: String by serialLazy("android.widget.LinearLayout")
     var parentViewId: Int by serialLazy(0x7f0a0a34)
     var index: Int by serialLazy(0)
-    var textSize: Float by serialLazy(29.0f)
 
     var lyricSize: Int by serialLazy(0)
     var lyricStartMargins: Int

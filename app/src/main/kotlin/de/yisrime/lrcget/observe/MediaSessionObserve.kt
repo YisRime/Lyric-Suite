@@ -63,16 +63,6 @@ open class MediaSessionObserve(context: Context) {
         }
     }
 
-    // 显示媒体元数据
-    // private fun displayMediaMetadata(packageName: String, metadata: MediaMetadata) {
-    //     val title = metadata.getString(MediaMetadata.METADATA_KEY_TITLE) ?: "Unknown Title"
-    //     val artist = metadata.getString(MediaMetadata.METADATA_KEY_ARTIST) ?: "Unknown Artist"
-    //     if (this.artist != artist) {
-    //         this.artist = artist
-    //         onMediaDataChanged(packageName, title)
-    //     }
-    // }
-
     open fun onMediaDataChanged(packageName: String, metadata: MediaMetadata) {}
 
     open fun onStateChanged(packageName: String, state: Int) {}

@@ -45,6 +45,7 @@ import de.yisrime.lrcget.hook.app.RPlayer
 import de.yisrime.lrcget.hook.app.Salt
 import de.yisrime.lrcget.hook.app.SystemUi
 import de.yisrime.lrcget.hook.app.Toside
+import de.yisrime.lrcget.tool.HookTools.isApi
 import java.util.Locale
 
 class MainHook : XposedModule() {
@@ -127,7 +128,8 @@ class MainHook : XposedModule() {
             "com.heytap.music" -> initHooks(Oppo)
             "com.oppo.music" -> initHooks(Oppo)
             "com.maxmpz.audioplayer" -> initHooks(Poweramp)
-            else -> initHooks(Api)
+            // 本分支对注入进程内加载的每个包都会回调（如 webview），无内嵌 SDK 的包直接跳过，避免无效钩子与日志噪音
+            else -> isApi { initHooks(Api) }
         }
     }
 
