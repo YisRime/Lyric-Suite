@@ -4,7 +4,7 @@
 
 ## 形态
 
-一个 `:app` 模块，`applicationId` 与 `namespace` 同为 `de.yisrime.lyricsuite`，`minSdk 30`，版本 `1.0.<修订号>` 配 `versionCode = 100 + 修订号`。显示侧默认锚点内置 `de.yisrime.lrcbar` 在 PGKM10（ColorOS）上验证过的状态栏时钟组合（`com.oplus.systemui.statusbar.widget.StatClock`，`0x7f0a0274`，父容器 `android.widget.LinearLayout` `0x7f0a0a34`，index 0，textSize 29.0f）与歌词色 `#AA81D8CF`，开箱即显示；其余机型或系统更新导致 id 变动时走锚点选择模式重新获取，选中的值仍写同名配置键。界面为 Lyrics Getter 的 ViewBinding + Material3 壳：底部导航四段按序为主页、歌词、应用、选项，`StatusBarLyric` 侧的全部条目（总开关、图标样式、扩展选项、系统特供、锚点页）集中在「歌词」屏，「选项」屏只留取词侧条目。工程不声明桌面启动入口，唯一入口是 LSPosed 管理器按 `MODULE_SETTINGS` 意图打开的 `MainActivity`。`src/main/kotlin` 下按来源保留 `de/yisrime/lrcbar`（显示与钩子侧）与 `de/yisrime/lrcget`（取词侧与设置页），`de/yisrime/lyricsuite` 存放合并后的新成员：模块入口、基类、配置存储与合并后的功能屏。包根合并未完成，届时 `cn/lyric/getter` 是唯一豁免项。
+一个 `:app` 模块，`applicationId` 与 `namespace` 同为 `de.yisrime.lyricsuite`，`minSdk 30`，版本 `1.0.<修订号>` 配 `versionCode = 100 + 修订号`。显示侧默认锚点内置 `de.yisrime.lrcbar` 在 PGKM10（ColorOS）上验证过的状态栏时钟组合（`com.oplus.systemui.statusbar.widget.StatClock`，`0x7f0a0274`，父容器 `android.widget.LinearLayout` `0x7f0a0a34`，index 0）与歌词色 `#AA81D8CF`，开箱即显示；锚点匹配只看类名、资源 id、父容器与子视图位次，不比对样式，系统字体缩放不会使其失效。其余机型或系统更新导致 id 变动时走锚点选择模式重新获取，选中的值仍写同名配置键。界面为 Lyrics Getter 的 ViewBinding + Material3 壳：底部导航四段按序为主页、歌词、应用、选项，`StatusBarLyric` 侧的全部条目（总开关、图标样式、扩展选项、系统特供、锚点页）集中在「歌词」屏，「选项」屏只留取词侧条目。工程不声明桌面启动入口，唯一入口是 LSPosed 管理器按 `MODULE_SETTINGS` 意图打开的 `MainActivity`。`src/main/kotlin` 下按来源保留 `de/yisrime/lrcbar`（显示与钩子侧）与 `de/yisrime/lrcget`（取词侧与设置页），`de/yisrime/lyricsuite` 存放合并后的新成员：模块入口、基类、配置存储与合并后的功能屏。包根合并未完成，届时 `cn/lyric/getter` 是唯一豁免项。
 
 ## 构建
 
@@ -24,7 +24,7 @@
 
 激活状态取「框架服务已绑定」且「`getScope()` 含 `com.android.systemui`」两条同时成立，见 `LyricApplication` 的 `ready` 与 `scoped`；任一不成立时总开关被写为 `false`。首页的激活位未收到过回调时按未激活显示。设置写入与注入侧读取同一 group，注入侧只读，两个 group 在同一时机各挂载一次；配置生效依赖框架的变更推送，不再有自造的刷新广播。
 
-配置的唯一存储是框架侧的 `RemotePreferences`，它只在模块被注入的进程里可达。框架只为「自身在作用域内」的包注入模块，因此 `META-INF/xposed/scope.list` 第二条是本包名自己：作用域里取消勾选该项时，设置进程不被注入、框架服务永不到达，所有读取得到默认值、所有写入被丢弃，此时 `ConfigStore.put` 记一行 `配置写入被丢弃`。装机说明须写明作用域至少勾 `com.android.systemui` 与本模块自身两项。
+配置的唯一存储是框架侧的 `RemotePreferences`，它只在模块被注入的进程里可达。框架只为「自身在作用域内」的包注入模块，`module.prop` 为 `staticScope=true`（2026-09-27 起）：作用域由 `scope.list` 固定，名单内应用（含 `com.android.systemui` 与本包名自己）始终挂载，管理器不可逐条关闭；因此作用域不再是逐应用的开关，也不要再写「至少勾选某两项」之类的装机步骤。
 
 ## 与旧两仓的关系
 
@@ -32,7 +32,7 @@
 
 ## 已知未完成
 
-- 真机验证未做过，全部结论来自构建与产物静态核验。
+- 真机验证已于 2026-09-27 在 PGKM10 完成：显示侧锚点、作用域固定、Salt（内嵌 API）与网易云（32 位 dexkit）取词链路均实测通过。
 - `Lyric_Data` 无法定向收紧：注入侧的接收器注册在 `com.android.systemui` 名下，设置页的监视器注册在本包名下，单条 `setPackage` 只能命中其一，故该广播对全机可见与可伪造的现状保持不变。要收紧需先把两端之一改为非广播传输。
 
 资源残影已清零：按「`res/**` + `AndroidManifest.xml` + `R.<type>.<name>` + ViewBinding 生成类」的口径全量扫描，字符串、布局、drawable、mipmap、style、array 等各类型均无孤儿（`activity_main`、`items_app` 仅经 ViewBinding 类引用，非孤儿）。
