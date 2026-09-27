@@ -51,6 +51,8 @@ import kotlin.properties.ReadWriteProperty
 object Tools {
 
     val isPad by lazy { getSystemProperties("ro.build.characteristics") == "tablet" }
+    val isMiui: Boolean by lazy { getSystemProperties("ro.miui.ui.version.name").isNotEmpty() }
+    val isHyperOs: Boolean by lazy { getSystemProperties("ro.mi.os.version.name").isNotEmpty() }
 
     val getPhoneName by lazy {
         val xiaomiMarketName = getSystemProperties("ro.product.marketname")

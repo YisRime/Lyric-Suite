@@ -206,17 +206,4 @@
 
     </FrameLayout>
 
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="?attr/dialogPreferredPadding"
-        android:contentDescription="@string/app_name"
-        android:src="@android:drawable/ic_popup_sync"
-        app:backgroundTint="?attr/colorPrimary"
-        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
-        app:tint="?attr/colorOnPrimary" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

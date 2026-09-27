@@ -5,7 +5,6 @@
     <string name="module_fourth">余白の設定</string>
     <string name="module_fifth">フローティングタイトル</string>
     <string name="module_sixth">アニメーションの設定</string>
-    <string name="module_extend">このページを変更後にシステムインターフェースとプレーヤーを再起動してください</string>
     <string name="cancel">キャンセル</string>
     <string name="ok">OK</string>
     <string name="reset_system_ui">システム UI を再起動</string>
@@ -16,9 +15,8 @@
 アンカー設定モードを有効化してシステムインターフェースを再起動し、アンカーを取得して選択後にアンカーモードを OFF にしてシステムインターフェースを再び再起動します。</string>
     <string name="relax_conditions">条件の緩和</string>
     <string name="relax_conditions_tips">いくつかのクラスは許可されていますが、フックポイントはたくさんあるかもしれません</string>
-    <string name="lyric_page">歌詞のページ</string>
+    <string name="lyric_page">歌詞設定</string>
     <string name="margin_anim_page">マージンとアニメーション</string>
-    <string name="style_page">スタイル</string>
     <string name="icon_page">アイコンのページ</string>
     <string name="extend_page"><string name="extend_page">表示動作</string></string>
     <string name="lyric_width">歌詞の幅</string>
@@ -148,8 +146,8 @@
   <string name="version_name_label">モジュールのバージョン</string>
   <string name="version_code_label">モジュールのバージョン番号</string>
   <string name="version_type_label">モジュールのリリースバージョン</string>
-  <string name="settings_fragment_label">設定</string>
-  <string name="app_rules_fragment_label">サポート</string>
+  <string name="settings_fragment_label">一般設定</string>
+  <string name="app_rules_fragment_label">アプリルール</string>
   <string name="activated">有効</string>
   <string name="unactivated">無効</string>
   <string name="build_time_label">ビルド日時</string>
@@ -201,9 +199,8 @@
     <string name="xposed_tips">歌詞を表示できないときは、音楽アプリを停止してシステム UI を再起動してください</string>
     <string name="broadcast_receive_timeout">ブロードキャスト受信のタイムアウト</string>
     <string name="not_found_hook">フックがありません</string>
-    <string name="clear_config_tips">すべての設定が既定値に戻り、アプリが再起動します。よろしいですか？</string>
     <string name="unit_pixel">ピクセル</string>
-    <string name="clear_config">すべての設定を消去</string>
     <string name="options_fetching_header">歌詞の取得</string>
     <string name="options_general_header">一般</string>
+    <string name="more_options">その他の設定</string>
 </resources>

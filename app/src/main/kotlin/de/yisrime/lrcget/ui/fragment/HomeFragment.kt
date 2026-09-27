@@ -15,13 +15,14 @@ import de.yisrime.lyricsuite.R
 import de.yisrime.lyricsuite.databinding.FragmentHomeBinding
 import de.yisrime.lrcget.tool.ActivityTools.rules
 import de.yisrime.lrcget.tool.Tools.getPhoneName
-import de.yisrime.lrcget.tool.Tools.restartTheScopedSoftware
+import de.yisrime.lrcbar.tools.Tools.shell
 import de.yisrime.lrcget.ui.viewmodel.HomeViewModel
 import de.yisrime.lrcget.ui.viewmodel.ShareViewModel
 import cn.xiaowine.xkt.AcTool.restartApp
 import cn.xiaowine.xkt.Tool.isNotNull
 import cn.xiaowine.xkt.Tool.toUpperFirstCaseAndLowerOthers
 import com.google.android.material.color.MaterialColors
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -43,6 +44,22 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             nestedScrollView.scrollY = homeViewModel.scrollY
+            toolbar.apply {
+                inflateMenu(R.menu.home_menu)
+                setOnMenuItemClickListener {
+                    if (it.itemId == R.id.reset_system_ui) {
+                        MaterialAlertDialogBuilder(requireContext())
+                            .setTitle(R.string.reset_system_ui)
+                            .setMessage(R.string.restart_systemui_tips)
+                            .setPositiveButton(R.string.ok) { _, _ ->
+                                shell("killall com.android.systemui", true)
+                            }
+                            .setNegativeButton(R.string.cancel, null)
+                            .show()
+                    }
+                    true
+                }
+            }
             if (!shareViewModel.activated) {
                 statusIcon.setImageResource(R.drawable.ic_round_error_outline)
                 statusTitle.text = getString(R.string.unactivated)
@@ -52,17 +69,6 @@ class HomeFragment : Fragment() {
                     setOnClickListener {
                         restartApp()
                     }
-                }
-                floatingActionButton.visibility = View.GONE
-            }
-            if (shareViewModel.activated) {
-                floatingActionButton.setOnClickListener { view ->
-                    Snackbar.make(view, getString(R.string.restart_the_scoped_software), Snackbar.LENGTH_LONG).apply {
-                        anchorView = view
-                        setAction(getString(R.string.restart)) {
-                            restartTheScopedSoftware(context)
-                        }
-                    }.show()
                 }
             }
             deviceValue.text = "$getPhoneName (${Build.DEVICE}) Android ${Build.VERSION.RELEASE}"

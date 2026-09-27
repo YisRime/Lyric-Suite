@@ -3,8 +3,8 @@
     <string name="version_name_label">Versão do módulo</string>
     <string name="version_code_label">Número da versão do módulo</string>
     <string name="version_type_label">Versão de lançamento do módulo</string>
-    <string name="settings_fragment_label">Configurações</string>
-    <string name="app_rules_fragment_label">App compatível</string>
+    <string name="settings_fragment_label">Ajustes gerais</string>
+    <string name="app_rules_fragment_label">Regras de apps</string>
     <string name="activated">Ativado</string>
     <string name="unactivated">Não ativado</string>
     <string name="build_time_label">Hora da compilação</string>
@@ -76,9 +76,8 @@
     <string name="test_lyric_tips">Aviso: Se o teste aqui não apresentar problemas, pode ser um problema com outro software. Se houver problemas ao enviar as letras de teste, por favor, envie seu feedback. Se não houver problemas, a causa é outra. A notificação de foco é usada para testar se você desativou a lista de permissões.</string>
     <string name="none_set">Não definido</string>
     <string name="unit_pixel">pixels</string>
-    <string name="clear_config">Limpar todos os ajustes</string>
     <string name="options_fetching_header">Obtenção de letras</string>
     <string name="options_general_header">Geral</string>
+    <string name="more_options">Mais opções</string>
     <string name="margin_anim_page">Margens e animação</string>
-    <string name="style_page">Estilo</string>
 </resources>

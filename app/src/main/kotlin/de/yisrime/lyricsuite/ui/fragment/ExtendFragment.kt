@@ -14,7 +14,6 @@ class ExtendFragment : ConfigFragment() {
         val start = R.string.title_gravity_start
         val center = R.string.title_gravity_center
         val end = R.string.title_gravity_end
-        header(R.string.module_extend)
         choice(
             R.string.view_location,
             labels(start, end),

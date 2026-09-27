@@ -172,14 +172,6 @@ class ConfigScreen(private val context: Context, private val container: LinearLa
         container.addView(row.getView().apply { setOnClickListener { onClick() } })
     }
 
-    fun resetSystemUiRow() {
-        action(R.string.reset_system_ui) {
-            confirm(R.string.reset_system_ui, R.string.restart_systemui_tips, R.string.ok) {
-                shell("killall com.android.systemui", true)
-            }
-        }
-    }
-
     fun confirm(
         @StringRes title: Int,
         @StringRes message: Int = 0,

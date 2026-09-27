@@ -5,7 +5,6 @@
     <string name="module_fourth">Margin settings</string>
     <string name="module_fifth">Floating title</string>
     <string name="module_sixth">Animation settings</string>
-    <string name="module_extend">Please restart the system interface and player after modifying this page</string>
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
     <string name="reset_system_ui">Restart SystemUI</string>
@@ -16,9 +15,8 @@
 Enable the anchor setting mode, restart the system interface, obtain the anchor and select it, turn off the anchor mode, and restart the system interface again</string>
     <string name="relax_conditions">Relax Conditions</string>
     <string name="relax_conditions_tips">Some classes are allowed, but there may be many more hook points</string>
-    <string name="lyric_page">Lyric</string>
+    <string name="lyric_page">Lyrics settings</string>
     <string name="margin_anim_page">Margins &amp; animation</string>
-    <string name="style_page">Style</string>
     <string name="icon_page">Icon Page</string>
     <string name="extend_page"><string name="extend_page">Behavior</string></string>
     <string name="lyric_width">Lyric Width</string>
@@ -150,8 +148,8 @@ Enable the anchor setting mode, restart the system interface, obtain the anchor 
     <string name="version_name_label">Module version</string>
     <string name="version_code_label">Module version number</string>
     <string name="version_type_label">Module release version</string>
-    <string name="settings_fragment_label">Options</string>
-    <string name="app_rules_fragment_label">Apps</string>
+    <string name="settings_fragment_label">General settings</string>
+    <string name="app_rules_fragment_label">App rules</string>
     <string name="activated">Activated</string>
     <string name="unactivated">Not activated</string>
     <string name="build_time_label">Build time</string>
@@ -225,9 +223,8 @@ Enable the anchor setting mode, restart the system interface, obtain the anchor 
     <string name="xposed_tips">If the lyrics cannot be displayed, please try to stop the music software and restart the SystemUI</string>
     <string name="broadcast_receive_timeout">Broadcast Receive Timeout</string>
     <string name="not_found_hook">Hook not found</string>
-    <string name="clear_config_tips">All configuration returns to its defaults and the app restarts. Are you sure you want to reset?</string>
     <string name="unit_pixel">Pixel</string>
-    <string name="clear_config">Clear all settings</string>
     <string name="options_fetching_header">Lyrics fetching</string>
     <string name="options_general_header">General</string>
+    <string name="more_options">More options</string>
 </resources>

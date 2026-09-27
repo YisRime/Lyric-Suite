@@ -58,10 +58,6 @@ open class GroupStore(val group: String) {
         editor.commit()
     }
 
-    fun clearAll() {
-        editor()?.clear()?.commit()
-    }
-
     fun <T> lazy(default: T): ReadWriteProperty<Any, T> = StoreProperty(null, default, this)
 
     fun <T> lazy(key: String, default: T): ReadWriteProperty<Any, T> =

@@ -48,15 +48,6 @@ object Tools {
         return formattedBrand
     }
 
-    fun restartTheScopedSoftware(context: Context) {
-        var s = ""
-        context.resources.getStringArray(R.array.need_module).forEach {
-            s += "${if (it == "com.android.systemui") "killall" else "am force-stop"} $it && "
-        }
-        s += "echo 0"
-        shell(s, true)
-    }
-
     fun captureLogs(): String? = try {
         val process = Runtime.getRuntime().exec(arrayOf("su", "-c", "logcat -d -v time"))
         val output = process.inputStream.bufferedReader().lineSequence()

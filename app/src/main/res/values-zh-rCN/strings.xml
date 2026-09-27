@@ -5,7 +5,6 @@
     <string name="module_fourth">边距设置</string>
     <string name="module_fifth">悬浮标题</string>
     <string name="module_sixth">动效设置</string>
-    <string name="module_extend">修改本页面后请重启系统界面及播放器</string>
     <string name="cancel">取消</string>
     <string name="ok">确定</string>
     <string name="reset_system_ui">重启系统界面</string>
@@ -16,9 +15,8 @@
 开启锚点设置模式，重启系统界面，获取锚点并选择后关闭锚点模式再次重启系统界面</string>
     <string name="relax_conditions">宽松过滤</string>
     <string name="relax_conditions_tips">允许更多锚点出现</string>
-    <string name="lyric_page">歌词</string>
-    <string name="margin_anim_page">边距与动画</string>
-    <string name="style_page">样式</string>
+    <string name="lyric_page">歌词设置</string>
+    <string name="margin_anim_page">边距动画</string>
     <string name="icon_page">图标样式</string>
     <string name="extend_page"><string name="extend_page">显示行为</string></string>
     <string name="lyric_width">歌词宽度</string>
@@ -148,9 +146,8 @@
     <string name="xposed_tips">如无法显示歌词请重启系统界面及播放器</string>
     <string name="broadcast_receive_timeout">广播接收超时</string>
     <string name="not_found_hook">未找到锚点</string>
-    <string name="clear_config_tips">全部配置将恢复默认值并重启应用，确定要重置吗？</string>
     <string name="unit_pixel">像素</string>
-    <string name="clear_config">清除全部配置</string>
     <string name="options_fetching_header">取词设置</string>
     <string name="options_general_header">通用</string>
+    <string name="more_options">其它选项</string>
 </resources>

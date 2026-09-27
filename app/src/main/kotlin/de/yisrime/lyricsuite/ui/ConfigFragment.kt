@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.StringRes
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.AppBarLayout
@@ -69,6 +70,10 @@ abstract class ConfigFragment : Fragment() {
         if (nav.currentDestination?.id !in topLevel && nav.previousBackStackEntry != null) {
             _toolbar.setNavigationIcon(R.drawable.ic_back)
             _toolbar.setNavigationOnClickListener { nav.navigateUp() }
+            // 子 TextView 不吃工具栏导航内边距，手动让出箭头宽度
+            _title.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                marginStart = (28 * resources.displayMetrics.density).toInt()
+            }
         }
     }
 }

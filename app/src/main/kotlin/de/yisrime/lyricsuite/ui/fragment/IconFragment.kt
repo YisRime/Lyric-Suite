@@ -10,8 +10,6 @@ class IconFragment : ConfigFragment() {
     override val titleRes = R.string.icon_page
 
     override fun ConfigScreen.content() {
-        switch(R.string.icon_switch, prop = config::iconSwitch) { invalidate() }
-        if (!config.iconSwitch) return
         header(R.string.module_second)
         integer(
             R.string.icon_size, R.string.icon_size_tips, 0..100, config::iconSize,
@@ -53,6 +51,5 @@ class IconFragment : ConfigFragment() {
         text(
             R.string.change_all_icons, R.string.change_all_icons_tips, config::changeAllIcons
         )
-        resetSystemUiRow()
     }
 }
