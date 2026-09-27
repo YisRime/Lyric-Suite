@@ -1,13 +1,11 @@
 package de.yisrime.lrcget.ui.fragment
 
-import android.content.Context
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.StringRes
 import androidx.navigation.fragment.findNavController
 import cn.xiaowine.xkt.AcTool.restartApp
-import cn.xiaowine.xkt.Tool.isNotNull
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import cn.xiaowine.xkt.Tool.isNotNull
 import de.yisrime.lyricsuite.R
 import de.yisrime.lyricsuite.ui.ConfigFragment
 import de.yisrime.lyricsuite.ui.ConfigScreen
@@ -57,8 +55,8 @@ class SettingsFragment : ConfigFragment() {
         action(R.string.regex_replace) {
             context.startActivity(Intent(context, DialogTransparentActivity::class.java))
         }
-        action(R.string.lyric_setting) { showLyricSettingsDialog(context) }
-        action(R.string.fuck_wyy_about) { showFuckWyySettingsDialog(context) }
+        action(R.string.lyric_setting) { findNavController().navigate(R.id.fetch_options_nav) }
+        action(R.string.fuck_wyy_about) { findNavController().navigate(R.id.netease_options_nav) }
         header(R.string.options_general_header)
         action(R.string.lyric_test) {
             context.startActivity(Intent(context, TestActivity::class.java))
@@ -90,30 +88,5 @@ class SettingsFragment : ConfigFragment() {
         }.start()
     }
 
-    private fun showLyricSettingsDialog(context: Context) {
-        showDialog(context, R.string.lyric_setting) {
-            switch(R.string.output_repeated_lyrics, prop = config::outputRepeatedLyrics)
-            switch(
-                R.string.allow_some_software_to_output_after_the_screen,
-                prop = config::allowSomeSoftwareToOutputAfterTheScreen
-            )
-        }
-    }
-
-    private fun showFuckWyySettingsDialog(context: Context) {
-        showDialog(context, R.string.fuck_wyy_about) {
-            switch(R.string.fuck_fuck_wyy, R.string.fuck_fuck_wyy_tips, prop = config::fuckWyy2)
-            switch(R.string.fuck_wyy, R.string.fuck_wyy_tips, prop = config::fuckWyy)
-        }
-    }
-
-    private fun showDialog(context: Context, @StringRes title: Int, rows: ConfigScreen.() -> Unit) {
-        val screen = ConfigScreen(context)
-        screen.build { it.rows() }
-        MaterialAlertDialogBuilder(context)
-            .setTitle(title)
-            .setView(screen.root)
-            .show()
-    }
 }
 

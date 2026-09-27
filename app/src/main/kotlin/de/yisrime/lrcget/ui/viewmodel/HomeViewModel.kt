@@ -10,12 +10,6 @@ class HomeViewModel(private val state: SavedStateHandle) : ViewModel() {
         set(value) {
             state["scrollY"] = value
         }
-
-    var expanded: Boolean
-        get() = state.get<Boolean>("expanded") != false
-        set(value) {
-            state.set("expanded", value)
-        }
     var appRulesVersionValue: String?
         get() = state["appRulesVersionValue"]
         set(value) {

@@ -1,6 +1,8 @@
 package de.yisrime.lyricsuite.ui
 
 import android.content.Context
+import android.graphics.Color
+import android.util.TypedValue
 import android.graphics.Typeface
 import android.view.View
 import android.widget.LinearLayout
@@ -10,6 +12,7 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.core.graphics.toColorInt
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.color.MaterialColors
 import de.yisrime.lrcget.tool.Tools.dp2px
 import de.yisrime.lrcget.ui.dialog.EditTextDialog
 import de.yisrime.lrcget.ui.view.Preferences
@@ -43,9 +46,11 @@ class ConfigScreen(private val context: Context, private val container: LinearLa
     fun header(@StringRes title: Int) {
         container.addView(TextView(context).apply {
             setText(title)
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
             setTypeface(typeface, Typeface.BOLD)
-            val padding = dp2px(context, 16f)
-            setPadding(padding, padding, padding, padding / 2)
+            setTextColor(MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimary, Color.BLACK))
+            val horizontal = dp2px(context, 24f)
+            setPadding(horizontal, dp2px(context, 20f), horizontal, dp2px(context, 8f))
         })
     }
 

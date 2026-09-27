@@ -46,6 +46,14 @@
         android:label="@string/system_special_page"
 />
     <fragment
+        android:id="@+id/fetch_options_nav"
+        android:name="de.yisrime.lyricsuite.ui.fragment.FetchOptionsFragment"
+        android:label="@string/lyric_setting" />
+    <fragment
+        android:id="@+id/netease_options_nav"
+        android:name="de.yisrime.lyricsuite.ui.fragment.NeteaseOptionsFragment"
+        android:label="@string/fuck_wyy_about" />
+    <fragment
         android:id="@+id/settings_nav"
         android:name="de.yisrime.lrcget.ui.fragment.SettingsFragment"
         android:label="@string/settings_fragment_label"

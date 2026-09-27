@@ -33,8 +33,6 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
 
     private val binding get() = _binding!!
-    private var verticalOffset: Int = 0
-    private var scrollRange: Int = 0
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -44,12 +42,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            appbarLayout.setExpanded(homeViewModel.expanded)
-            //监听AppBarLayout偏移量
-            appbarLayout.addOnOffsetChangedListener { appbarLayout, verticalOffset ->
-                this@HomeFragment.verticalOffset = verticalOffset
-                scrollRange = appbarLayout.totalScrollRange
-            }
             nestedScrollView.scrollY = homeViewModel.scrollY
             if (!shareViewModel.activated) {
                 statusIcon.setImageResource(R.drawable.ic_round_error_outline)
@@ -88,7 +80,6 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         homeViewModel.apply {
             scrollY = binding.nestedScrollView.scrollY
-            expanded = if (verticalOffset == 0) true else scrollRange < verticalOffset
             appRulesVersionValue = binding.appRulesVersionValue.text.toString()
             homeViewModel.buildTimeValue = binding.buildTimeValue.text.toString()
         }

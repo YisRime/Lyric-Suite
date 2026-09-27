@@ -1,13 +1,11 @@
 package de.yisrime.lyricsuite.ui
 
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.StringRes
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.AppBarLayout
@@ -32,13 +30,10 @@ abstract class ConfigFragment : Fragment() {
     ): View {
         val context = requireContext()
         _screen = ConfigScreen(context)
-        _toolbar = MaterialToolbar(context).apply {
-            setTitle(titleRes)
-            // 程序化工具栏的标题色在该主题下解析为白色，与行标题一致改用 Material 的 colorOnSurface
-            val typed = TypedValue()
-            context.theme.resolveAttribute(com.google.android.material.R.attr.colorOnSurface, typed, true)
-            setTitleTextColor(ContextCompat.getColor(context, typed.resourceId))
-        }
+        // 程序化构造的 MaterialToolbar 标题在该主题下不渲染，改从 XML 加载（与应用内其它工具栏同路径）
+        _toolbar = LayoutInflater.from(context)
+            .inflate(R.layout.view_config_toolbar, null, false) as MaterialToolbar
+        _toolbar.setTitle(titleRes)
         val bar = AppBarLayout(context).apply {
             fitsSystemWindows = true
             addView(
@@ -68,7 +63,6 @@ abstract class ConfigFragment : Fragment() {
         val nav = findNavController()
         val topLevel = setOf(R.id.home_nav, R.id.lyric_nav, R.id.settings_nav)
         if (nav.currentDestination?.id !in topLevel && nav.previousBackStackEntry != null) {
-            _toolbar.setTitle(titleRes)
             _toolbar.setNavigationIcon(R.drawable.ic_back)
             _toolbar.setNavigationOnClickListener { nav.navigateUp() }
         }
