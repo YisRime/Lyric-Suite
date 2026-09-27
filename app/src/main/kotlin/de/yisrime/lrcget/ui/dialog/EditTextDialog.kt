@@ -31,7 +31,7 @@ class EditTextDialog(private val context: Context) {
     private val editText = TextInputEditText(context)
 
     private var title: String = ""
-    private var message: Int = 0
+    private var message: String = ""
 
     init {
         textInputLayout.addView(editText)
@@ -44,7 +44,12 @@ class EditTextDialog(private val context: Context) {
     }
 
     fun setMessage(@StringRes resId: Int): EditTextDialog {
-        message = resId
+        message = context.getString(resId)
+        return this
+    }
+
+    fun setMessage(message: String): EditTextDialog {
+        this.message = message
         return this
     }
 
@@ -69,7 +74,7 @@ class EditTextDialog(private val context: Context) {
         val dialog = MaterialAlertDialogBuilder(context).apply {
             setView(rootLayout)
             setTitle(title)
-            if (message != 0) setMessage(message)
+            if (message.isNotEmpty()) setMessage(message)
             setPositiveButton(R.string.ok) { _, _ ->
                 onConfirm(editText.text.toString())
             }

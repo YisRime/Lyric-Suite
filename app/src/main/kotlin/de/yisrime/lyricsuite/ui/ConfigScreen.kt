@@ -166,8 +166,8 @@ class ConfigScreen(private val context: Context, private val container: LinearLa
         container.addView(row.getView().apply { setOnClickListener { onClick() } })
     }
 
-    fun action(@StringRes title: Int, @StringRes hint: Int = 0, onClick: () -> Unit) {
-        val row = row(title, 0, hint = hint)
+    fun action(@StringRes title: Int, onClick: () -> Unit) {
+        val row = row(title)
         container.addView(row.getView().apply { setOnClickListener { onClick() } })
     }
 
@@ -201,14 +201,19 @@ class ConfigScreen(private val context: Context, private val container: LinearLa
         commit: (String) -> Boolean
     ) {
         val shown = { raw: String -> raw.ifEmpty { if (blankAsUnset) context.getString(R.string.none_set) else raw } }
-        val row = row(title, tips, hint)
+        val row = row(title)
         row.setValue(shown(get()))
         container.addView(row.getView().apply {
             setOnClickListener {
                 val editor = EditTextDialog(context)
                     .setTitle(context.getString(title))
                     .apply {
-                        if (tips != 0) setMessage(tips)
+                        // 范围、格式等说明文字只在弹窗中展示
+                        val message = listOfNotNull(
+                            if (tips == 0) null else context.getString(tips),
+                            if (hint == 0) null else context.getString(hint)
+                        ).joinToString(" · ")
+                        if (message.isNotEmpty()) setMessage(message)
                         if (numeric) setNumericInput()
                         if (unit != 0) setUnit(unit)
                     }
@@ -220,19 +225,12 @@ class ConfigScreen(private val context: Context, private val container: LinearLa
         })
     }
 
-    private fun row(
-        @StringRes title: Int,
-        @StringRes summary: Int = 0,
-        @StringRes hint: Int = 0
-    ): Preferences {
+    private fun row(@StringRes title: Int, @StringRes summary: Int = 0): Preferences {
         val row = Preferences(context)
         row.preferencesTitle.setText(title)
         row.preferencesButton.visibility = View.GONE
-        val text = listOfNotNull(
-            if (summary == 0) null else context.getString(summary),
-            if (hint == 0) null else context.getString(hint)
-        ).joinToString(" · ")
-        if (text.isNotEmpty()) row.setSummary(text)
+        // 开关行的警示语保留在页面，值行的说明只在弹窗中展示
+        if (summary != 0) row.setSummary(context.getString(summary))
         return row
     }
 

@@ -18,12 +18,12 @@
     <string name="lyric_page">歌詞</string>
     <string name="margin_anim_page">邊距動畫</string>
     <string name="icon_page">圖示樣式</string>
-    <string name="extend_page"><string name="extend_page">顯示行為</string></string>
+    <string name="extend_page">顯示行為</string>
     <string name="lyric_width">歌詞寬度</string>
     <string name="lyric_width_tips">範圍：0~100，0 代表自適應寬度</string>
     <string name="fixed_lyric_width">固定歌詞寬度</string>
     <string name="fixed_lyric_width_tips">打開後，顯示寬度固定，不隨歌詞實際長度變化</string>
-    <string name="lyric_color_and_transparency">歌詞顏色和透明度</string>
+    <string name="lyric_color_and_transparency">歌詞顏色</string>
     <string name="lyric_color_and_transparency_tips">請輸入 16 進制顏色值</string>
     <string name="lyric_size">歌詞大小</string>
     <string name="lyric_size_tips">範圍：0~100，0 代表自適應</string>
@@ -50,9 +50,9 @@
     <string name="icon_bottom_margins_tips">範圍：0~100</string>
     <string name="icon_start_margins">圖示左邊距</string>
     <string name="icon_start_margins_tips">範圍：-2000~2000</string>
-    <string name="icon_color_and_transparency">圖示顏色和透明度</string>
+    <string name="icon_color_and_transparency">圖示顏色</string>
     <string name="icon_color_and_transparency_tips">請輸入 16 進制顏色值</string>
-    <string name="icon_background_color_and_transparency">圖示背景顏色和透明度</string>
+    <string name="icon_background_color_and_transparency">圖示背景顏色</string>
     <string name="icon_background_color_and_transparency_tips">請輸入 16 進制顏色值</string>
     <string name="lyric_mode">歌詞模式</string>
     <string name="get_hook">獲取錨點</string>
@@ -93,7 +93,7 @@
     <string name="hide_lyric_when_lock_screen">鎖定螢幕時隱藏歌詞</string>
     <string name="choose_page_tips">建議先關閉其他修改狀態欄布局的模組後，再來此頁面選擇錨點\n\n有效的錨點選擇：狀態欄顯示模組名字，並有白色背景\n\n選擇錨點後，返回關閉錨點模式，重啟系統模式即錨點設置完成</string>
     <string name="hide_carrier">隱藏運營商</string>
-    <string name="lyrics_gradient_background_color_and_transparency">歌詞背景漸變顏色和透明度</string>
+    <string name="lyrics_gradient_background_color_and_transparency">歌詞背景漸變顏色</string>
     <string name="lyrics_gradient_background_color_and_transparency_tips">請輸入 16 進制顏色，多個顏色為漸變色橫向排布，使用英文逗號分隔</string>
     <string name="lyric_background_radius">歌詞背景半徑</string>
     <string name="lyric_background_radius_tips">範圍：0~100</string>
@@ -101,7 +101,7 @@
     <string name="dynamic_lyric_speed">動態歌詞速度 (Beta)</string>
     <string name="click_status_bar_to_hide_lyric">點擊狀態欄隱藏歌詞</string>
     <string name="long_click_status_bar_stop">長按狀態欄停止音樂</string>
-    <string name="system_special_page"><string name="system_special_page">系統適配</string></string>
+    <string name="system_special_page">系統適配</string>
     <string name="miui_hide_network_speed">隱藏網速</string>
     <string name="miui_pad_optimize">平板最佳化</string>
     <string name="hyperos_texture">添加高級材質背景</string>
@@ -129,7 +129,7 @@
     <string name="change_all_icons">更改所有圖示</string>
     <string name="change_all_icons_tips">請輸入 Base64</string>
     <string name="lyrics_are_gradient_and_transparent_tips">請輸入 16 進制顏色，多個顏色為漸變色橫向排布，使用英文逗號分隔</string>
-    <string name="lyrics_are_gradient_and_transparent">歌詞漸變色和透明度</string>
+    <string name="lyrics_are_gradient_and_transparent">歌詞漸變色</string>
     <string name="color_error">輸入的顏色錯誤，請檢查</string>
     <string name="value_error">輸入的值無效，應在 %1$d – %2$d 之間</string>
     <string name="view_location">歌詞添加位置</string>

@@ -18,7 +18,7 @@ Enable the anchor setting mode, restart the system interface, obtain the anchor 
     <string name="lyric_page">Lyrics</string>
     <string name="margin_anim_page">Margins &amp; animation</string>
     <string name="icon_page">Icon Page</string>
-    <string name="extend_page"><string name="extend_page">Behavior</string></string>
+    <string name="extend_page">Behavior</string>
     <string name="lyric_width">Lyric Width</string>
     <string name="lyric_width_tips">Range: 0~100, 0 is adaptive width</string>
     <string name="fixed_lyric_width">Fixed lyric width</string>
@@ -101,7 +101,7 @@ Enable the anchor setting mode, restart the system interface, obtain the anchor 
     <string name="dynamic_lyric_speed">Dynamic Lyric Speed(Beta)</string>
     <string name="click_status_bar_to_hide_lyric">Click Status Bar To Hide Lyric</string>
     <string name="long_click_status_bar_stop">Long Click Status Bar Stop Music</string>
-    <string name="system_special_page"><string name="system_special_page">System adaptation</string></string>
+    <string name="system_special_page">System adaptation</string>
     <string name="miui_hide_network_speed">Hide Network Speed</string>
     <string name="miui_pad_optimize">tablet optimization</string>
     <string name="hyperos_texture">Add Advanced texture background</string>

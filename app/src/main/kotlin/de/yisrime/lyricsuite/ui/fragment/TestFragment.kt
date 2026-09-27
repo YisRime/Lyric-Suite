@@ -22,7 +22,7 @@ class TestFragment : ConfigFragment() {
                 R.string.relax_conditions_tips,
                 prop = config::relaxConditions
             )
-            action(R.string.get_hook, R.string.tips1) {
+            action(R.string.get_hook) {
                 HookProbe.clear()
                 requireContext().getClass()
                 findNavController().navigate(R.id.hook_picker_nav)
