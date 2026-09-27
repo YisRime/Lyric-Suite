@@ -1,6 +1,5 @@
 <resources>
 <string name="app_name">Lyric Suite</string>
-    <string name="module_inactivated">Module inactivated</string>
     <string name="module_second">Basic settings</string>
     <string name="module_third">Advanced settings</string>
     <string name="module_fourth">Margin settings</string>
@@ -11,7 +10,6 @@
     <string name="ok">OK</string>
     <string name="reset_system_ui">Restart SystemUI</string>
     <string name="restart_systemui_tips">Are you sure you want to restart the SystemUI?</string>
-    <string name="master_switch">Master Switch</string>
     <string name="hook_page">Hook Page</string>
     <string name="test_mode">Test Mode</string>
     <string name="test_mode_tips">The module ships with a verified default anchor for the status bar clock (PGKM10, ColorOS). If the lyric fails to show, or on other devices or after system updates, set the anchor point:
@@ -58,7 +56,6 @@ Enable the anchor setting mode, restart the system interface, obtain the anchor 
     <string name="icon_background_color_and_transparency_tips">Please enter a decimal Color</string>
     <string name="lyric_mode">Lyric Mode</string>
     <string name="get_hook">Get the Hook point</string>
-    <string name="master_off">Master switch is off</string>
     <string name="hook_succeeded">Hook Succeeded</string>
     <string name="hook_failed">Hook Failed</string>
     <string name="start_hooking_text_view">Start Hooking All TextView</string>
@@ -200,7 +197,6 @@ Enable the anchor setting mode, restart the system interface, obtain the anchor 
     <string name="salt_use_flyme">Salt/Sweet and Sour Music uses Meizu interface</string>
     <string name="salt_use_flyme_summary">It isn\'t recommended to switch when the API mode is normal</string>
     <string name="multiple_modes_work">There are multiple modes that can be used normally</string>
-    <string name="version_differences">The release version doesn\'t generate logs, while the Debug version generates logs. Therefore, it\'s recommended not to install the Debug version.</string>
     <string name="fuck_wyy">Force opening of lyrics in NetEase Cloud status bar</string>
     <string name="fuck_wyy_tips">Turning on the switch may cause abnormalities in NetEase Cloud, which isn\'t responsible for this module.</string>
     <string name="fuck_fuck_wyy">Disable NetEase Cloud detection</string>

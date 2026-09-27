@@ -52,7 +52,6 @@
     <string name="salt_use_flyme">椒盐/糖醋音乐使用魅族接口</string>
     <string name="salt_use_flyme_summary">在 API 模式正常时，不建议切换</string>
     <string name="multiple_modes_work">有多个可正常使用的模式</string>
-    <string name="version_differences">发行版本 Release 不会输出 Log，Debug 版本会输出 Log，非必要不建议安装 Debug 版本</string>
     <string name="fuck_wyy">网易云状态栏歌词强开</string>
     <string name="fuck_wyy_tips">开启开关可能导致网易云出现异常，本模块概不负责</string>
     <string name="fuck_fuck_wyy">禁用网易云检测</string>

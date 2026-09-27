@@ -1,6 +1,5 @@
 <resources>
 <string name="app_name">Lyric Suite</string>
-    <string name="module_inactivated">モジュールが無効化されています</string>
     <string name="module_second">基本設定</string>
     <string name="module_third">高度な設定</string>
     <string name="module_fourth">余白の設定</string>
@@ -11,7 +10,6 @@
     <string name="ok">OK</string>
     <string name="reset_system_ui">システム UI を再起動</string>
     <string name="restart_systemui_tips">システム UI を再起動してもよろしいですか？</string>
-    <string name="master_switch">マスタースイッチ</string>
     <string name="hook_page">フックのページ</string>
     <string name="test_mode">テストモード</string>
     <string name="test_mode_tips">モジュールには PGKM10（ColorOS）のステータスバー時計に対する検証済みのデフォルトアンカーが組み込まれており、そのまま使用できます。歌詞が表示されない場合、機種変更後やシステム更新で ID が変わった場合は、アンカーを再設定してください：
@@ -58,7 +56,6 @@
     <string name="icon_background_color_and_transparency_tips">10 進数のカラーコードを入力してください</string>
     <string name="lyric_mode">歌詞モード</string>
     <string name="get_hook">フックポイントを取得</string>
-    <string name="master_off">マスタースイッチは OFF です</string>
     <string name="hook_succeeded">フックに成功しました</string>
     <string name="hook_failed">フックに失敗しました</string>
     <string name="start_hooking_text_view">すべての TextView のフックを開始</string>
@@ -198,7 +195,6 @@
   <string name="salt_use_flyme">Salt Player で Meizu モードを使用</string>
   <string name="salt_use_flyme_summary">API モードが通常時での切り替えを行うことは非推奨です</string>
   <string name="multiple_modes_work">通常使用できるモードが複数あります</string>
-  <string name="version_differences">リリース版はログを出力しませんが、デバッグ版はログを出力します。開発者以外はデバッグ版をインストールしないことを推奨します。</string>
     <string name="none_set">未設定</string>
     <string name="xposed_tips">歌詞を表示できないときは、音楽アプリを停止してシステム UI を再起動してください</string>
     <string name="broadcast_receive_timeout">ブロードキャスト受信のタイムアウト</string>
