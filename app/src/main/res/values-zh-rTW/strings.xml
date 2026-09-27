@@ -11,11 +11,11 @@
     <string name="restart_systemui_tips">確定要重新啟動系統界面嗎？</string>
     <string name="hook_page">錨點選擇</string>
     <string name="test_mode">錨點選擇模式</string>
-    <string name="test_mode_tips">模組已內建 PGKM10（ColorOS）狀態列時鐘的已驗證預設錨點，開箱即用；若歌詞不顯示、更換機型或系統更新後 id 變動，再重新設定錨點：
-開啟錨點設定模式，重啟系統介面，取得錨點並選擇後關閉錨點模式再次重啟系統介面</string>
+    <string name="test_mode_tips">第一次安裝模組，請先設置錨點
+開啟錨點設定模式，重啟系統介面，獲取錨點並選擇後關閉錨點模式再次重啟系統介面</string>
     <string name="relax_conditions">寬鬆過濾</string>
     <string name="relax_conditions_tips">允許更多錨點出現</string>
-    <string name="lyric_page">歌詞設定</string>
+    <string name="lyric_page">歌詞</string>
     <string name="margin_anim_page">邊距動畫</string>
     <string name="icon_page">圖示樣式</string>
     <string name="extend_page"><string name="extend_page">顯示行為</string></string>
@@ -136,11 +136,7 @@
     <string name="automate_focused_notice">自動處理焦點通知</string>
     <string name="lyrics_animation_horizontalflip">水平翻轉</string>
     <string name="lyrics_animation_verticalflip">垂直翻轉</string>
-    <string name="log_page">日誌</string>
-    <string name="log_refresh">重新讀取</string>
-    <string name="log_clear">清空日誌</string>
     <string name="log_loading">正在讀取日誌…</string>
-    <string name="log_no_root">讀取日誌需要 Root 授權</string>
     <string name="log_empty">暫無日誌</string>
     <string name="none_set">未設置</string>
     <string name="xposed_tips">如無法顯示歌詞請重新啟動系統界面及播放器</string>
@@ -148,6 +144,6 @@
     <string name="not_found_hook">未找到錨點</string>
     <string name="unit_pixel">像素</string>
     <string name="options_fetching_header">取詞設定</string>
-    <string name="options_general_header">通用</string>
+    <string name="options_general_header">通用功能</string>
     <string name="more_options">其它選項</string>
 </resources>

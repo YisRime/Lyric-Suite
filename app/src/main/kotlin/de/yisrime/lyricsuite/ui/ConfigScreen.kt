@@ -16,7 +16,6 @@ import com.google.android.material.color.MaterialColors
 import de.yisrime.lrcget.tool.Tools.dp2px
 import de.yisrime.lrcget.ui.dialog.EditTextDialog
 import de.yisrime.lrcget.ui.view.Preferences
-import de.yisrime.lrcbar.tools.Tools.shell
 import de.yisrime.lyricsuite.R
 import kotlin.reflect.KMutableProperty0
 

@@ -11,11 +11,11 @@
     <string name="restart_systemui_tips">确定要重新启动系统界面吗？</string>
     <string name="hook_page">锚点选择</string>
     <string name="test_mode">锚点选择模式</string>
-    <string name="test_mode_tips">模块已内置 PGKM10（ColorOS）状态栏时钟的已验证默认锚点，开箱即用；若歌词不显示、更换机型或系统更新后 id 变动，再重新设置锚点：
+    <string name="test_mode_tips">第一次安装模块，请先设置锚点
 开启锚点设置模式，重启系统界面，获取锚点并选择后关闭锚点模式再次重启系统界面</string>
     <string name="relax_conditions">宽松过滤</string>
     <string name="relax_conditions_tips">允许更多锚点出现</string>
-    <string name="lyric_page">歌词设置</string>
+    <string name="lyric_page">歌词</string>
     <string name="margin_anim_page">边距动画</string>
     <string name="icon_page">图标样式</string>
     <string name="extend_page"><string name="extend_page">显示行为</string></string>
@@ -136,11 +136,7 @@
     <string name="automate_focused_notice">自动处理焦点通知</string>
     <string name="lyrics_animation_horizontalflip">水平翻转</string>
     <string name="lyrics_animation_verticalflip">垂直翻转</string>
-    <string name="log_page">日志</string>
-    <string name="log_refresh">重新读取</string>
-    <string name="log_clear">清空日志</string>
     <string name="log_loading">正在读取日志…</string>
-    <string name="log_no_root">读取日志需要 Root 授权</string>
     <string name="log_empty">暂无日志</string>
     <string name="none_set">未设置</string>
     <string name="xposed_tips">如无法显示歌词请重启系统界面及播放器</string>
@@ -148,6 +144,6 @@
     <string name="not_found_hook">未找到锚点</string>
     <string name="unit_pixel">像素</string>
     <string name="options_fetching_header">取词设置</string>
-    <string name="options_general_header">通用</string>
+    <string name="options_general_header">通用功能</string>
     <string name="more_options">其它选项</string>
 </resources>

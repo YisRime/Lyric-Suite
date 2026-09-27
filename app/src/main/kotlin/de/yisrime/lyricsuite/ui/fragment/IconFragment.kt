@@ -11,6 +11,7 @@ class IconFragment : ConfigFragment() {
 
     override fun ConfigScreen.content() {
         header(R.string.module_second)
+        switch(R.string.icon_switch, prop = config::iconSwitch)
         integer(
             R.string.icon_size, R.string.icon_size_tips, 0..100, config::iconSize,
             unit = R.string.unit_pixel

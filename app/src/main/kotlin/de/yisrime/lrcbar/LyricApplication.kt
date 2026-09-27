@@ -46,7 +46,7 @@ class LyricApplication : Application() {
         DynamicColors.applyToActivitiesIfAvailable(this)
         AcTool.init(this)
         ActivityTools.application = this
-        LogTool.init(GETTER_LOG_TAG, { true }, false)
+        LogTool.init(GETTER_LOG_TAG, { false }, false)
         HookProbe.start(this)
         XposedServiceHelper.registerListener(object : XposedServiceHelper.OnServiceListener {
             override fun onServiceBind(service: XposedService) {

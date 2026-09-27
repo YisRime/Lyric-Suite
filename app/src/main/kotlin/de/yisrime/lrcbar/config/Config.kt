@@ -31,11 +31,10 @@ class Config {
     var hideNotificationIcon: Boolean by serialLazy(false)
     var testMode: Boolean by serialLazy(false)
     var relaxConditions: Boolean by serialLazy(false)
-    // PGKM10 状态栏时钟的已验证锚点；其余机型或系统更新后 id 变动时走锚点选择模式重新获取
-    var textViewClassName: String by serialLazy("com.oplus.systemui.statusbar.widget.StatClock")
-    var textViewId: Int by serialLazy(0x7f0a0274)
-    var parentViewClassName: String by serialLazy("android.widget.LinearLayout")
-    var parentViewId: Int by serialLazy(0x7f0a0a34)
+    var textViewClassName: String by serialLazy("")
+    var textViewId: Int by serialLazy(0)
+    var parentViewClassName: String by serialLazy("")
+    var parentViewId: Int by serialLazy(0)
     var index: Int by serialLazy(0)
 
     var lyricSize: Int by serialLazy(0)

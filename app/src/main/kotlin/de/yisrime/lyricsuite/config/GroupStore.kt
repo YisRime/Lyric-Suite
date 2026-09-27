@@ -1,7 +1,6 @@
 package de.yisrime.lyricsuite.config
 
 import android.content.SharedPreferences
-import android.util.Log
 import de.yisrime.lrcbar.tools.LogTools
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
@@ -47,13 +46,9 @@ open class GroupStore(val group: String) {
         }
     }
 
-    // 同步落盘
+    // 同步落盘；未挂载时静默丢弃
     fun put(key: String, value: Any?) {
-        val editor = editor()
-        if (editor == null) {
-            Log.w(LogTools.TAG, "配置写入被丢弃: $key")
-            return
-        }
+        val editor = editor() ?: return
         editor.putTyped(key, value)
         editor.commit()
     }

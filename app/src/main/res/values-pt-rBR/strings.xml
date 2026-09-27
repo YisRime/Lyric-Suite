@@ -3,7 +3,7 @@
     <string name="version_name_label">Versão do módulo</string>
     <string name="version_code_label">Número da versão do módulo</string>
     <string name="version_type_label">Versão de lançamento do módulo</string>
-    <string name="settings_fragment_label">Ajustes gerais</string>
+    <string name="settings_fragment_label">Opções</string>
     <string name="app_rules_fragment_label">Regras de apps</string>
     <string name="activated">Ativado</string>
     <string name="unactivated">Não ativado</string>

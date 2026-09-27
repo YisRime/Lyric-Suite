@@ -11,11 +11,11 @@
     <string name="restart_systemui_tips">システム UI を再起動してもよろしいですか？</string>
     <string name="hook_page">フックのページ</string>
     <string name="test_mode">テストモード</string>
-    <string name="test_mode_tips">モジュールには PGKM10（ColorOS）のステータスバー時計に対する検証済みのデフォルトアンカーが組み込まれており、そのまま使用できます。歌詞が表示されない場合、機種変更後やシステム更新で ID が変わった場合は、アンカーを再設定してください：
+    <string name="test_mode_tips">初めてモジュールをインストールした場合は、このモジュールを使用する前にアンカーポイントを設定してください。
 アンカー設定モードを有効化してシステムインターフェースを再起動し、アンカーを取得して選択後にアンカーモードを OFF にしてシステムインターフェースを再び再起動します。</string>
     <string name="relax_conditions">条件の緩和</string>
     <string name="relax_conditions_tips">いくつかのクラスは許可されていますが、フックポイントはたくさんあるかもしれません</string>
-    <string name="lyric_page">歌詞設定</string>
+    <string name="lyric_page">歌詞</string>
     <string name="margin_anim_page">マージンとアニメーション</string>
     <string name="icon_page">アイコンのページ</string>
     <string name="extend_page"><string name="extend_page">表示動作</string></string>
@@ -136,17 +136,13 @@
     <string name="automate_focused_notice">フォーカス通知の自動処理</string>
     <string name="lyrics_animation_horizontalflip">水平フリップ</string>
     <string name="lyrics_animation_verticalflip">垂直フリップ</string>
-    <string name="log_page">ログ</string>
-    <string name="log_refresh">再読み込み</string>
-    <string name="log_clear">ログを消去</string>
     <string name="log_loading">ログを読み込み中…</string>
-    <string name="log_no_root">ログの読み取りに Root 権限が必要です</string>
     <string name="log_empty">ログはありません</string>
   <string name="home_fragment_label">ホーム</string>
   <string name="version_name_label">モジュールのバージョン</string>
   <string name="version_code_label">モジュールのバージョン番号</string>
   <string name="version_type_label">モジュールのリリースバージョン</string>
-  <string name="settings_fragment_label">一般設定</string>
+  <string name="settings_fragment_label">オプション</string>
   <string name="app_rules_fragment_label">アプリルール</string>
   <string name="activated">有効</string>
   <string name="unactivated">無効</string>

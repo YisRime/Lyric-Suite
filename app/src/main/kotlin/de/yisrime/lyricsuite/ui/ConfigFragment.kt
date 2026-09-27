@@ -24,6 +24,9 @@ abstract class ConfigFragment : Fragment() {
     @get:StringRes
     protected abstract val titleRes: Int
 
+    // 标签根页（歌词/选项）不显示标题栏，直接呈现内容
+    protected open val showToolbar: Boolean = true
+
     abstract fun ConfigScreen.content()
 
     final override fun onCreateView(
@@ -33,6 +36,14 @@ abstract class ConfigFragment : Fragment() {
     ): View {
         val context = requireContext()
         _screen = ConfigScreen(context)
+        if (!showToolbar) {
+            // 无标题栏：滚动视图自身让出状态栏，内容从页面顶部开始
+            return (_screen.root as ViewGroup).apply {
+                fitsSystemWindows = true
+                clipToPadding = false
+                setPadding(0, 0, 0, (24 * resources.displayMetrics.density).toInt())
+            }
+        }
         // 程序化构造的 MaterialToolbar 与 setTitle 在该主题下标题不渲染，
         // 改为 XML 工具栏 + 子 TextView 承载标题（普通 TextView 在本应用必然渲染）
         _toolbar = LayoutInflater.from(context)
@@ -64,10 +75,10 @@ abstract class ConfigFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _screen.build { it.content() }
-        // 次级页统一带返回键；底部导航的三个标签根页不属于次级页，不显示
+        if (!showToolbar) return
+        // 次级页统一带返回键；标签根页不属于次级页，不显示
         val nav = findNavController()
-        val topLevel = setOf(R.id.home_nav, R.id.lyric_nav, R.id.settings_nav)
-        if (nav.currentDestination?.id !in topLevel && nav.previousBackStackEntry != null) {
+        if (nav.previousBackStackEntry != null) {
             _toolbar.setNavigationIcon(R.drawable.ic_back)
             _toolbar.setNavigationOnClickListener { nav.navigateUp() }
             // 子 TextView 不吃工具栏导航内边距，手动让出箭头宽度

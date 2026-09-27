@@ -4,7 +4,7 @@
 
 ## 形态
 
-一个 `:app` 模块，`applicationId` 与 `namespace` 同为 `de.yisrime.lyricsuite`，`minSdk 30`，版本 `1.0.<修订号>` 配 `versionCode = 100 + 修订号`。显示侧默认锚点内置 `de.yisrime.lrcbar` 在 PGKM10（ColorOS）上验证过的状态栏时钟组合（`com.oplus.systemui.statusbar.widget.StatClock`，`0x7f0a0274`，父容器 `android.widget.LinearLayout` `0x7f0a0a34`，index 0）与歌词色 `#AA81D8CF`，开箱即显示；锚点匹配只看类名、资源 id、父容器与子视图位次，不比对样式，系统字体缩放不会使其失效。其余机型或系统更新导致 id 变动时走锚点选择模式重新获取，选中的值仍写同名配置键。界面为 Lyrics Getter 的 ViewBinding + Material3 壳：底部导航三段按序为主页、歌词、选项，`StatusBarLyric` 侧的全部条目（总开关、图标样式、扩展选项、系统特供、锚点页）集中在「歌词」屏，「选项」屏只留取词侧条目，应用规则经其中的入口页进入。工程不声明桌面启动入口，唯一入口是 LSPosed 管理器按 `MODULE_SETTINGS` 意图打开的 `MainActivity`。`src/main/kotlin` 下按来源保留 `de/yisrime/lrcbar`（显示与钩子侧）与 `de/yisrime/lrcget`（取词侧与设置页），`de/yisrime/lyricsuite` 存放合并后的新成员：模块入口、基类、配置存储与合并后的功能屏。包根合并未完成，届时 `cn/lyric/getter` 是唯一豁免项。
+一个 `:app` 模块，`applicationId` 与 `namespace` 同为 `de.yisrime.lyricsuite`，`minSdk 30`，版本 `1.0.<修订号>` 配 `versionCode = 100 + 修订号`。显示侧歌词色默认 `#AA81D8CF`；锚点不内置，首次使用须经「选项 → 锚点选择」按机型获取（匹配只看类名、资源 id、父容器与子视图位次，不比对样式，系统字体缩放不会使其失效），选中的值写同名配置键。界面为 Lyrics Getter 的 ViewBinding + Material3 壳：底部导航三段按序为主页、歌词、选项；歌词与选项两个标签页不设标题栏，直接呈现内容；「歌词」页内联样式与图标开关（基础设置分组），下方以入口进入边距动画、图标样式、显示行为、系统适配四个子页；「选项」屏分取词设置与通用功能两组，锚点选择、应用规则、歌词测试、备份、恢复均在通用功能组，日志功能已移除。工程不声明桌面启动入口，唯一入口是 LSPosed 管理器按 `MODULE_SETTINGS` 意图打开的 `MainActivity`。`src/main/kotlin` 下按来源保留 `de/yisrime/lrcbar`（显示与钩子侧）与 `de/yisrime/lrcget`（取词侧与设置页），`de/yisrime/lyricsuite` 存放合并后的新成员：模块入口、基类、配置存储与合并后的功能屏。包根合并未完成，届时 `cn/lyric/getter` 是唯一豁免项。
 
 ## 构建
 
@@ -18,7 +18,7 @@
 - `app/libs/Lyric-Getter-Api-7.0.0.aar` 原样随仓并附校验文件，不再从远端取；本模块只保留对宿主内嵌 SDK 的中继，不再向第三方发布该 API。
 - 应用规则的唯一真相是 `app/src/main/assets/app_rules.json`，随仓分发。不存在远端规则版本比对、规则下载与「新规则需重启」提示，也不做版本更新检测；清单不声明 `INTERNET` 权限，产物内不得出现 HTTP 客户端与 markdown 渲染库类，此点以 `dexdump` 与 `unzip -l assets` 取证。
 - `hook/app/Api.kt` 读取的是宿主 APK 内已发布的字节码字段 `API_VERSION`，该字段只用于与宿主内已发布副本比对，改动等于对已装宿主断供；`app_rules.json` 中 `useApi` 条目必须与该实现同步。
-- 配置落在框架守护进程的 `configs(module_pkg_name, user_id, group, key)`，两侧各占一个 group：显示侧 `config`，取词侧 `getter`，挂载点见 `GroupStore` 的 `DisplayStore` 与 `GetterStore`。清除为「选项」屏单一入口，两组一并清空并重启应用；备份与恢复入口同在该屏，备份导出按组嵌套、恢复时按组回填（无组层的旧扁平文件仅在「顶层值全为原始类型且至少一个键命中两侧配置键」时按取词侧回填，其余文件拒绝并提示，防止误选任意 JSON 污染配置组）。换 `applicationId` 等于清空全部已存配置与作用域并需重新登记。
+- 配置落在框架守护进程的 `configs(module_pkg_name, user_id, group, key)`，两侧各占一个 group：显示侧 `config`，取词侧 `getter`，挂载点见 `GroupStore` 的 `DisplayStore` 与 `GetterStore`。清除配置功能已移除（配置经备份与恢复迁移）；备份与恢复入口在「选项」屏，备份导出按组嵌套、恢复时按组回填（无组层的旧扁平文件仅在「顶层值全为原始类型且至少一个键命中两侧配置键」时按取词侧回填，其余文件拒绝并提示，防止误选任意 JSON 污染配置组）。换 `applicationId` 等于清空全部已存配置与作用域并需重新登记。
 
 ## 判据
 

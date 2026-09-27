@@ -35,11 +35,6 @@
             android:theme="@style/Theme.MyApplication"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
-            android:name="de.yisrime.lrcget.ui.activity.LogActivity"
-            android:exported="false"
-            android:label="@string/log_page"
-            android:theme="@style/Theme.MyApplication" />
-        <activity
             android:name="de.yisrime.lrcget.ui.activity.DialogTransparentActivity"
             android:exported="true"
             android:theme="@style/Theme.DialogTransparentActivityTheme"

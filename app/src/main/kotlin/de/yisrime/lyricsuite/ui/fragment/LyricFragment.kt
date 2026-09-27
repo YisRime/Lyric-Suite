@@ -11,9 +11,10 @@ class LyricFragment : ConfigFragment() {
 
     override val titleRes = R.string.lyric_page
 
+    override val showToolbar = false
+
     override fun ConfigScreen.content() {
         header(R.string.module_second)
-        switch(R.string.icon_switch, prop = config::iconSwitch)
         integer(
             R.string.lyric_width, R.string.lyric_width_tips, 0..100, config::lyricWidth
         ) { invalidate() }

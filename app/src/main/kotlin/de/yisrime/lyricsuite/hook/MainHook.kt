@@ -14,7 +14,6 @@ import de.yisrime.lyricsuite.config.GetterStore
 import de.yisrime.lrcbar.config.XposedOwnSP.config
 import de.yisrime.lrcbar.hook.module.SystemUILyric
 import de.yisrime.lrcbar.hook.module.SystemUITest
-import de.yisrime.lrcbar.tools.LogTools
 import de.yisrime.lrcbar.tools.LogTools.log
 import de.yisrime.lrcget.hook.app.APlayer
 import de.yisrime.lrcget.hook.app.Api
@@ -58,8 +57,7 @@ class MainHook : XposedModule() {
         EzXposed.initOnPackageLoaded(param)
         EzXReflection.init(param.defaultClassLoader)
         attachPreferences()
-        LogTools.init(true)
-        LogTool.init("Lyrics Getter", { true }, false)
+        LogTool.init("Lyrics Getter", { false }, false)
         "${frameworkName} ${frameworkVersion}(${frameworkVersionCode}) api=$apiVersion".log()
         "onPackageLoaded: ${param.packageName}".log()
         // 钩子对象初始化抛的 Error（如宿主缺原生库）不是 Exception，initHooks 接不住，必须在此兜住并留日志
