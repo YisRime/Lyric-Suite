@@ -14,7 +14,8 @@
     <string name="master_switch">主开关</string>
     <string name="hook_page">锚点选择</string>
     <string name="test_mode">锚点选择模式</string>
-    <string name="test_mode_tips">第一次安装模块，请先设置锚点\n开启锚点设置模式，重启系统界面，获取锚点并选择后关闭锚点模式再次重启系统界面</string>
+    <string name="test_mode_tips">模块已内置 PGKM10（ColorOS）状态栏时钟的已验证默认锚点，开箱即用；若歌词不显示、更换机型或系统更新后 id 变动，再重新设置锚点：
+开启锚点设置模式，重启系统界面，获取锚点并选择后关闭锚点模式再次重启系统界面</string>
     <string name="relax_conditions">宽松过滤</string>
     <string name="relax_conditions_tips">允许更多锚点出现</string>
     <string name="lyric_page">歌词</string>
