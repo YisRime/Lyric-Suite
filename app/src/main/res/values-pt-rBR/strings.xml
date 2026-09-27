@@ -80,4 +80,5 @@
     <string name="options_fetching_header">Obtenção de letras</string>
     <string name="options_general_header">Geral</string>
     <string name="margin_anim_page">Margens e animação</string>
+    <string name="style_page">Estilo</string>
 </resources>

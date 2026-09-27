@@ -18,8 +18,9 @@
     <string name="relax_conditions_tips">允许更多锚点出现</string>
     <string name="lyric_page">歌词</string>
     <string name="margin_anim_page">边距与动画</string>
+    <string name="style_page">样式</string>
     <string name="icon_page">图标样式</string>
-    <string name="extend_page">扩展选项</string>
+    <string name="extend_page"><string name="extend_page">显示行为</string></string>
     <string name="lyric_width">歌词宽度</string>
     <string name="lyric_width_tips">范围：0~100，0 代表自适应宽度</string>
     <string name="fixed_lyric_width">固定歌词宽度</string>
@@ -102,7 +103,7 @@
     <string name="dynamic_lyric_speed">动态歌词速度 (Beta)</string>
     <string name="click_status_bar_to_hide_lyric">点击状态栏隐藏歌词</string>
     <string name="long_click_status_bar_stop">长按状态栏停止音乐</string>
-    <string name="system_special_page">系统特供</string>
+    <string name="system_special_page"><string name="system_special_page">系统适配</string></string>
     <string name="miui_hide_network_speed">隐藏网速</string>
     <string name="miui_pad_optimize">平板优化</string>
     <string name="hyperos_texture">添加高级材质背景</string>

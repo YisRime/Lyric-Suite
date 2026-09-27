@@ -4,6 +4,7 @@ import de.yisrime.lyricsuite.R
 import de.yisrime.lyricsuite.ui.ConfigFragment
 import de.yisrime.lyricsuite.ui.ConfigScreen
 import de.yisrime.lrcbar.config.XposedOwnSP.config
+import de.yisrime.lrcbar.tools.Tools.shell
 
 class MarginAnimFragment : ConfigFragment() {
 
@@ -66,5 +67,10 @@ class MarginAnimFragment : ConfigFragment() {
             0..1000,
             config::animationDuration
         )
+        action(R.string.reset_system_ui) {
+            confirm(
+                R.string.reset_system_ui, R.string.restart_systemui_tips, R.string.ok
+            ) { shell("killall com.android.systemui", true) }
+        }
     }
 }

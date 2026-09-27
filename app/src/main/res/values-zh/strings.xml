@@ -77,4 +77,5 @@
     <string name="none_set">未设置</string>
     <string name="unit_pixel">像素</string>
     <string name="margin_anim_page">边距与动画</string>
+    <string name="style_page">样式</string>
 </resources>

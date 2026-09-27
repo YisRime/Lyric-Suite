@@ -18,8 +18,9 @@
     <string name="relax_conditions_tips">いくつかのクラスは許可されていますが、フックポイントはたくさんあるかもしれません</string>
     <string name="lyric_page">歌詞のページ</string>
     <string name="margin_anim_page">マージンとアニメーション</string>
+    <string name="style_page">スタイル</string>
     <string name="icon_page">アイコンのページ</string>
-    <string name="extend_page">拡張のページ</string>
+    <string name="extend_page"><string name="extend_page">表示動作</string></string>
     <string name="lyric_width">歌詞の幅</string>
     <string name="lyric_width_tips">範囲: 0~100 – 0 は適応幅です</string>
     <string name="fixed_lyric_width">歌詞の幅を固定</string>
@@ -102,7 +103,7 @@
     <string name="dynamic_lyric_speed">動的な歌詞の速度 (Beta)</string>
     <string name="click_status_bar_to_hide_lyric">ステータスバーをタップで歌詞を隠す</string>
     <string name="long_click_status_bar_stop">ステータスバーを長押しで音楽を停止</string>
-    <string name="system_special_page">システムのスペシャルページ</string>
+    <string name="system_special_page"><string name="system_special_page">システム適配</string></string>
     <string name="miui_hide_network_speed">ネットワーク速度を隠す</string>
     <string name="miui_pad_optimize">タブレットに最適化する</string>
     <string name="hyperos_texture">高度なテクスチャ背景を追加</string>

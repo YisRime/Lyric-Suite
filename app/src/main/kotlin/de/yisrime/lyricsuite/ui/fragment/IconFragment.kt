@@ -11,7 +11,6 @@ class IconFragment : ConfigFragment() {
 
     override fun ConfigScreen.content() {
         switch(R.string.icon_switch, prop = config::iconSwitch) { invalidate() }
-        resetSystemUiRow()
         if (!config.iconSwitch) return
         header(R.string.module_second)
         integer(
@@ -54,5 +53,6 @@ class IconFragment : ConfigFragment() {
         text(
             R.string.change_all_icons, R.string.change_all_icons_tips, config::changeAllIcons
         )
+        resetSystemUiRow()
     }
 }

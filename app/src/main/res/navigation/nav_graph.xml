@@ -54,6 +54,10 @@
         android:name="de.yisrime.lyricsuite.ui.fragment.NeteaseOptionsFragment"
         android:label="@string/fuck_wyy_about" />
     <fragment
+        android:id="@+id/style_nav"
+        android:name="de.yisrime.lyricsuite.ui.fragment.StyleFragment"
+        android:label="@string/style_page" />
+    <fragment
         android:id="@+id/margin_anim_nav"
         android:name="de.yisrime.lyricsuite.ui.fragment.MarginAnimFragment"
         android:label="@string/margin_anim_page" />
