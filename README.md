@@ -18,7 +18,7 @@
 - `app/libs/Lyric-Getter-Api-7.0.0.aar` 原样随仓并附校验文件，不再从远端取；本模块只保留对宿主内嵌 SDK 的中继，不再向第三方发布该 API。
 - 应用规则的唯一真相是 `app/src/main/assets/app_rules.json`，随仓分发。不存在远端规则版本比对、规则下载与「新规则需重启」提示，也不做版本更新检测；清单不声明 `INTERNET` 权限，产物内不得出现 HTTP 客户端与 markdown 渲染库类，此点以 `dexdump` 与 `unzip -l assets` 取证。
 - `hook/app/Api.kt` 读取的是宿主 APK 内已发布的字节码字段 `API_VERSION`，该字段只用于与宿主内已发布副本比对，改动等于对已装宿主断供；`app_rules.json` 中 `useApi` 条目必须与该实现同步。
-- 配置落在框架守护进程的 `configs(module_pkg_name, user_id, group, key)`，两侧各占一个 group：显示侧 `config`，取词侧 `getter`，挂载点见 `GroupStore` 的 `DisplayStore` 与 `GetterStore`。清除配置按组各一个入口，备份导出按组嵌套、恢复时按组回填（无组层的旧扁平文件按取词侧处理）。换 `applicationId` 等于清空全部已存配置与作用域并需重新登记。
+- 配置落在框架守护进程的 `configs(module_pkg_name, user_id, group, key)`，两侧各占一个 group：显示侧 `config`，取词侧 `getter`，挂载点见 `GroupStore` 的 `DisplayStore` 与 `GetterStore`。清除配置按组各一个入口，备份导出按组嵌套、恢复时按组回填（无组层的旧扁平文件仅在「顶层值全为原始类型且至少一个键命中两侧配置键」时按取词侧回填，其余文件拒绝并提示，防止误选任意 JSON 污染配置组）。换 `applicationId` 等于清空全部已存配置与作用域并需重新登记。
 
 ## 判据
 
@@ -34,4 +34,5 @@
 
 - 真机验证未做过，全部结论来自构建与产物静态核验。
 - `Lyric_Data` 无法定向收紧：注入侧的接收器注册在 `com.android.systemui` 名下，设置页的监视器注册在本包名下，单条 `setPackage` 只能命中其一，故该广播对全机可见与可伪造的现状保持不变。要收紧需先把两端之一改为非广播传输。
-- `resources` 与 `res/values` 中仍有少量库内部串的引用残影，属扫描口径限制，不影响构建。
+
+资源残影已清零：按「`res/**` + `AndroidManifest.xml` + `R.<type>.<name>` + ViewBinding 生成类」的口径全量扫描，字符串、布局、drawable、mipmap、style、array 等各类型均无孤儿（`activity_main`、`items_app` 仅经 ViewBinding 类引用，非孤儿）。
