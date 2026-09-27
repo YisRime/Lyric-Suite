@@ -4,7 +4,7 @@
 
 ## 形态
 
-一个 `:app` 模块，`applicationId` 与 `namespace` 同为 `de.yisrime.lyricsuite`，`minSdk 30`，版本 `1.0.<修订号>` 配 `versionCode = 100 + 修订号`。显示侧默认锚点内置 `de.yisrime.lrcbar` 在 PGKM10（ColorOS）上验证过的状态栏时钟组合（`com.oplus.systemui.statusbar.widget.StatClock`，`0x7f0a0274`，父容器 `android.widget.LinearLayout` `0x7f0a0a34`，index 0）与歌词色 `#AA81D8CF`，开箱即显示；锚点匹配只看类名、资源 id、父容器与子视图位次，不比对样式，系统字体缩放不会使其失效。其余机型或系统更新导致 id 变动时走锚点选择模式重新获取，选中的值仍写同名配置键。界面为 Lyrics Getter 的 ViewBinding + Material3 壳：底部导航四段按序为主页、歌词、应用、选项，`StatusBarLyric` 侧的全部条目（总开关、图标样式、扩展选项、系统特供、锚点页）集中在「歌词」屏，「选项」屏只留取词侧条目。工程不声明桌面启动入口，唯一入口是 LSPosed 管理器按 `MODULE_SETTINGS` 意图打开的 `MainActivity`。`src/main/kotlin` 下按来源保留 `de/yisrime/lrcbar`（显示与钩子侧）与 `de/yisrime/lrcget`（取词侧与设置页），`de/yisrime/lyricsuite` 存放合并后的新成员：模块入口、基类、配置存储与合并后的功能屏。包根合并未完成，届时 `cn/lyric/getter` 是唯一豁免项。
+一个 `:app` 模块，`applicationId` 与 `namespace` 同为 `de.yisrime.lyricsuite`，`minSdk 30`，版本 `1.0.<修订号>` 配 `versionCode = 100 + 修订号`。显示侧默认锚点内置 `de.yisrime.lrcbar` 在 PGKM10（ColorOS）上验证过的状态栏时钟组合（`com.oplus.systemui.statusbar.widget.StatClock`，`0x7f0a0274`，父容器 `android.widget.LinearLayout` `0x7f0a0a34`，index 0）与歌词色 `#AA81D8CF`，开箱即显示；锚点匹配只看类名、资源 id、父容器与子视图位次，不比对样式，系统字体缩放不会使其失效。其余机型或系统更新导致 id 变动时走锚点选择模式重新获取，选中的值仍写同名配置键。界面为 Lyrics Getter 的 ViewBinding + Material3 壳：底部导航三段按序为主页、歌词、选项，`StatusBarLyric` 侧的全部条目（总开关、图标样式、扩展选项、系统特供、锚点页）集中在「歌词」屏，「选项」屏只留取词侧条目，应用规则经其中的入口页进入。工程不声明桌面启动入口，唯一入口是 LSPosed 管理器按 `MODULE_SETTINGS` 意图打开的 `MainActivity`。`src/main/kotlin` 下按来源保留 `de/yisrime/lrcbar`（显示与钩子侧）与 `de/yisrime/lrcget`（取词侧与设置页），`de/yisrime/lyricsuite` 存放合并后的新成员：模块入口、基类、配置存储与合并后的功能屏。包根合并未完成，届时 `cn/lyric/getter` 是唯一豁免项。
 
 ## 构建
 
