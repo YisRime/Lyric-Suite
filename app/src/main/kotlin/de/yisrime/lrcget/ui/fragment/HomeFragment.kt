@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -15,7 +14,6 @@ import de.yisrime.lyricsuite.BuildConfig
 import de.yisrime.lyricsuite.R
 import de.yisrime.lyricsuite.databinding.FragmentHomeBinding
 import de.yisrime.lrcget.tool.ActivityTools.rules
-import de.yisrime.lrcget.tool.BackupTools
 import de.yisrime.lrcget.tool.Tools.getPhoneName
 import de.yisrime.lrcget.tool.Tools.restartTheScopedSoftware
 import de.yisrime.lrcget.ui.viewmodel.HomeViewModel
@@ -24,33 +22,11 @@ import cn.xiaowine.xkt.AcTool.restartApp
 import cn.xiaowine.xkt.Tool.isNotNull
 import cn.xiaowine.xkt.Tool.toUpperFirstCaseAndLowerOthers
 import com.google.android.material.color.MaterialColors
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 class HomeFragment : Fragment() {
-    private var recoveryPickerLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) {
-        it.isNotNull { uri ->
-            if (BackupTools.handleReadDocument(requireActivity(), uri)) {
-                MaterialAlertDialogBuilder(requireContext()).apply {
-                    setTitle(R.string.recovery)
-                    setCancelable(false)
-                    setMessage(R.string.recovery_summary)
-                    setPositiveButton(R.string.restart) { _, _ ->
-                        restartApp()
-                    }
-                    show()
-                }
-            }
-        }
-    }
-    private var backupPickerLauncher = registerForActivityResult(ActivityResultContracts.CreateDocument("application/json")) {
-        it.isNotNull { uri ->
-            BackupTools.handleCreateDocument(requireActivity(), uri)
-        }
-    }
-
     private val shareViewModel: ShareViewModel by activityViewModels()
     private val homeViewModel: HomeViewModel by viewModels()
 
@@ -86,28 +62,6 @@ class HomeFragment : Fragment() {
                     }
                 }
                 floatingActionButton.visibility = View.GONE
-            }
-            toolbar.apply {
-                inflateMenu(R.menu.home_menu)
-                setOnMenuItemClickListener {
-                    when (it.itemId) {
-                        R.id.backup -> {
-                            backupPickerLauncher.launch(
-                                "LyricSuite_Backup_${
-                                    SimpleDateFormat(
-                                        "yyyy-MM-dd-HH:mm",
-                                        Locale.getDefault()
-                                    ).format(System.currentTimeMillis())
-                                }.json"
-                            )
-                        }
-
-                        R.id.recovery -> {
-                            recoveryPickerLauncher.launch("application/json")
-                        }
-                    }
-                    true
-                }
             }
             if (shareViewModel.activated) {
                 floatingActionButton.setOnClickListener { view ->

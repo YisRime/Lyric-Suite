@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -109,6 +110,8 @@ class AppRulesFragment : Fragment() {
         }
         binding.apply {
             toolbar.apply {
+                setNavigationIcon(R.drawable.ic_back)
+                setNavigationOnClickListener { findNavController().navigateUp() }
                 inflateMenu(R.menu.app_rules_menu)
                 menu.findItem(R.id.show_all_rules).apply {
                     isChecked = config.showAllRules
