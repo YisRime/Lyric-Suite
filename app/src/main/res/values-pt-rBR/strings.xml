@@ -77,6 +77,7 @@
     <string name="test_lyric_tips">Aviso: Se o teste aqui não apresentar problemas, pode ser um problema com outro software. Se houver problemas ao enviar as letras de teste, por favor, envie seu feedback. Se não houver problemas, a causa é outra. A notificação de foco é usada para testar se você desativou a lista de permissões.</string>
     <string name="none_set">Não definido</string>
     <string name="unit_pixel">pixels</string>
-    <string name="clear_display_config">Limpar ajustes da exibição</string>
-    <string name="clear_getter_config">Limpar ajustes da captura</string>
+    <string name="clear_config">Limpar todos os ajustes</string>
+    <string name="options_fetching_header">Obtenção de letras</string>
+    <string name="options_general_header">Geral</string>
 </resources>

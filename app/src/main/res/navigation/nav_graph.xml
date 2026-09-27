@@ -19,35 +19,35 @@
         android:id="@+id/hook_picker_nav"
         android:name="de.yisrime.lyricsuite.ui.fragment.HookPickerFragment"
         android:label="@string/select_hook"
-        tools:layout="@layout/fragment_settings" />
+/>
     <fragment
         android:id="@+id/test_nav"
         android:name="de.yisrime.lyricsuite.ui.fragment.TestFragment"
         android:label="@string/hook_page"
-        tools:layout="@layout/fragment_settings" />
+/>
     <fragment
         android:id="@+id/icon_nav"
         android:name="de.yisrime.lyricsuite.ui.fragment.IconFragment"
         android:label="@string/icon_page"
-        tools:layout="@layout/fragment_settings" />
+/>
     <fragment
         android:id="@+id/lyric_nav"
         android:name="de.yisrime.lyricsuite.ui.fragment.LyricFragment"
         android:label="@string/lyric_page"
-        tools:layout="@layout/fragment_settings" />
+/>
     <fragment
         android:id="@+id/extend_nav"
         android:name="de.yisrime.lyricsuite.ui.fragment.ExtendFragment"
         android:label="@string/extend_page"
-        tools:layout="@layout/fragment_settings" />
+/>
     <fragment
         android:id="@+id/system_special_nav"
         android:name="de.yisrime.lyricsuite.ui.fragment.SystemSpecialFragment"
         android:label="@string/system_special_page"
-        tools:layout="@layout/fragment_settings" />
+/>
     <fragment
         android:id="@+id/settings_nav"
         android:name="de.yisrime.lrcget.ui.fragment.SettingsFragment"
         android:label="@string/settings_fragment_label"
-        tools:layout="@layout/fragment_settings" />
+/>
 </navigation>
