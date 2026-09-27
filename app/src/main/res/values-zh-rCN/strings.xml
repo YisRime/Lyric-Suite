@@ -17,6 +17,7 @@
     <string name="relax_conditions">宽松过滤</string>
     <string name="relax_conditions_tips">允许更多锚点出现</string>
     <string name="lyric_page">歌词</string>
+    <string name="margin_anim_page">边距与动画</string>
     <string name="icon_page">图标样式</string>
     <string name="extend_page">扩展选项</string>
     <string name="lyric_width">歌词宽度</string>

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.annotation.StringRes
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
@@ -15,6 +16,7 @@ import de.yisrime.lyricsuite.R
 abstract class ConfigFragment : Fragment() {
     private lateinit var _screen: ConfigScreen
     private lateinit var _toolbar: MaterialToolbar
+    private lateinit var _title: TextView
 
     protected val screen: ConfigScreen get() = _screen
 
@@ -30,10 +32,12 @@ abstract class ConfigFragment : Fragment() {
     ): View {
         val context = requireContext()
         _screen = ConfigScreen(context)
-        // 程序化构造的 MaterialToolbar 标题在该主题下不渲染，改从 XML 加载（与应用内其它工具栏同路径）
+        // 程序化构造的 MaterialToolbar 与 setTitle 在该主题下标题不渲染，
+        // 改为 XML 工具栏 + 子 TextView 承载标题（普通 TextView 在本应用必然渲染）
         _toolbar = LayoutInflater.from(context)
             .inflate(R.layout.view_config_toolbar, null, false) as MaterialToolbar
-        _toolbar.setTitle(titleRes)
+        _title = _toolbar.findViewById(R.id.toolbar_title)
+        _title.setText(titleRes)
         val bar = AppBarLayout(context).apply {
             fitsSystemWindows = true
             addView(

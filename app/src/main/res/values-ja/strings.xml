@@ -17,6 +17,7 @@
     <string name="relax_conditions">条件の緩和</string>
     <string name="relax_conditions_tips">いくつかのクラスは許可されていますが、フックポイントはたくさんあるかもしれません</string>
     <string name="lyric_page">歌詞のページ</string>
+    <string name="margin_anim_page">マージンとアニメーション</string>
     <string name="icon_page">アイコンのページ</string>
     <string name="extend_page">拡張のページ</string>
     <string name="lyric_width">歌詞の幅</string>

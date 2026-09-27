@@ -17,6 +17,7 @@ Enable the anchor setting mode, restart the system interface, obtain the anchor 
     <string name="relax_conditions">Relax Conditions</string>
     <string name="relax_conditions_tips">Some classes are allowed, but there may be many more hook points</string>
     <string name="lyric_page">Lyric</string>
+    <string name="margin_anim_page">Margins &amp; animation</string>
     <string name="icon_page">Icon Page</string>
     <string name="extend_page">Extend Page</string>
     <string name="lyric_width">Lyric Width</string>

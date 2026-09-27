@@ -17,6 +17,7 @@
     <string name="relax_conditions">寬鬆過濾</string>
     <string name="relax_conditions_tips">允許更多錨點出現</string>
     <string name="lyric_page">歌詞</string>
+    <string name="margin_anim_page">邊距與動畫</string>
     <string name="icon_page">圖示樣式</string>
     <string name="extend_page">擴展選項</string>
     <string name="lyric_width">歌詞寬度</string>
