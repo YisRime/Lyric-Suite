@@ -60,10 +60,17 @@ class MainHook : XposedModule() {
         LogTools.init(true)
         LogTool.init("Lyrics Getter", { true }, false)
         "${frameworkName} ${frameworkVersion}(${frameworkVersionCode}) api=$apiVersion".log()
-        when (param.packageName) {
-            SYSTEM_UI -> hookSystemUi()
-            SELF -> Unit
-            else -> hookLyricSource(param.packageName)
+        "onPackageLoaded: ${param.packageName}".log()
+        // 钩子对象初始化抛的 Error（如宿主缺原生库）不是 Exception，initHooks 接不住，必须在此兜住并留日志
+        runCatching {
+            when (param.packageName) {
+                SYSTEM_UI -> hookSystemUi()
+                SELF -> Unit
+                else -> hookLyricSource(param.packageName)
+            }
+        }.onFailure {
+            "Dispatch failed for ${param.packageName}: ${it.javaClass.name}".log()
+            it.log()
         }
     }
 

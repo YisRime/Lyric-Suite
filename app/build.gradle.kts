@@ -25,7 +25,8 @@ android {
         targetSdk = 36
         versionCode = 100
         versionName = "1.0.0"
-        ndk.abiFilters += "arm64-v8a"
+        // dexkit 在宿主进程内加载：网易云等宿主以 armeabi-v7a 运行，缺 v7a 会 UnsatisfiedLinkError
+        ndk.abiFilters += setOf("arm64-v8a", "armeabi-v7a")
         buildConfigField("long", "BUILD_TIME", "$buildTime")
         buildConfigField("int", "API_VERSION", "6")
         buildConfigField("int", "CONFIG_VERSION", "1")
