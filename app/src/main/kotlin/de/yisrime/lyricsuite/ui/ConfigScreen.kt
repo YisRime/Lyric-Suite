@@ -138,14 +138,15 @@ class ConfigScreen(private val context: Context, private val container: LinearLa
         options: List<String>,
         prop: KMutableProperty0<Int>
     ) {
-        val row = row(title, 0, options[prop.get().coerceIn(options.indices)])
+        val row = row(title)
+        row.setValue(options[prop.get().coerceIn(options.indices)])
         container.addView(row.getView().apply {
             setOnClickListener {
                 MaterialAlertDialogBuilder(context)
                     .setTitle(title)
                     .setItems(options.toTypedArray()) { dialog, which ->
                         prop.set(which)
-                        row.setSummary(options[which])
+                        row.setValue(options[which])
                         dialog.dismiss()
                     }
                     .show()
@@ -204,7 +205,8 @@ class ConfigScreen(private val context: Context, private val container: LinearLa
         commit: (String) -> Boolean
     ) {
         val shown = { raw: String -> raw.ifEmpty { if (blankAsUnset) context.getString(R.string.none_set) else raw } }
-        val row = row(title, tips, shown(get()), hint)
+        val row = row(title, tips, hint)
+        row.setValue(shown(get()))
         container.addView(row.getView().apply {
             setOnClickListener {
                 val editor = EditTextDialog(context)
@@ -216,7 +218,7 @@ class ConfigScreen(private val context: Context, private val container: LinearLa
                     }
                     .setText(get())
                 editor.show { text ->
-                    if (commit(text.trim())) row.setSummary(describe(shown(get()), tips, hint))
+                    if (commit(text.trim())) row.setValue(shown(get()))
                 }
             }
         })
@@ -224,23 +226,19 @@ class ConfigScreen(private val context: Context, private val container: LinearLa
 
     private fun row(
         @StringRes title: Int,
-        @StringRes summary: Int,
-        value: String? = null,
+        @StringRes summary: Int = 0,
         @StringRes hint: Int = 0
     ): Preferences {
         val row = Preferences(context)
         row.preferencesTitle.setText(title)
         row.preferencesButton.visibility = View.GONE
-        row.setSummary(describe(value.orEmpty(), summary, hint))
-        return row
-    }
-
-    private fun describe(value: String, @StringRes tips: Int, @StringRes hint: Int): String =
-        listOfNotNull(
-            value.ifEmpty { null },
-            if (tips == 0) null else context.getString(tips),
+        val text = listOfNotNull(
+            if (summary == 0) null else context.getString(summary),
             if (hint == 0) null else context.getString(hint)
         ).joinToString(" · ")
+        if (text.isNotEmpty()) row.setSummary(text)
+        return row
+    }
 
     private fun isColor(value: String): Boolean = try {
         value.toColorInt()

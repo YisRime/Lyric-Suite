@@ -14,6 +14,7 @@ class Preferences(context: Context) {
     val preferencesButton: MaterialSwitch = preferencesView.findViewById(R.id.switchButton)
     val preferencesTitle: TextView = preferencesView.findViewById(R.id.switchTitle)
     private val preferencesSummary: TextView = preferencesView.findViewById(R.id.switchSummary)
+    private val preferencesValue: TextView = preferencesView.findViewById(R.id.switchValue)
 
     // 重建为准
     init {
@@ -25,6 +26,15 @@ class Preferences(context: Context) {
     fun setViewClickToggleSwitch() {
         preferencesView.setOnClickListener {
             preferencesButton.isChecked = !preferencesButton.isChecked
+        }
+    }
+
+    fun setValue(value: String?) {
+        if (value.isNullOrBlank()) {
+            preferencesValue.visibility = View.GONE
+        } else {
+            preferencesValue.visibility = View.VISIBLE
+            preferencesValue.text = value
         }
     }
 
