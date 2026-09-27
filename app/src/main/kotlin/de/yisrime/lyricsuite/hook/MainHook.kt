@@ -82,10 +82,6 @@ class MainHook : XposedModule() {
             initHooks(SystemUITest())
             return
         }
-        if (!config.masterSwitch) {
-            moduleRes.getString(R.string.master_off).log()
-            return
-        }
         "${BuildConfig.APPLICATION_ID} - ${BuildConfig.VERSION_NAME}(${BuildConfig.VERSION_CODE}[${
             Locale.getDefault().language
         }] *${BuildConfig.BUILD_TYPE})".log()

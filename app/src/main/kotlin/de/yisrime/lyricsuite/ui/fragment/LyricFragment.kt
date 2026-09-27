@@ -1,27 +1,17 @@
 package de.yisrime.lyricsuite.ui.fragment
 
-import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import de.yisrime.lyricsuite.R
 import de.yisrime.lyricsuite.ui.ConfigFragment
 import de.yisrime.lyricsuite.ui.ConfigScreen
 import de.yisrime.lrcbar.config.XposedOwnSP.config
 import de.yisrime.lrcbar.tools.Tools.shell
-import de.yisrime.lrcget.tool.Tools.xpActivation
 
 class LyricFragment : ConfigFragment() {
 
     override val titleRes = R.string.lyric_page
 
     override fun ConfigScreen.content() {
-        val context = requireContext()
-        switch(R.string.master_switch, prop = config::masterSwitch) {
-            if (!xpActivation) {
-                config.masterSwitch = false
-                Toast.makeText(context, R.string.module_inactivated, Toast.LENGTH_SHORT).show()
-            }
-            invalidate()
-        }
         action(R.string.icon_page) { findNavController().navigate(R.id.icon_nav) }
         action(R.string.extend_page) { findNavController().navigate(R.id.extend_nav) }
         action(R.string.system_special_page) { findNavController().navigate(R.id.system_special_nav) }

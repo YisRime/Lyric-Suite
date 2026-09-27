@@ -27,7 +27,6 @@ import de.yisrime.lyricsuite.config.DisplayStore
 import de.yisrime.lyricsuite.config.serialLazy
 
 class Config {
-    var masterSwitch: Boolean by serialLazy(false)
     var hideTime: Boolean by serialLazy(false)
     var hideNotificationIcon: Boolean by serialLazy(false)
     var testMode: Boolean by serialLazy(false)
