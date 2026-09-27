@@ -32,6 +32,11 @@ object BackupTools {
                 restored += 1
             }
             if (restored == 0) {
+                // 无组层的旧扁平文件按取词侧处理；其余结构（如误选的任意 JSON）拒绝回填
+                if (!isLegacyFlatBackup(root)) {
+                    "load fail\n无法识别的备份文件".showToast()
+                    return false
+                }
                 GetterStore.source?.let { restoreInto(it, root) }
             }
             "load ok".showToast()
@@ -40,6 +45,38 @@ object BackupTools {
             "load fail\n${e.message}".showToast()
             false
         }
+    }
+
+    private fun isLegacyFlatBackup(root: JSONObject): Boolean {
+        val keys = root.keys()
+        if (!keys.hasNext()) return false
+        var known = false
+        val knownKeys = configKeys()
+        while (keys.hasNext()) {
+            val name = keys.next()
+            when (root.get(name)) {
+                is JSONObject, is org.json.JSONArray -> return false
+            }
+            if (name in knownKeys) known = true
+        }
+        return known
+    }
+
+    private fun configKeys(): Set<String> {
+        val names = mutableSetOf("lyricStart", "lyricEnd", "iconStart", "title_delay_duration")
+        listOf(de.yisrime.lrcbar.config.Config::class, de.yisrime.lrcget.config.Config::class)
+            .forEach { clazz ->
+                clazz.java.declaredMethods.forEach { method ->
+                    val name = method.name
+                    when {
+                        name.startsWith("get") && name.length > 3 ->
+                            names += name.substring(3).replaceFirstChar { it.lowercase() }
+                        name.startsWith("is") && name.length > 2 ->
+                            names += name.substring(2).replaceFirstChar { it.lowercase() }
+                    }
+                }
+            }
+        return names
     }
 
     private fun restoreInto(sp: SharedPreferences, group: JSONObject) {
