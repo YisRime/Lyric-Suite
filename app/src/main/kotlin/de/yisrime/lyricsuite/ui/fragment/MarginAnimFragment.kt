@@ -12,22 +12,16 @@ class MarginAnimFragment : ConfigFragment() {
     override fun ConfigScreen.content() {
         header(R.string.module_fourth)
         integer(
-            R.string.lyric_top_margins, R.string.lyric_top_margins_tips, 0..100, config::lyricTopMargins
+            R.string.lyric_top_margins, 0..100, config::lyricTopMargins
         )
         integer(
-            R.string.lyric_bottom_margins,
-            R.string.lyric_bottom_margins_tips,
-            0..100,
-            config::lyricBottomMargins
+            R.string.lyric_bottom_margins, 0..100, config::lyricBottomMargins
         )
         integer(
-            R.string.lyric_start_margins,
-            R.string.lyric_start_margins_tips,
-            -2000..2000,
-            config::lyricStartMargins
+            R.string.lyric_start_margins, -2000..2000, config::lyricStartMargins
         )
         integer(
-            R.string.lyric_end_margins, R.string.lyric_end_margins_tips, -2000..2000, config::lyricEndMargins
+            R.string.lyric_end_margins, -2000..2000, config::lyricEndMargins
         )
         header(R.string.module_sixth)
         choice(
@@ -61,10 +55,7 @@ class MarginAnimFragment : ConfigFragment() {
             config::lyricInterpolator
         )
         integer(
-            R.string.lyrics_animation_duration,
-            R.string.lyric_animation_duration_tips,
-            0..1000,
-            config::animationDuration
+            R.string.lyrics_animation_duration, 0..1000, config::animationDuration
         )
     }
 }

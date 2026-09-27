@@ -13,6 +13,7 @@ class DialogTransparentActivity : AppCompatActivity() {
         val title = context.getString(R.string.regex_replace)
         val a = EditTextDialog(context)
             .setTitle(title)
+            .setMessage(context.getString(R.string.input_regex_prompt))
             .setText(config.regexReplace)
             .show {
                 config.regexReplace = it

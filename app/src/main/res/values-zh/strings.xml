@@ -53,9 +53,9 @@
     <string name="salt_use_flyme_summary">在 API 模式正常时，不建议切换</string>
     <string name="multiple_modes_work">有多个可正常使用的模式</string>
     <string name="fuck_wyy">网易云状态栏歌词强开</string>
-    <string name="fuck_wyy_tips">开启开关可能导致网易云出现异常，本模块概不负责</string>
+    <string name="fuck_wyy_tips">开启后可能导致网易云异常</string>
     <string name="fuck_fuck_wyy">禁用网易云检测</string>
-    <string name="fuck_fuck_wyy_tips">尝试绕过网易云 Hook 检测，如因此被封禁本模块概不负责</string>
+    <string name="fuck_fuck_wyy_tips">尝试绕过网易云的 Hook 检测</string>
     <string name="fuck_wyy_about">网易云歌词获取设置</string>
     <string name="lyric_setting">歌词获取设置</string>
     <string name="test_app_delay">延迟时间（毫秒）</string>
@@ -78,4 +78,9 @@
     <string name="unit_pixel">像素</string>
     <string name="margin_anim_page">边距动画</string>
     <string name="more_options">其它选项</string>
+    <string name="input_number_prompt">请输入%1$s（%2$d~%3$d）</string>
+    <string name="input_color_prompt">请输入%1$s（HEX 色值）</string>
+    <string name="input_gradient_prompt">请输入%1$s（HEX 色值，逗号分隔）</string>
+    <string name="input_text_prompt">请输入%1$s</string>
+    <string name="input_regex_prompt">请输入正则表达式</string>
 </resources>

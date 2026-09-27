@@ -80,4 +80,9 @@
     <string name="options_general_header">Geral</string>
     <string name="more_options">Mais opções</string>
     <string name="margin_anim_page">Margens e animação</string>
+    <string name="input_number_prompt">Digite %1$s (%2$d–%3$d)</string>
+    <string name="input_color_prompt">Digite %1$s (cor HEX)</string>
+    <string name="input_gradient_prompt">Digite %1$s (cores HEX, separadas por vírgula)</string>
+    <string name="input_text_prompt">Digite %1$s</string>
+    <string name="input_regex_prompt">Digite a expressão regular</string>
 </resources>

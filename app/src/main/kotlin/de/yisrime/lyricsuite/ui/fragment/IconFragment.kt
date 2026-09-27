@@ -13,36 +13,28 @@ class IconFragment : ConfigFragment() {
         header(R.string.module_second)
         switch(R.string.icon_switch, prop = config::iconSwitch)
         integer(
-            R.string.icon_size, R.string.icon_size_tips, 0..100, config::iconSize,
+            R.string.icon_size, 0..100, config::iconSize,
             unit = R.string.unit_pixel
         )
         color(
             R.string.icon_color_and_transparency,
-            R.string.icon_color_and_transparency_tips,
             "",
             config::iconColor
         )
         color(
             R.string.icon_background_color_and_transparency,
-            R.string.icon_background_color_and_transparency_tips,
             "",
             config::iconBgColor
         )
         header(R.string.module_fourth)
         integer(
-            R.string.icon_top_margins, R.string.icon_top_margins_tips, 0..100, config::iconTopMargins
+            R.string.icon_top_margins, 0..100, config::iconTopMargins
         )
         integer(
-            R.string.icon_bottom_margins,
-            R.string.icon_bottom_margins_tips,
-            0..100,
-            config::iconBottomMargins
+            R.string.icon_bottom_margins, 0..100, config::iconBottomMargins
         )
         integer(
-            R.string.icon_start_margins,
-            R.string.icon_start_margins_tips,
-            -2000..2000,
-            config::iconStartMargins
+            R.string.icon_start_margins, -2000..2000, config::iconStartMargins
         )
         header(R.string.module_third)
         switch(
@@ -50,7 +42,7 @@ class IconFragment : ConfigFragment() {
             prop = config::forceTheIconToBeDisplayed
         )
         text(
-            R.string.change_all_icons, R.string.change_all_icons_tips, config::changeAllIcons
+            R.string.change_all_icons, config::changeAllIcons
         )
     }
 }

@@ -30,13 +30,11 @@ class ExtendFragment : ConfigFragment() {
         if (config.slideStatusBarCutSongs) {
             integer(
                 R.string.slide_status_bar_cut_songs_x_radius,
-                R.string.slide_status_bar_cut_songs_x_radius_tips,
                 0..2000,
                 config::slideStatusBarCutSongsXRadius
             )
             integer(
                 R.string.slide_status_bar_cut_songs_y_radius,
-                R.string.slide_status_bar_cut_songs_y_radius_tips,
                 0..100,
                 config::slideStatusBarCutSongsYRadius
             )
@@ -56,32 +54,21 @@ class ExtendFragment : ConfigFragment() {
         if (config.titleSwitch) {
             switch(R.string.title_show_with_same_lyric, prop = config::titleShowWithSameLyric)
             integer(
-                R.string.title_delay_duration,
-                R.string.title_delay_duration_tips,
-                0..10000,
-                config::titleDelayDuration
+                R.string.title_delay_duration, 0..10000, config::titleDelayDuration
             )
             color(
                 R.string.title_color_and_transparency,
-                R.string.lyric_color_and_transparency_tips,
                 "#000000",
                 config::titleColorAndTransparency
             )
             integer(
-                R.string.title_background_radius,
-                R.string.lyric_background_radius_tips,
-                0..100,
-                config::titleBackgroundRadius
+                R.string.title_background_radius, 0..100, config::titleBackgroundRadius
             )
             integer(
-                R.string.title_background_stroke_width,
-                R.string.title_background_stroke_width_tips,
-                0..30,
-                config::titleBackgroundStrokeWidth
+                R.string.title_background_stroke_width, 0..30, config::titleBackgroundStrokeWidth
             )
             color(
                 R.string.title_background_stroke_color,
-                R.string.lyric_color_and_transparency_tips,
                 "#FFFFFF",
                 config::titleBackgroundStrokeColorAndTransparency
             )

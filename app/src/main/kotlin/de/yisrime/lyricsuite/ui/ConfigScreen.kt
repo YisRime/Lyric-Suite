@@ -21,6 +21,12 @@ import kotlin.reflect.KMutableProperty0
 
 class ConfigScreen(private val context: Context, private val container: LinearLayout) {
 
+    companion object {
+        // 渐变色输入的格式示例：起始色,结束色（含 Alpha）
+        const val GRADIENT_EXAMPLE = "00000000,FFFFFFFF"
+    }
+
+
     constructor(context: Context) : this(
         context,
         LinearLayout(context).apply { orientation = LinearLayout.VERTICAL }
@@ -72,13 +78,13 @@ class ConfigScreen(private val context: Context, private val container: LinearLa
 
     fun integer(
         @StringRes title: Int,
-        @StringRes tips: Int,
         range: IntRange,
         prop: KMutableProperty0<Int>,
         @StringRes unit: Int = 0,
         onWrite: () -> Unit = {}
     ) {
-        editable(title, tips, numeric = true, unit = unit, get = { prop.get().toString() }) { text ->
+        val message = context.getString(R.string.input_number_prompt, context.getString(title), range.first, range.last)
+        editable(title, message, numeric = true, unit = unit, get = { prop.get().toString() }) { text ->
             val value = text.toIntOrNull()
             if (value == null || value !in range) {
                 toast(context.getString(R.string.value_error, range.first, range.last))
@@ -93,11 +99,11 @@ class ConfigScreen(private val context: Context, private val container: LinearLa
 
     fun color(
         @StringRes title: Int,
-        @StringRes tips: Int,
         fallback: String,
         prop: KMutableProperty0<String>
     ) {
-        editable(title, tips, get = { prop.get() }) { text ->
+        val message = context.getString(R.string.input_color_prompt, context.getString(title))
+        editable(title, message, get = { prop.get() }) { text ->
             if (text.isNotEmpty() && !isColor(text)) {
                 toast(context.getString(R.string.color_error))
                 false
@@ -110,11 +116,10 @@ class ConfigScreen(private val context: Context, private val container: LinearLa
 
     fun gradient(
         @StringRes title: Int,
-        @StringRes tips: Int,
-        @StringRes hint: Int = 0,
         prop: KMutableProperty0<String>
     ) {
-        editable(title, tips, hint, get = { prop.get() }) { text ->
+        val message = context.getString(R.string.input_gradient_prompt, context.getString(title))
+        editable(title, message, get = { prop.get() }, emptyPrefill = GRADIENT_EXAMPLE) { text ->
             val parts = text.split(',').map { it.trim() }.filter { it.isNotEmpty() }
             if (parts.any { !isColor(it) }) {
                 toast(context.getString(R.string.color_error))
@@ -128,10 +133,10 @@ class ConfigScreen(private val context: Context, private val container: LinearLa
 
     fun text(
         @StringRes title: Int,
-        @StringRes tips: Int,
         prop: KMutableProperty0<String>
     ) {
-        editable(title, tips, blankAsUnset = true, get = { prop.get() }) { text ->
+        val message = context.getString(R.string.input_text_prompt, context.getString(title))
+        editable(title, message, blankAsUnset = true, get = { prop.get() }) { text ->
             prop.set(text)
             true
         }
@@ -192,11 +197,11 @@ class ConfigScreen(private val context: Context, private val container: LinearLa
 
     private fun editable(
         @StringRes title: Int,
-        @StringRes tips: Int,
-        @StringRes hint: Int = 0,
-        @StringRes unit: Int = 0,
+        message: String,
+        unit: Int = 0,
         numeric: Boolean = false,
         blankAsUnset: Boolean = false,
+        emptyPrefill: String? = null,
         get: () -> String,
         commit: (String) -> Boolean
     ) {
@@ -208,16 +213,11 @@ class ConfigScreen(private val context: Context, private val container: LinearLa
                 val editor = EditTextDialog(context)
                     .setTitle(context.getString(title))
                     .apply {
-                        // 范围、格式等说明文字只在弹窗中展示
-                        val message = listOfNotNull(
-                            if (tips == 0) null else context.getString(tips),
-                            if (hint == 0) null else context.getString(hint)
-                        ).joinToString(" · ")
                         if (message.isNotEmpty()) setMessage(message)
                         if (numeric) setNumericInput()
                         if (unit != 0) setUnit(unit)
                     }
-                    .setText(get())
+                    .setText(get().ifEmpty { emptyPrefill.orEmpty() })
                 editor.show { text ->
                     if (commit(text.trim())) row.setValue(shown(get()))
                 }

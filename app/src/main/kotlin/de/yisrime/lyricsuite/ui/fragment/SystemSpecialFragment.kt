@@ -29,20 +29,13 @@ class SystemSpecialFragment : ConfigFragment() {
             }
             if (config.mHyperOSTexture) {
                 integer(
-                    R.string.hyperos_texture_radio,
-                    R.string.lyric_stroke_width_tips,
-                    0..1000,
-                    config::mHyperOSTextureRadio
+                    R.string.hyperos_texture_radio, 0..1000, config::mHyperOSTextureRadio
                 )
                 integer(
-                    R.string.hyperos_texture_corner,
-                    R.string.lyric_letter_spacing_tips,
-                    0..1000,
-                    config::mHyperOSTextureCorner
+                    R.string.hyperos_texture_corner, 0..1000, config::mHyperOSTextureCorner
                 )
                 color(
                     R.string.hyperos_texture_color,
-                    R.string.lyric_color_and_transparency_tips,
                     "#15818181",
                     config::mHyperOSTextureBgColor
                 )
